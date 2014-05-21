@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Card Flip</title>
+	<link rel="stylesheet" type="text/css" href="cardflip.css">
+	<script language="javascript">
+		window.onload = function(){
+			var container = document.getElementById("container");
+			var _width = document.body.clientWidth, _height = document.body.clientHeight;
+			console.log(container, _width, _height);
+			container.style.left = (_width - 360) / 2 + 'px';
+			// container.style.top = (_height - 360) / 2 + 'px';
+
+		}
+
+		function changeClass(){
+			var  block = document.getElementById("block");
+		    if(block.className == "block"){
+		        block.className += " rotated";
+		    }
+		    else{
+		        block.className = "block";
+		    }
+		}
+	</script>
+</head>
+<body>
+
+	<div id="container">
+		<div id="block" class="block" onclick="changeClass()">
+		    <div class="front side">
+		        <img src="image1.jpg" alt=""/>
+		    </div>
+		    <div class="back side">
+		        <img src="image2.jpg" alt=""/>
+		    </div>
+		</div>
+	</div>
+	
+</body>
+</html>
