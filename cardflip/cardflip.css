@@ -1,11 +1,24 @@
-#container{
+html,body{
+    height:100%;
+    width: 100%;
+    margin: 0; 
+}
+#bgdiv{
     height: 360px;
     width: 360px;
     position: absolute;
     left: 10px;
     top: 100px;
     background: #333;
+}
+#container{
+    height: 200px;
+    width: 200px;
+    left: 80px;
+    top: 80px;
+    perspective: 500;
     -webkit-perspective: 500;
+    -moz-perspective: 500;
 }
 .block {
     position: absolute;
@@ -13,7 +26,9 @@
     width: 200px;
     left: 80px;
     top: 80px;
+    transform: preserve-3d;
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
     transition: 1.5s;
 }
 #container:hover .block{
@@ -22,12 +37,11 @@
     -moz-transform: rotateY(180deg);
 }
 
-.rotated{
-    transform: rotateY(180deg);
-}
 .side{
     position: absolute;
+    backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
     box-shadow: 0 2px 5px #666;
 }
 .front{

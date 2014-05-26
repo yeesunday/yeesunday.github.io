@@ -5,27 +5,16 @@
 	<link rel="stylesheet" type="text/css" href="cardflip.css">
 	<script language="javascript">
 		window.onload = function(){
-			var container = document.getElementById("container");
-			var _width = document.body.clientWidth, _height = document.body.clientHeight;
-			console.log(container, _width, _height);
-			container.style.left = (_width - 360) / 2 + 'px';
-			// container.style.top = (_height - 360) / 2 + 'px';
+			var bgdiv = document.getElementById("bgdiv");
+			var _width = window.innerWidth, _height = window.innerHeight;
+			bgdiv.style.left = (_width - 360) / 2 + 'px';
+			bgdiv.style.top = (_height - 360) / 2 + 'px';
 
-		}
-
-		function changeClass(){
-			var  block = document.getElementById("block");
-		    if(block.className == "block"){
-		        block.className += " rotated";
-		    }
-		    else{
-		        block.className = "block";
-		    }
 		}
 	</script>
 </head>
 <body>
-
+<div id="bgdiv">
 	<div id="container">
 		<div id="block" class="block" onclick="changeClass()">
 		    <div class="front side">
@@ -36,6 +25,7 @@
 		    </div>
 		</div>
 	</div>
+</div>
 	
 </body>
 </html>
