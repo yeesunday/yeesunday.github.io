@@ -119,17 +119,17 @@ function loadImages(sources,callback){
             context.font = "20px Arial";
 			context.fillStyle = '#FFFF00';
             context.clearRect(0,0,clearWidth,clearHeight);
-            context.fillText('Loading:'+ loadedImages +'/'+numImages,(clearWidth-260)/2,clearHeight/2-30);
+            context.fillText('Loading:'+ loadedImages +'/'+numImages,(clearWidth-130)/2,clearHeight/2-30);
             context.save();
             context.strokeStyle='#555';
             context.beginPath();
-            context.moveTo((clearWidth-260)/2 - 70,clearHeight/2+30);
-            context.lineTo((clearWidth-260)/2 + 330,clearHeight/2+30);
+            context.moveTo((clearWidth-130)/2 - 135,clearHeight/2+30);
+            context.lineTo((clearWidth-130)/2 + 265,clearHeight/2+30);
             context.stroke();
             context.beginPath();
             context.restore();
-            context.moveTo((clearWidth-260)/2 - 70,clearHeight/2+30);
-            context.lineTo(loadedImages/numImages*400+(clearWidth-260)/2 - 70,clearHeight/2+30);  
+            context.moveTo((clearWidth-130)/2 - 135,clearHeight/2+30);
+            context.lineTo(loadedImages/numImages*400+(clearWidth-130)/2 - 135,clearHeight/2+30);  
             context.stroke();
             //当所有图片加载完成时，执行回调函数callback
             if (++loadedImages >= numImages) {    
@@ -222,6 +222,8 @@ function main(){
 		start: function(x, y) {
 			this.x = x;
 			this.y = y;
+			this.width = scaleY(260);
+			this.height = scaleY(260);
 			this.zooms = [
 				[0.1, 1], [0.1, 1], [0.1, 1], 
 				[0.1, 1], [0.1, 1], [0.1, 1], 
@@ -239,10 +241,10 @@ function main(){
 				var node = this.zooms.shift();
 				context.save();
 				
-				var _x = this.x - (node[0] - 0.1) * (this.img.width >> 1);
-				var _y = this.y - (node[0] - 0.1) * (this.img.height >> 1);
+				var _x = this.x - (node[0] - 0.1) * (this.width >> 1);
+				var _y = this.y - (node[0] - 0.1) * (this.height >> 1);
 				context.globalAlpha = node[1];
-				context.drawImage(this.img, 0, 0, this.img.width, this.img.height,  _x,  _y, this.img.width*node[0], this.img.height*node[0]);
+				context.drawImage(this.img, 0, 0, this.img.width, this.img.height,  _x,  _y, this.width*node[0], this.height*node[0]);
 				
 				context.restore();
 				node = null;
@@ -254,7 +256,7 @@ function main(){
 	createBtns();
 
 	debugDraw();
-	start();       
+	over();       
 	// window.setInterval(update,1000/60); 
 	//UI界面单起一个循环
 	var _lastDate = Date.now(), _isPause = false, _playTimer, _rafRun, _ieDate = _lastDate;
@@ -347,7 +349,18 @@ function main(){
 	    }
 		gStatus = 'over'; 
 		flashNum = 0;
-		clearInterval(GLSI);
+		// clearInterval(GLSI);
+		ball = createCircle(scaleX(1), gWidth/worldScale, scaleY(800)/worldScale, b2Body.b2_dynamicBody, {name: 'ball'});
+		ball.SetLinearVelocity(new b2Vec2(-10.5, 0)); 
+		ball.SetAngularVelocity(Math.PI / 2);
+		ball.GetFixtureList().m_friction = 0.5;
+		ball.SetAngularDamping(1000);
+		createBox(scaleX(120)/worldScale, scaleY(345)/worldScale, STARTX/worldScale, STARTY/worldScale,  b2Body.b2_kinematicBody, {name: 'freezer'});
+		ground = createBox(gWidth/worldScale, 2/worldScale, gWidth/2/worldScale, scaleY(830)/worldScale,  b2Body.b2_staticBody, {name:''});
+		ground.GetFixtureList().m_friction = 0.5;
+
+		// overball = new MoveSprite(scaleX(60), scaleX(60), 60, {x:scaleX(-470), y:scaleY(50)}, {x:scaleX(50), y:scaleY(50)}, 'football', gImg);
+		// overball.paths =  
 		// clearInterval(CFSI);
 	}
 	function update(){
@@ -512,6 +525,24 @@ function main(){
 				drawImg(gImg['wenzi01'], scaleX(65), scaleY(360), scaleX(659), scaleY(87));
 				drawImg(freezer, scaleX(240), scaleY(478), scaleX(300), scaleY(360));
 
+				for(var b = world.m_bodyList; b != null; b = b.m_next){  
+	    			var pos = b.GetPosition();
+					if (b.GetUserData()) {
+						var _name = b.GetUserData().name;
+
+			    		if(_name == "ball") {
+			    			var img = gImg['football'], angle = b.GetAngle();
+
+			    			context.save();
+			    			//context.drawImage(img, 0, 0, img.width, img.height,  pos.x * worldScale-scaleX(30),  pos.y * worldScale-scaleY(30), scaleX(60), scaleY(60));
+					       	context.translate(pos.x * worldScale, pos.y * worldScale);
+					       	context.rotate(angle);
+					       	context.translate(-pos.x * worldScale, -pos.y * worldScale);
+					       	context.drawImage(img, 0, 0, img.width, img.height,  pos.x * worldScale-30,  pos.y * worldScale-30, scaleX(60), scaleX(60));
+						   	context.restore();
+			            }
+			    	}
+			    }
 	    		break;
 	    	default:
 	    		break;
@@ -637,9 +668,9 @@ function main(){
 		if (e.preventDefault) {
 			e.preventDefault();
 		}
+		setMousePosition(e);
 		if (gStatus == 'run') {
 			if (isMouseDown) {
-				setMousePosition(e);
 				// freezer2.position.Set(STARTX + (mouseX - _clicksx), STARTY + (mouseY - _clicksy)); 
 				// freezer2.SetTransform((STARTX + (mouseX - _clicksx), STARTY + (mouseY - _clicksy)));
 				var _x = STARTX + (mouseX - _clicksx);
@@ -654,14 +685,14 @@ function main(){
 		}
 	};
 	function handleMouseUp(e) {
+		setMousePosition(e);
 		if (gStatus == 'run') {
 			if (isMouseDown) {
-				setMousePosition(e);
-
 				STARTX = freezer2.GetPosition().x * worldScale;
 				freezerX = STARTX;
 			};
 		}
+
 		isMouseDown = false;
 	};
 	function createBox(width,height,pX,pY,type, userData){  
