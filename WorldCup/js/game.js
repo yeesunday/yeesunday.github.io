@@ -355,7 +355,7 @@ function main(){
 		ball.SetAngularVelocity(Math.PI / 2);
 		ball.GetFixtureList().m_friction = 0.5;
 		ball.SetAngularDamping(1000);
-		createBox(scaleX(120)/worldScale, scaleY(345)/worldScale, STARTX/worldScale, STARTY/worldScale,  b2Body.b2_kinematicBody, {name: 'freezer'});
+		createBox(2/worldScale, gHeight/worldScale, (gWidth/2 + scaleX(60))/worldScale, 0,  b2Body.b2_kinematicBody, {name: 'freezer'});
 		ground = createBox(gWidth/worldScale, 2/worldScale, gWidth/2/worldScale, scaleY(830)/worldScale,  b2Body.b2_staticBody, {name:''});
 		ground.GetFixtureList().m_friction = 0.5;
 	}
