@@ -256,7 +256,7 @@ function main(){
 	createBtns();
 
 	debugDraw();
-	over();       
+	start();       
 	// window.setInterval(update,1000/60); 
 	//UI界面单起一个循环
 	var _lastDate = Date.now(), _isPause = false, _playTimer, _rafRun, _ieDate = _lastDate;
@@ -349,7 +349,7 @@ function main(){
 	    }
 		gStatus = 'over'; 
 		flashNum = 0;
-		// clearInterval(GLSI);
+		clearInterval(GLSI);
 		ball = createCircle(scaleX(1), gWidth/worldScale, scaleY(800)/worldScale, b2Body.b2_dynamicBody, {name: 'ball'});
 		ball.SetLinearVelocity(new b2Vec2(-10.5, 0)); 
 		ball.SetAngularVelocity(Math.PI / 2);
@@ -358,10 +358,6 @@ function main(){
 		createBox(scaleX(120)/worldScale, scaleY(345)/worldScale, STARTX/worldScale, STARTY/worldScale,  b2Body.b2_kinematicBody, {name: 'freezer'});
 		ground = createBox(gWidth/worldScale, 2/worldScale, gWidth/2/worldScale, scaleY(830)/worldScale,  b2Body.b2_staticBody, {name:''});
 		ground.GetFixtureList().m_friction = 0.5;
-
-		// overball = new MoveSprite(scaleX(60), scaleX(60), 60, {x:scaleX(-470), y:scaleY(50)}, {x:scaleX(50), y:scaleY(50)}, 'football', gImg);
-		// overball.paths =  
-		// clearInterval(CFSI);
 	}
 	function update(){
 	   	world.Step(1/60,10,10);  
