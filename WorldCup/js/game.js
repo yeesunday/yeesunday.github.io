@@ -220,8 +220,8 @@ function main(){
 		img:gImg['fireworks3'],
 		zooms: [],
 		start: function(x, y) {
-			this.x = x;
-			this.y = y;
+			this.x = x - scaleY(13);
+			this.y = y - scaleY(13);
 			this.width = scaleY(260);
 			this.height = scaleY(260);
 			this.zooms = [
@@ -351,7 +351,7 @@ function main(){
 		flashNum = 0;
 		clearInterval(GLSI);
 		ball = createCircle(scaleX(1), gWidth/worldScale, scaleY(800)/worldScale, b2Body.b2_dynamicBody, {name: 'ball'});
-		ball.SetLinearVelocity(new b2Vec2(-10.5, 0)); 
+		ball.SetLinearVelocity(new b2Vec2(-9, 0)); 
 		ball.SetAngularVelocity(Math.PI / 2);
 		ball.GetFixtureList().m_friction = 0.5;
 		ball.SetAngularDamping(1000);
@@ -490,7 +490,7 @@ function main(){
 					       	context.translate(pos.x * worldScale, pos.y * worldScale);
 					       	context.rotate(angle);
 					       	context.translate(-pos.x * worldScale, -pos.y * worldScale);
-					       	context.drawImage(img, 0, 0, img.width, img.height,  pos.x * worldScale-30,  pos.y * worldScale-30, scaleX(60), scaleX(60));
+					       	context.drawImage(img, 0, 0, img.width, img.height,  pos.x * worldScale-scaleX(30),  pos.y * worldScale-scaleX(30), scaleX(60), scaleX(60));
 						   	context.restore();
 						   	// drawImg(gImg['football'], pos.x * worldScale - 30, pos.y * worldScale - 30, 60, 60);
 						   	if (pos.y * worldScale > scaleY(488)) {
@@ -767,13 +767,13 @@ function main(){
 			gScore++;
 			contact.GetWorldManifold(manifold);
 			pos = manifold.m_points[0];
-			fireworks.start(pos.x * worldScale - scaleX(20), pos.y*worldScale - scaleX(20));
+			fireworks.start(pos.x * worldScale, pos.y*worldScale);
 		};
 		if (_contactB.GetUserData().name == 'ball' && _contactA.GetUserData().name == 'freezer') {
 			gScore++;
 			contact.GetWorldManifold(manifold);
 			pos = manifold.m_points[0];
-			fireworks.start(pos.x * worldScale - scaleX(20), pos.y*worldScale - scaleX(20));
+			fireworks.start(pos.x * worldScale, pos.y*worldScale);
 		};
 	}
 }
