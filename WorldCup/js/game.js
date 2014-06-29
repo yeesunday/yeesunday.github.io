@@ -123,13 +123,13 @@ function loadImages(sources,callback){
             context.save();
             context.strokeStyle='#555';
             context.beginPath();
-            context.moveTo((clearWidth-130)/2 - 135,clearHeight/2+30);
-            context.lineTo((clearWidth-130)/2 + 265,clearHeight/2+30);
+            context.moveTo((clearWidth-130)/2 - 85,clearHeight/2+10);
+            context.lineTo((clearWidth-130)/2 + 215,clearHeight/2+10);
             context.stroke();
             context.beginPath();
             context.restore();
-            context.moveTo((clearWidth-130)/2 - 135,clearHeight/2+30);
-            context.lineTo(loadedImages/numImages*400+(clearWidth-130)/2 - 135,clearHeight/2+30);  
+            context.moveTo((clearWidth-130)/2 - 85,clearHeight/2+10);
+            context.lineTo(loadedImages/numImages*300+(clearWidth-130)/2 - 85,clearHeight/2+10);  
             context.stroke();
             //当所有图片加载完成时，执行回调函数callback
             if (++loadedImages >= numImages) {    
