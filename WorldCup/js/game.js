@@ -116,20 +116,20 @@ function loadImages(sources,callback){
         //当一张图片加载完成时执行    
         gImg[src.name].onload = function(){ 
             //重绘一个进度条
-            context.font = "40px Arial";
+            context.font = "20px Arial";
 			context.fillStyle = '#FFFF00';
             context.clearRect(0,0,clearWidth,clearHeight);
-            context.fillText('Loading:'+ loadedImages +'/'+numImages,200,280);
+            context.fillText('Loading:'+ loadedImages +'/'+numImages,(clearWidth-260)/2,clearHeight/2-30);
             context.save();
             context.strokeStyle='#555';
             context.beginPath();
-            context.moveTo(120,300);
-            context.lineTo(520,300);
+            context.moveTo((clearWidth-260)/2 - 70,clearHeight/2+30);
+            context.lineTo((clearWidth-260)/2 + 330,clearHeight/2+30);
             context.stroke();
             context.beginPath();
             context.restore();
-            context.moveTo(120,300);
-            context.lineTo(loadedImages/numImages*400+120,300);  
+            context.moveTo((clearWidth-260)/2 - 70,clearHeight/2+30);
+            context.lineTo(loadedImages/numImages*400+(clearWidth-260)/2 - 70,clearHeight/2+30);  
             context.stroke();
             //当所有图片加载完成时，执行回调函数callback
             if (++loadedImages >= numImages) {    
@@ -137,8 +137,6 @@ function loadImages(sources,callback){
             }    
         };   
     }
-    // console.log(gImg, loadedImages, numImages, 111);
-    // callback(); 
 
    	function getElementPosition(element) {  
 	    var elem=element, tagname="",x=0, y=0;  
@@ -186,6 +184,8 @@ function main(){
 	var b2DebugDraw =Box2D.Dynamics.b2DebugDraw;  
 	var b2MouseJointDef = Box2D.Dynamics.Joints.b2MouseJointDef;
 	var b2ContactListener = Box2D.Dynamics.b2ContactListener;
+	var b2WorldManifold = Box2D.Collision.b2WorldManifold;
+
 
 	var worldScale = 30;  
 	// var dragConstant=0.05;  
@@ -241,7 +241,6 @@ function main(){
 				
 				var _x = this.x - (node[0] - 0.1) * (this.img.width >> 1);
 				var _y = this.y - (node[0] - 0.1) * (this.img.height >> 1);
-				console.log(this.x, this.y, this.img.width*node[0], this.img.height*node[0]);
 				context.globalAlpha = node[1];
 				context.drawImage(this.img, 0, 0, this.img.width, this.img.height,  _x,  _y, this.img.width*node[0], this.img.height*node[0]);
 				
@@ -285,7 +284,7 @@ function main(){
 	    gLevel = 1;
 		gStatus = 'start';
 		wenan1 = new MoveSprite(scaleX(459), scaleY(206), 60, {x:scaleX(-470), y:scaleY(50)}, {x:scaleX(50), y:scaleY(50)}, 'wenan1', gImg);
-		wenan2 = new MoveSprite(scaleX(162), scaleY(162), 60, {x:scaleX(830), y:scaleY(90)}, {x:scaleX(450), y:scaleY(90)}, 'wenan2', gImg);
+		wenan2 = new MoveSprite(scaleX(162), scaleX(162), 60, {x:scaleX(830), y:scaleY(90)}, {x:scaleX(450), y:scaleY(90)}, 'wenan2', gImg);
 	}
 	function start2(){
 		gStatus = 'start2';
@@ -311,25 +310,28 @@ function main(){
 		flashNum = 0;
 		setTimeout(function(){
 		    countDown();                    
-		},1000);
+		},2000);
+		renderBtns = [];
 	}
 	function countDown(){
 		gStatus = 'countDown';
 		flashNum = 0;
 		cds = [
-			new ZoomSprite(scaleX(315), scaleY(270), 100, 100, 1.5, 0, 30, 'num3', gImg),
-			new ZoomSprite(scaleX(315), scaleY(270), 100, 100, 1.5, 0, 30, 'num2', gImg),	
-			new ZoomSprite(scaleX(315), scaleY(270), 100, 100, 1.5, 0, 30, 'num1', gImg)
+			new ZoomSprite(scaleX(315), scaleY(270), scaleX(100), scaleY(100), 1.5, 0, 30, 'num3', gImg),
+			new ZoomSprite(scaleX(315), scaleY(270), scaleX(100), scaleY(100), 1.5, 0, 30, 'num2', gImg),	
+			new ZoomSprite(scaleX(315), scaleY(270), scaleX(100), scaleY(100), 1.5, 0, 30, 'num1', gImg)
 		]
 	}
 	function run(){
 		gStatus = 'run';
 		flashNum = 0;
 		ball = createCircle(scaleX(1), gWidth/2/worldScale, scaleY(150)/worldScale, b2Body.b2_dynamicBody, {name: 'ball'});
-		ball.SetLinearVelocity(new b2Vec2(1, 1)); 
-		ball.SetAngularVelocity(Math.PI / 4);
-		freezerX = STARTX/worldScale;
-		freezerY = STARTY/worldScale;
+		var _x = Math.random()*2 - 1;
+		ball.SetLinearVelocity(new b2Vec2(_x, 2)); 
+		ball.SetAngularVelocity(Math.PI / 2);
+
+		freezerX = STARTX;
+		freezerY = STARTY;
 		freezer2 = createBox(scaleX(120)/worldScale, scaleY(345)/worldScale, STARTX/worldScale, STARTY/worldScale,  b2Body.b2_kinematicBody, {name: 'freezer'});
 		
 		createWall();
@@ -369,7 +371,7 @@ function main(){
 	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
 	    		drawImg(gImg['logo'], scaleX(600), 50, scaleX(136), scaleY(53));
 	    		drawImg(gImg['wenan1'], 50, scaleY(50), scaleX(459), scaleY(206));
-	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleY(162));
+	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleX(162));
 	    		if(!wenan3.action(context)){
 	    			start3();
 	    		};
@@ -378,11 +380,11 @@ function main(){
 	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
 	    		drawImg(gImg['logo'], scaleX(600), 50, scaleX(136), scaleY(53));
 	    		drawImg(gImg['wenan1'], 50, scaleY(50), scaleX(459), scaleY(206));
-	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleY(162));
+	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleX(162));
 	    		drawImg(gImg['wenan3'], scaleX(280), scaleY(280), scaleX(386), scaleY(53));
 	    		drawImg(gImg['wenan4'], 0, scaleY(435), scaleX(599), scaleY(254));
 
-	    		if (Math.floor(flashNum / 30) % 2) {
+	    		if (Math.floor(flashNum / 20) % 2) {
 	    			drawImg(gImg['cup1'], scaleX(500), scaleY(370), scaleX(263), scaleY(432));
 	    			flashNum++;
 	    		}else{
@@ -392,7 +394,7 @@ function main(){
 	    		renderBtn();
 	   			break;
 	   		case 'choose':
-	    		if (Math.floor(flashNum / 30) % 2) {
+	    		if (Math.floor(flashNum / 20) % 2) {
 	    			drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
 	    			flashNum++;
 	    		}else{
@@ -406,7 +408,7 @@ function main(){
 	    				freezerSprite = null;
 	    			};
 	    		}else{
-	    			drawImg(freezer, scaleX(240), scaleY(360), scaleX(300), scaleY(360));
+	    			drawImg(freezer, scaleX(250), scaleY(360), scaleX(300), scaleY(360));
 	    		}
 
 	    		// freezerSprite && !freezerSprite.action;
@@ -424,13 +426,15 @@ function main(){
 	   		case 'reading':
 	    		drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
 	    	
-	    		drawImg(gImg['wenzi02'], scaleX(110), scaleY(100), scaleX(540), scaleY(87));
+	    		drawImg(gImg['wenzi02'], scaleX(110), scaleY(200), scaleX(540), scaleY(87));
 	    		drawImg(freezer, scaleX(250), scaleY(478), scaleX(300), scaleY(360));
 	   			break;
 	   		case 'countDown':
 	    		drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
+
+	    		drawImg(gImg['wenzi02'], scaleX(110), scaleY(200), scaleX(540), scaleY(87));
+	    		drawImg(gImg['football'], gWidth/2-scaleX(15), scaleY(120), scaleX(60), scaleX(60));
 	    		
-	    		drawImg(gImg['wenzi02'], scaleX(110), scaleY(100), scaleX(540), scaleY(87));
 	    		drawImg(freezer, scaleX(250), scaleY(478), scaleX(300), scaleY(360));
 	    		if (cds[0]) {
 	    			if(!cds[0].action(context)){
@@ -441,7 +445,7 @@ function main(){
 	    		};
 	   			break;
 	   		case 'run':
-	   			if (Math.floor(flashNum / 30) % 2) {
+	   			if (Math.floor(flashNum / 20) % 2) {
 	    			drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
 	    			flashNum++;
 	    		}else{
@@ -463,7 +467,7 @@ function main(){
 				drawImg(gImg['miao'], scaleX(300), scaleY(50), scaleX(50), scaleY(60));
 	    		
 
-				freezer2.SetPositionAndAngle(new b2Vec2(freezerX, freezerY), 0);
+				freezer2.SetPositionAndAngle(new b2Vec2(freezerX/worldScale, freezerY/worldScale), 0);
 	    		for(var b = world.m_bodyList; b != null; b = b.m_next){  
 	    			var pos = b.GetPosition();
 					if (b.GetUserData()) {
@@ -473,18 +477,18 @@ function main(){
 			    			var img = gImg['football'], angle = b.GetAngle();
 
 			    			context.save();
-			    			context.drawImage(img, 0, 0, img.width, img.height,  pos.x * worldScale-scaleX(30),  pos.y * worldScale-scaleY(30), scaleX(60), scaleY(60));
-					       	context.translate(pos.x * worldScale-scaleX(30), pos.y * worldScale-scaleY(30));
+			    			//context.drawImage(img, 0, 0, img.width, img.height,  pos.x * worldScale-scaleX(30),  pos.y * worldScale-scaleY(30), scaleX(60), scaleY(60));
+					       	context.translate(pos.x * worldScale, pos.y * worldScale);
 					       	context.rotate(angle);
-					       	context.translate(-pos.x * worldScale+scaleX(30), -pos.y * worldScale+scaleY(30));
-					       	//context.drawImage(img, 0, 0, img.width, img.height,  pos.x * worldScale-30,  pos.y * worldScale-30, 60, 60);
+					       	context.translate(-pos.x * worldScale, -pos.y * worldScale);
+					       	context.drawImage(img, 0, 0, img.width, img.height,  pos.x * worldScale-30,  pos.y * worldScale-30, scaleX(60), scaleX(60));
 						   	context.restore();
 						   	// drawImg(gImg['football'], pos.x * worldScale - 30, pos.y * worldScale - 30, 60, 60);
 						   	if (pos.y * worldScale > scaleY(488)) {
 						   		over();
 						   	};
 			            }else if(_name == "freezer"){
-			            	drawImg(freezer, pos.x * worldScale - scaleX(150), pos.y * worldScale - scaleY(180), scaleX(300), scaleY(360));
+			            	drawImg(freezer, pos.x * worldScale - scaleX(150), pos.y * worldScale - scaleY(190), scaleX(300), scaleY(360));
 			            }
 			    	}
 			    	//跳出屏幕则回收body
@@ -499,14 +503,14 @@ function main(){
 	   			drawImg(gImg['back3'], 0, 0, gWidth, gHeight);
 	    		drawImg(gImg['logo'], scaleX(600), 50, scaleX(136), scaleY(53));
 
-				drawImg(gImg['boli'], scaleX(300), scaleY(210), scaleX(200), scaleY(136));
+				drawImg(gImg['boli'], scaleX(290), scaleY(210), scaleX(200), scaleY(136));
 	    		var _scoreImg = translateNumToPic(gScore);
-				drawImg(_scoreImg[0], scaleX(325), scaleY(250), scaleX(50), scaleY(60));
-				drawImg(_scoreImg[1], scaleX(375), scaleY(250), scaleX(50), scaleY(60));
-				drawImg(gImg['times'], scaleX(425), scaleY(250), scaleX(50), scaleY(60));
+				drawImg(_scoreImg[0], scaleX(315), scaleY(250), scaleX(50), scaleY(60));
+				drawImg(_scoreImg[1], scaleX(365), scaleY(250), scaleX(50), scaleY(60));
+				drawImg(gImg['times'], scaleX(415), scaleY(250), scaleX(50), scaleY(60));
 
-				drawImg(gImg['wenzi01'], scaleX(75), scaleY(360), scaleX(659), scaleY(87));
-				drawImg(freezer, scaleX(250), scaleY(478), scaleX(300), scaleY(360));
+				drawImg(gImg['wenzi01'], scaleX(65), scaleY(360), scaleX(659), scaleY(87));
+				drawImg(freezer, scaleX(240), scaleY(478), scaleX(300), scaleY(360));
 
 	    		break;
 	    	default:
@@ -545,10 +549,10 @@ function main(){
 	   }
 	}
 	function createBtns(){ 
-		gBtnList['startBtn'] = new Button(scaleX(335), scaleY(740), scaleX(110), scaleY(110), 'startBtn', gImg, function(){
+		gBtnList['startBtn'] = new Button(scaleX(345), scaleY(740), scaleX(110), scaleX(110), 'startBtn', gImg, function(){
 			choose();
 		});
-		gBtnList['preBtn'] = new Button(scaleX(30), scaleY(190), scaleX(76), scaleY(121), 'leftArrow', gImg, function(){
+		gBtnList['preBtn'] = new Button(scaleX(30), scaleX(190), scaleX(76), scaleX(121), 'leftArrow', gImg, function(){
 			var _idx;
 			if (curPage == 1) {
 				return false;
@@ -558,7 +562,7 @@ function main(){
 				teams = [gBtnList['team' + (_idx++)], gBtnList['team' + (_idx++)], gBtnList['team' + (_idx++)], gBtnList['team' + (_idx++)]];
 			};
 		});
-		gBtnList['nxtBtn'] = new Button(scaleX(660), scaleY(190), scaleX(76), scaleY(121), 'rightArrow', gImg, function(){
+		gBtnList['nxtBtn'] = new Button(scaleX(660), scaleX(190), scaleX(76), scaleX(121), 'rightArrow', gImg, function(){
 			var _idx;
 			if (curPage == maxPage) {
 				return false;
@@ -569,15 +573,14 @@ function main(){
 			};
 		});
 		for(var i = 1; i <= 16; i++){
-			gBtnList['team' + i] = new Button(scaleX(110 + (i%4)*140), scaleY(180), scaleX(120), scaleY(129), 'countryCircle' + i, gImg, (function(index) {
+			gBtnList['team' + i] = new Button(scaleX(110 + (i%4)*140), scaleX(180), scaleX(120), scaleX(129), 'countryCircle' + i, gImg, (function(index) {
 				return function(){
 					freezer = gImg['country' + index];
-					console.log(freezer);
-					freezerSprite = new ZoomSprite(scaleX(330), scaleY(468), scaleX(300), scaleY(360), 0.4, 1, 30, 'country' + index, gImg);
+					freezerSprite = new ZoomSprite(scaleX(340), scaleY(468), scaleX(300), scaleY(360), 0.4, 1, 30, 'country' + index, gImg);
 				};
 			})(i));
 		}
-		gBtnList['runBtn'] = new Button(scaleX(335), scaleY(770), scaleX(110), scaleY(110), 'startBtn', gImg, function(){
+		gBtnList['runBtn'] = new Button(scaleX(345), scaleY(770), scaleX(110), scaleX(110), 'startBtn', gImg, function(){
 			reading();
 		});
 	}
@@ -635,24 +638,30 @@ function main(){
 			e.preventDefault();
 		}
 		if (gStatus == 'run') {
-			setMousePosition(e);
 			if (isMouseDown) {
+				setMousePosition(e);
 				// freezer2.position.Set(STARTX + (mouseX - _clicksx), STARTY + (mouseY - _clicksy)); 
 				// freezer2.SetTransform((STARTX + (mouseX - _clicksx), STARTY + (mouseY - _clicksy)));
-				var _x = (STARTX + (mouseX - _clicksx)) / worldScale;
-				var _y = STARTY / worldScale;
-				if ((_x*worldScale) + scaleX(130) > gWidth) {
-					_x = (gWidth-scaleX(130)) / worldScale;
-				}else if ((_x * worldScale) < scaleX(130)) {
-					_x = scaleX(130) / worldScale;	
+				var _x = STARTX + (mouseX - _clicksx);
+				if (_x + scaleX(120) > gWidth) {
+					_x = gWidth-scaleX(120);
+				}else if (_x < scaleX(120)) {
+					_x = scaleX(120);	
 				};
 				freezerX = _x;
-				freezerY = _y;
-				_x = _y = null;
+				_x = null;
 			};
 		}
 	};
 	function handleMouseUp(e) {
+		if (gStatus == 'run') {
+			if (isMouseDown) {
+				setMousePosition(e);
+
+				STARTX = freezer2.GetPosition().x * worldScale;
+				freezerX = STARTX;
+			};
+		}
 		isMouseDown = false;
 	};
 	function createBox(width,height,pX,pY,type, userData){  
@@ -666,8 +675,8 @@ function main(){
 	   
 	    var fixtureDef = new b2FixtureDef;  
 	    fixtureDef.density = 1.0;  
-	    fixtureDef.friction = 0.1;  
-	    fixtureDef.restitution = 0.8;  
+	    fixtureDef.friction = 0;  
+	    fixtureDef.restitution = 1;  
 	    fixtureDef.shape = polygonShape;    
 	         
 	    var body = world.CreateBody(bodyDef);  
@@ -687,8 +696,8 @@ function main(){
 
 	    var fixtureDef = new b2FixtureDef;  
 	    fixtureDef.density = 1;  
-	    fixtureDef.friction = 0.2;  
-	    fixtureDef.restitution = 0.99;  
+	    fixtureDef.friction = 0;  
+	    fixtureDef.restitution = 1;  
 	    fixtureDef.shape = circleShape;
 	         
 	    var body = world.CreateBody(bodyDef);  
@@ -705,11 +714,10 @@ function main(){
 	}
 	function translateNumToPic(num){
 		if (num < 100) {
+			// if(Math.floor((num / 10)))
 			return [
 				gImg['num' + Math.floor((num / 10))],
 				gImg['num' + (num % 10)]
-				// gImg['num1'],
-				// gImg['num1']
 			]
 		}else{
 			return [
@@ -725,19 +733,20 @@ function main(){
 	function calculateScore(contact){
 		var _contactA;
 		var _contactB;
+		var pos, manifold = new b2WorldManifold;
 		_contactA = contact.GetFixtureA().GetBody();
 		_contactB = contact.GetFixtureB().GetBody();
 		if (_contactA.GetUserData().name == 'ball' && _contactB.GetUserData().name == 'freezer') {
 			gScore++;
-			var pos = _contactA.GetPosition();
-			// console.log(pos.x * worldScale, pos.y*worldScale - scaleY(172));
-			fireworks.start(pos.x * worldScale, pos.y*worldScale + scaleY(20));
+			contact.GetWorldManifold(manifold);
+			pos = manifold.m_points[0];
+			fireworks.start(pos.x * worldScale - scaleX(20), pos.y*worldScale - scaleX(20));
 		};
 		if (_contactB.GetUserData().name == 'ball' && _contactA.GetUserData().name == 'freezer') {
 			gScore++;
-			var pos = _contactB.GetPosition();
-			// console.log(pos.x * worldScale, pos.y*worldScale - scaleY(172));
-			fireworks.start(pos.x * worldScale, pos.y*worldScale + scaleY(20));
+			contact.GetWorldManifold(manifold);
+			pos = manifold.m_points[0];
+			fireworks.start(pos.x * worldScale - scaleX(20), pos.y*worldScale - scaleX(20));
 		};
 	}
 }
