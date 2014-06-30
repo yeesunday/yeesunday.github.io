@@ -110,7 +110,7 @@ function loadImages(sources,callback){
 	canvas =document.getElementById("canvas");  
 	context =canvas.getContext("2d");  
 	gImg = [];
-	GWIDTH = 1000;
+	GWIDTH = 1540;
 	resetCanvasStyle(); 
 	canvasPosition =getElementPosition(canvas); 
  	
