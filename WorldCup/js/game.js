@@ -190,7 +190,7 @@ function main(){
 	var worldScale = 30;  
 	// var dragConstant=0.05;  
 	// var dampingConstant = 0;  
-	var world = new b2World(new b2Vec2(0, 10),true); 
+	var world = new b2World(new b2Vec2(0, 20),true); 
 	
 	var gWidth = canvas.width;
 	var gHeight = canvas.height;
@@ -263,7 +263,7 @@ function main(){
 	if (!_playTimer) {
 		(_rafRun = function() { //UI界面requestAnimationFrame主循环逻辑
 			var _newDate = Date.now();
-			if ((_newDate - _lastDate) >= 20) {
+			if ((_newDate - _lastDate) >= 30) {
 				_lastDate = _newDate;
 				if (!_isPause) {
 					update();
@@ -352,7 +352,7 @@ function main(){
 		clearInterval(GLSI);
 		ball = createCircle(scaleX(1), gWidth/worldScale, scaleY(800)/worldScale, b2Body.b2_dynamicBody, {name: 'ball'});
 		ball.SetLinearVelocity(new b2Vec2(-9, 0)); 
-		ball.SetAngularVelocity(Math.PI / 2);
+		ball.SetAngularVelocity(Math.PI * 5 / 4);
 		ball.GetFixtureList().m_friction = 0.5;
 		ball.SetAngularDamping(1000);
 		createBox(2/worldScale, gHeight/worldScale, (gWidth/2 + scaleX(60))/worldScale, 0,  b2Body.b2_kinematicBody, {name: 'freezer'});
@@ -360,7 +360,7 @@ function main(){
 		ground.GetFixtureList().m_friction = 0.5;
 	}
 	function update(){
-	   	world.Step(1/60,10,10);  
+	   	world.Step(1/30,10,10);  
 	   	world.DrawDebugData(); 
 	    world.ClearForces(); 
 		context.clearRect(0, 0, gWidth, gHeight);
