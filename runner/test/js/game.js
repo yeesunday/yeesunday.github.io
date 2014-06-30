@@ -22,6 +22,7 @@ window.onload = function(){
 			{path:"./img/21.jpg",name:"back21"},
 			{path:"./img/22.jpg",name:"back22"},
 			{path:"./img/1.jpg",name:"back1"},
+			{path:"./img/4.jpg",name:"back4"},
 			{path:"./img/0.png",name:"num0"},
 			{path:"./img/1.png",name:"num1"},
 			{path:"./img/2.png",name:"num2"},
@@ -88,7 +89,19 @@ window.onload = function(){
 			{path:"./img/ci.png",name:"times"},
 			{path:"./img/boli.png",name:"boli"},
 			{path:"./img/startBtn.png",name:"startBtn"},
-			{path:"./img/fireworks3.png",name:"fireworks3"}
+			{path:"./img/fireworks3.png",name:"fireworks3"},
+
+			{path:"./img/cd3.png",name:"cd3"},
+			{path:"./img/cd2.png",name:"cd2"},
+			{path:"./img/cd1.png",name:"cd1"},
+			{path:"./img/300PX.jpg", name:"300px"},
+
+			{path:"./img/43.png",name:"back41"},
+			{path:"./img/42.png",name:"back42"},
+			{path:"./img/41.png",name:"back43"},
+			{path:"./img/4.jpg",name:"back44"},
+			{path:"./img/41.png",name:"back45"},
+			{path:"./img/42.png",name:"back46"}
 		]
     //执行图片预加载，加载完成后执行main
     loadImages(sources, main); 
@@ -96,9 +109,10 @@ window.onload = function(){
 function loadImages(sources,callback){    
 	canvas =document.getElementById("canvas");  
 	context =canvas.getContext("2d");  
+	gImg = [];
+	GWIDTH = 770;
 	resetCanvasStyle(); 
 	canvasPosition =getElementPosition(canvas); 
-	gImg = [];
  	
  	var loadedImages = 0;  
     var numImages = sources.length;  
@@ -106,7 +120,7 @@ function loadImages(sources,callback){
     context.lineWidth=10;
     var clearWidth=canvas.width;
     var clearHeight=canvas.height;
-    var src;
+    var src; 
 
     for (var i = 0; i < numImages; i++) {  
     	src = sources[i];
@@ -116,21 +130,21 @@ function loadImages(sources,callback){
         //当一张图片加载完成时执行    
         gImg[src.name].onload = function(){ 
             //重绘一个进度条
-            context.font = "20px Arial";
-			context.fillStyle = '#FFFF00';
-            context.clearRect(0,0,clearWidth,clearHeight);
-            context.fillText('Loading:'+ loadedImages +'/'+numImages,(clearWidth-130)/2,clearHeight/2-30);
-            context.save();
-            context.strokeStyle='#555';
-            context.beginPath();
-            context.moveTo((clearWidth-130)/2 - 85,clearHeight/2+10);
-            context.lineTo((clearWidth-130)/2 + 215,clearHeight/2+10);
-            context.stroke();
-            context.beginPath();
-            context.restore();
-            context.moveTo((clearWidth-130)/2 - 85,clearHeight/2+10);
-            context.lineTo(loadedImages/numImages*300+(clearWidth-130)/2 - 85,clearHeight/2+10);  
-            context.stroke();
+   //          context.font = "20px Arial";
+			// context.fillStyle = '#FFFF00';
+   //          context.clearRect(0,0,clearWidth,clearHeight);
+   //          context.fillText('Loading:'+ loadedImages +'/'+numImages,(clearWidth-130)/2,clearHeight/2-30);
+   //          context.save();
+   //          context.strokeStyle='#555';
+   //          context.beginPath();
+   //          context.moveTo((clearWidth-130)/2 - 85,clearHeight/2+10);
+   //          context.lineTo((clearWidth-130)/2 + 215,clearHeight/2+10);
+   //          context.stroke();
+   //          context.beginPath();
+   //          context.restore();
+   //          context.moveTo((clearWidth-130)/2 - 85,clearHeight/2+10);
+   //          context.lineTo(loadedImages/numImages*300+(clearWidth-130)/2 - 85,clearHeight/2+10);  
+   //          context.stroke();
             //当所有图片加载完成时，执行回调函数callback
             if (++loadedImages >= numImages) {    
                 callback();    
@@ -156,10 +170,10 @@ function loadImages(sources,callback){
 	    return {x: x, y: y};  
 	}  
 	function resetCanvasStyle(){
-		if (window.innerWidth >= 770) {
-			canvas.style.width = 770 + 'px';
-			canvas.style.left = (window.innerWidth - 770) / 2 + 'px';
-			canvas.width = 770;
+		if (window.innerWidth >= GWIDTH) {
+			canvas.style.width = GWIDTH + 'px';
+			canvas.style.left = (window.innerWidth - GWIDTH) / 2 + 'px';
+			canvas.width = GWIDTH;
 		}else{
 			canvas.style.width = window.innerWidth + 'px';
 			canvas.style.left = '0px';
@@ -190,7 +204,7 @@ function main(){
 	var worldScale = 30;  
 	// var dragConstant=0.05;  
 	// var dampingConstant = 0;  
-	var world = new b2World(new b2Vec2(0, 10),true); 
+	var world = new b2World(new b2Vec2(0, 20),true); 
 	
 	var gWidth = canvas.width;
 	var gHeight = canvas.height;
@@ -208,7 +222,7 @@ function main(){
 
 	var cds = [];
 	var ball, freezer2, ball2; 
-	var WIDTH = 770;
+	var WIDTH = GWIDTH;
 	var HEIGHT = 960;
 	var STARTX = gWidth/2 + scaleX(15);
 	var STARTY = scaleY(650);
@@ -251,19 +265,23 @@ function main(){
 			}
 		}
 	}; 
+
+	var startchoose = false;
+	var bgCount = 1;
 	var flashNum;
 
 	createBtns();
 
 	debugDraw();
-	start();       
+	run();   
+	// start();    
 	// window.setInterval(update,1000/60); 
 	//UI界面单起一个循环
 	var _lastDate = Date.now(), _isPause = false, _playTimer, _rafRun, _ieDate = _lastDate;
 	if (!_playTimer) {
 		(_rafRun = function() { //UI界面requestAnimationFrame主循环逻辑
 			var _newDate = Date.now();
-			if ((_newDate - _lastDate) >= 20) {
+			if ((_newDate - _lastDate) >= 30) {
 				_lastDate = _newDate;
 				if (!_isPause) {
 					update();
@@ -285,12 +303,12 @@ function main(){
 	    gLife = 5;
 	    gLevel = 1;
 		gStatus = 'start';
-		wenan1 = new MoveSprite(scaleX(459), scaleY(206), 60, {x:scaleX(-470), y:scaleY(50)}, {x:scaleX(50), y:scaleY(50)}, 'wenan1', gImg);
-		wenan2 = new MoveSprite(scaleX(162), scaleX(162), 60, {x:scaleX(830), y:scaleY(90)}, {x:scaleX(450), y:scaleY(90)}, 'wenan2', gImg);
+		wenan1 = new MoveSprite(scaleX(459), scaleY(206), 20, {x:scaleX(-470), y:scaleY(50)}, {x:scaleX(50), y:scaleY(80)}, 'wenan1', gImg);
+		wenan2 = new MoveSprite(scaleX(162), scaleX(162), 20, {x:scaleX(830), y:scaleY(90)}, {x:scaleX(420), y:scaleY(120)}, 'wenan2', gImg);
 	}
 	function start2(){
 		gStatus = 'start2';
-		wenan3 = new ZoomSprite(scaleX(87), scaleY(254), scaleX(386), scaleY(53), 2, 1, 30, 'wenan3', gImg);
+		wenan3 = new ZoomSprite(scaleX(87), scaleY(284), scaleX(386), scaleY(53), 2, 1, 30, 'wenan3', gImg);
 	}
 	function start3(){
 		gStatus = 'start3';
@@ -312,24 +330,24 @@ function main(){
 		flashNum = 0;
 		setTimeout(function(){
 		    countDown();                    
-		},2000);
+		},4000);
 		renderBtns = [];
 	}
 	function countDown(){
 		gStatus = 'countDown';
 		flashNum = 0;
 		cds = [
-			new ZoomSprite(scaleX(315), scaleY(270), scaleX(100), scaleY(100), 1.5, 0, 30, 'num3', gImg),
-			new ZoomSprite(scaleX(315), scaleY(270), scaleX(100), scaleY(100), 1.5, 0, 30, 'num2', gImg),	
-			new ZoomSprite(scaleX(315), scaleY(270), scaleX(100), scaleY(100), 1.5, 0, 30, 'num1', gImg)
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleX(100), 3, 0, 30, 'cd3', gImg),
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleX(100), 3, 0, 30, 'cd2', gImg),	
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleX(100), 3, 0, 30, 'cd1', gImg)
 		]
 	}
 	function run(){
 		gStatus = 'run';
 		flashNum = 0;
 		ball = createCircle(scaleX(1), gWidth/2/worldScale, scaleY(150)/worldScale, b2Body.b2_dynamicBody, {name: 'ball'});
-		var _x = Math.random()*2 - 1;
-		ball.SetLinearVelocity(new b2Vec2(_x, 2)); 
+		// var _x = Math.random()*8 - 4;
+		ball.SetLinearVelocity(new b2Vec2(3, 2)); 
 		ball.SetAngularVelocity(Math.PI / 2);
 
 		freezerX = STARTX;
@@ -348,26 +366,28 @@ function main(){
 			world.DestroyBody(b);
 	    }
 		gStatus = 'over'; 
+		document.title = '我参加了“世界杯定出彩”活动，颠球' + gScore + '次，敢来挑战吗？';
 		flashNum = 0;
 		clearInterval(GLSI);
 		ball = createCircle(scaleX(1), gWidth/worldScale, scaleY(800)/worldScale, b2Body.b2_dynamicBody, {name: 'ball'});
-		ball.SetLinearVelocity(new b2Vec2(-9, 0)); 
+		ball.SetLinearVelocity(new b2Vec2(-14, 0)); 
 		ball.SetAngularVelocity(Math.PI * 5 / 4);
 		ball.GetFixtureList().m_friction = 0.5;
 		ball.SetAngularDamping(1000);
+
 		createBox(2/worldScale, gHeight/worldScale, (gWidth/2 + scaleX(60))/worldScale, 0,  b2Body.b2_kinematicBody, {name: 'freezer'});
 		ground = createBox(gWidth/worldScale, 2/worldScale, gWidth/2/worldScale, scaleY(830)/worldScale,  b2Body.b2_staticBody, {name:''});
 		ground.GetFixtureList().m_friction = 0.5;
 	}
 	function update(){
-	   	world.Step(1/60,10,10);  
+	   	world.Step(1/30,10,10);  
 	   	world.DrawDebugData(); 
 	    world.ClearForces(); 
 		context.clearRect(0, 0, gWidth, gHeight);
 	    switch(gStatus){
 	    	case 'start':
 	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), 50, scaleX(136), scaleY(53));
+	    		drawImg(gImg['logo'], scaleX(550), scaleY(30), scaleX(205), scaleY(80));
 	    		if(!wenan1.action(context)){
 	    			if (!wenan2.action(context)) {
 	    				start2();
@@ -378,19 +398,19 @@ function main(){
 	   			break;
 	   		case 'start2':
 	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), 50, scaleX(136), scaleY(53));
-	    		drawImg(gImg['wenan1'], 50, scaleY(50), scaleX(459), scaleY(206));
-	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleX(162));
+	    		drawImg(gImg['logo'], scaleX(550), scaleY(30), scaleX(205), scaleY(80));
+	    		drawImg(gImg['wenan1'], scaleX(50), scaleY(80), scaleX(459), scaleY(206));
+	    		drawImg(gImg['wenan2'], scaleX(420), scaleY(120), scaleX(162), scaleX(162));
 	    		if(!wenan3.action(context)){
 	    			start3();
 	    		};
 	   			break;
 	   		case 'start3':
 	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), 50, scaleX(136), scaleY(53));
-	    		drawImg(gImg['wenan1'], 50, scaleY(50), scaleX(459), scaleY(206));
-	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleX(162));
-	    		drawImg(gImg['wenan3'], scaleX(280), scaleY(280), scaleX(386), scaleY(53));
+	    		drawImg(gImg['logo'], scaleX(550), scaleY(30), scaleX(205), scaleY(80));
+	    		drawImg(gImg['wenan1'], scaleX(50), scaleY(80), scaleX(459), scaleY(206));
+	    		drawImg(gImg['wenan2'], scaleX(420), scaleY(120), scaleX(162), scaleX(162));
+	    		drawImg(gImg['wenan3'], scaleX(280), scaleY(310), scaleX(386), scaleY(53));
 	    		drawImg(gImg['wenan4'], 0, scaleY(435), scaleX(599), scaleY(254));
 
 	    		if (Math.floor(flashNum / 20) % 2) {
@@ -403,13 +423,20 @@ function main(){
 	    		renderBtn();
 	   			break;
 	   		case 'choose':
-	    		if (Math.floor(flashNum / 20) % 2) {
-	    			drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
-	    			flashNum++;
-	    		}else{
-	    			drawImg(gImg['back22'], 0, 0, gWidth, gHeight);
-	    			flashNum++;
-	    		};
+	   			if (!startchoose) {
+	   				drawImg(gImg['back4'], 0, 0, gWidth, gHeight);
+	   			}else{
+	   				drawImg(gImg['back4' + bgCount], 0, 0, gWidth, gHeight);
+	   				flashNum++;
+	   				if (flashNum == 10) {
+	   					flashNum = 0;
+	   					bgCount++;
+	   					if (bgCount == 7) {
+	   						bgCount = 1;
+	   					};
+	   				};
+	   			};
+	    		
 	    		drawImg(gImg['wenzi03'], scaleX(200), scaleY(70), scaleX(360), scaleY(87));
 	    		// drawImg(freezer, scaleX(240), scaleY(360), scaleX(300), scaleY(360));
 	    		if (freezerSprite) {
@@ -434,14 +461,12 @@ function main(){
 	   			break;
 	   		case 'reading':
 	    		drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
-	    	
-	    		drawImg(gImg['wenzi02'], scaleX(110), scaleY(200), scaleX(540), scaleY(87));
+	    		drawImg(gImg['football'], gWidth/2-scaleX(15), scaleY(120), scaleX(60), scaleX(60));
+	    		drawImg(gImg['wenzi02'], scaleX(110), scaleY(310), scaleX(540), scaleY(87));
 	    		drawImg(freezer, scaleX(250), scaleY(478), scaleX(300), scaleY(360));
 	   			break;
 	   		case 'countDown':
 	    		drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
-
-	    		drawImg(gImg['wenzi02'], scaleX(110), scaleY(200), scaleX(540), scaleY(87));
 	    		drawImg(gImg['football'], gWidth/2-scaleX(15), scaleY(120), scaleX(60), scaleX(60));
 	    		
 	    		drawImg(freezer, scaleX(250), scaleY(478), scaleX(300), scaleY(360));
@@ -510,13 +535,13 @@ function main(){
 	   			break;
 	   		case 'over':
 	   			drawImg(gImg['back3'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), 50, scaleX(136), scaleY(53));
+	    		drawImg(gImg['logo'], scaleX(550), scaleY(30), scaleX(205), scaleY(80));
 
-				drawImg(gImg['boli'], scaleX(290), scaleY(210), scaleX(200), scaleY(136));
+				drawImg(gImg['boli'], scaleX(245), scaleY(125), scaleX(290), scaleY(156));
 	    		var _scoreImg = translateNumToPic(gScore);
-				drawImg(_scoreImg[0], scaleX(315), scaleY(250), scaleX(50), scaleY(60));
-				drawImg(_scoreImg[1], scaleX(365), scaleY(250), scaleX(50), scaleY(60));
-				drawImg(gImg['times'], scaleX(415), scaleY(250), scaleX(50), scaleY(60));
+				drawImg(_scoreImg[0], scaleX(275), scaleY(165), scaleX(80), scaleY(80));
+				drawImg(_scoreImg[1], scaleX(355), scaleY(165), scaleX(80), scaleY(80));
+				drawImg(gImg['times'], scaleX(435), scaleY(165), scaleX(80), scaleY(80));
 
 				drawImg(gImg['wenzi01'], scaleX(65), scaleY(360), scaleX(659), scaleY(87));
 				drawImg(freezer, scaleX(240), scaleY(478), scaleX(300), scaleY(360));
@@ -576,7 +601,7 @@ function main(){
 	   }
 	}
 	function createBtns(){ 
-		gBtnList['startBtn'] = new Button(scaleX(345), scaleY(740), scaleX(110), scaleX(110), 'startBtn', gImg, function(){
+		gBtnList['startBtn'] = new Button(scaleX(325), scaleY(720), scaleX(150), scaleX(150), 'startBtn', gImg, function(){
 			choose();
 		});
 		gBtnList['preBtn'] = new Button(scaleX(30), scaleX(190), scaleX(76), scaleX(121), 'leftArrow', gImg, function(){
@@ -603,11 +628,12 @@ function main(){
 			gBtnList['team' + i] = new Button(scaleX(110 + (i%4)*140), scaleX(180), scaleX(120), scaleX(129), 'countryCircle' + i, gImg, (function(index) {
 				return function(){
 					freezer = gImg['country' + index];
+					startchoose = true;
 					freezerSprite = new ZoomSprite(scaleX(340), scaleY(468), scaleX(300), scaleY(360), 0.4, 1, 30, 'country' + index, gImg);
 				};
 			})(i));
 		}
-		gBtnList['runBtn'] = new Button(scaleX(345), scaleY(770), scaleX(110), scaleX(110), 'startBtn', gImg, function(){
+		gBtnList['runBtn'] = new Button(scaleX(325), scaleY(750), scaleX(150), scaleX(150), 'startBtn', gImg, function(){
 			reading();
 		});
 	}
@@ -618,10 +644,10 @@ function main(){
 	}
 
 	function scaleX(x){
-		return x * (canvas.width / WIDTH);
+		return Math.floor(x * (canvas.width / 770));
 	}
 	function scaleY(y){
-		return y * (canvas.height / HEIGHT);
+		return Math.floor(y * (canvas.height / HEIGHT));
 	}
 
 	//处理鼠标事件
