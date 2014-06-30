@@ -122,8 +122,8 @@ function loadImages(sources,callback){
         gImg[src.name].onload = function(){ 
             //重绘一个进度条
             context.font = "20px Arial";
-			context.fillStyle = '#FFFF00';
             context.fillRect(0,0,clearWidth,clearHeight);
+			context.fillStyle = '#FFFF00';
             context.fillText('Loading:'+ loadedImages +'/'+numImages,(clearWidth-130)/2,clearHeight/2-30);
             context.save();
             context.strokeStyle='#555';
