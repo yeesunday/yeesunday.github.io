@@ -347,7 +347,7 @@ function main(){
 		flashNum = 0;
 		ball = createCircle(scaleX(1), gWidth/2/worldScale, scaleY(150)/worldScale, b2Body.b2_dynamicBody, {name: 'ball'});
 		// var _x = Math.random()*8 - 4;
-		ball.SetLinearVelocity(new b2Vec2(3, 2)); 
+		ball.SetLinearVelocity(new b2Vec2(3, -3)); 
 		ball.SetAngularVelocity(Math.PI / 2);
 
 		freezerX = STARTX;
@@ -644,7 +644,7 @@ function main(){
 	}
 
 	function scaleX(x){
-		return Math.floor(x * (canvas.width / 770));
+		return Math.floor(x * (canvas.width / WIDTH));
 	}
 	function scaleY(y){
 		return Math.floor(y * (canvas.height / HEIGHT));
