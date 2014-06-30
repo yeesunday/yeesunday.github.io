@@ -669,6 +669,7 @@ function main(){
 	}
 	function handleMouseDown(e) {
 	   	setMousePosition(e);
+	   	console.log(STARTX, 111);
 
 	   	for(var btn in renderBtns){
 			renderBtns[btn].click(mouseX, mouseY);
@@ -680,7 +681,8 @@ function main(){
 	       		if (body.GetUserData().name == 'freezer') {
 	       			isMouseDown = true;
 	       			_clicksx = mouseX;
-	       			_clicksy = mouseY;
+	       			STARTX = freezer2.GetPosition().x * worldScale;
+	       			console.log(STARTX, mouseX, 222);
 	       		};
 	        }
 	    }
@@ -705,8 +707,10 @@ function main(){
 				_x = null;
 			};
 		}
+		// isMouseDown = true;
 	};
 	function handleMouseUp(e) {
+		isMouseDown = false;
 		setMousePosition(e);
 		if (gStatus == 'run') {
 			if (isMouseDown) {
@@ -714,8 +718,6 @@ function main(){
 				freezerX = STARTX;
 			};
 		}
-
-		isMouseDown = false;
 	};
 	function createBox(width,height,pX,pY,type, userData){  
 	    var bodyDef = new b2BodyDef;  
