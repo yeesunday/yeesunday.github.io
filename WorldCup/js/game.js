@@ -99,9 +99,9 @@ window.onload = function(){
 			{path:"./img/41.png",name:"back41"},
 			{path:"./img/42.png",name:"back42"},
 			{path:"./img/43.png",name:"back43"},
-			{path:"./img/44.png",name:"back44"},
-			{path:"./img/45.png",name:"back45"},
-			{path:"./img/46.png",name:"back46"}
+			{path:"./img/42.png",name:"back44"},
+			{path:"./img/41.png",name:"back45"},
+			{path:"./img/4.jpg",name:"back46"}
 		]
     //执行图片预加载，加载完成后执行main
     loadImages(sources, main); 
@@ -109,9 +109,10 @@ window.onload = function(){
 function loadImages(sources,callback){    
 	canvas =document.getElementById("canvas");  
 	context =canvas.getContext("2d");  
+	gImg = [];
+	GWIDTH = 1000;
 	resetCanvasStyle(); 
 	canvasPosition =getElementPosition(canvas); 
-	gImg = [];
  	
  	var loadedImages = 0;  
     var numImages = sources.length;  
@@ -119,7 +120,7 @@ function loadImages(sources,callback){
     context.lineWidth=10;
     var clearWidth=canvas.width;
     var clearHeight=canvas.height;
-    var src;
+    var src; 
 
     for (var i = 0; i < numImages; i++) {  
     	src = sources[i];
@@ -169,10 +170,10 @@ function loadImages(sources,callback){
 	    return {x: x, y: y};  
 	}  
 	function resetCanvasStyle(){
-		if (window.innerWidth >= 770) {
-			canvas.style.width = 770 + 'px';
-			canvas.style.left = (window.innerWidth - 770) / 2 + 'px';
-			canvas.width = 770;
+		if (window.innerWidth >= GWIDTH) {
+			canvas.style.width = GWIDTH + 'px';
+			canvas.style.left = (window.innerWidth - GWIDTH) / 2 + 'px';
+			canvas.width = GWIDTH;
 		}else{
 			canvas.style.width = window.innerWidth + 'px';
 			canvas.style.left = '0px';
@@ -221,7 +222,7 @@ function main(){
 
 	var cds = [];
 	var ball, freezer2, ball2; 
-	var WIDTH = 770;
+	var WIDTH = GWIDTH;
 	var HEIGHT = 960;
 	var STARTX = gWidth/2 + scaleX(15);
 	var STARTY = scaleY(650);
@@ -641,7 +642,7 @@ function main(){
 	}
 
 	function scaleX(x){
-		return x * (canvas.width / WIDTH);
+		return x * (canvas.width / 770);
 	}
 	function scaleY(y){
 		return y * (canvas.height / HEIGHT);
