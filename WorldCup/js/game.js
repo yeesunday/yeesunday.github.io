@@ -352,7 +352,7 @@ function main(){
 		clearInterval(GLSI);
 		ball = createCircle(scaleX(1), gWidth/worldScale, scaleY(800)/worldScale, b2Body.b2_dynamicBody, {name: 'ball'});
 		ball.SetLinearVelocity(new b2Vec2(-9, 0)); 
-		ball.SetAngularVelocity(Math.PI / 2);
+		ball.SetAngularVelocity(Math.PI * 5 / 4);
 		ball.GetFixtureList().m_friction = 0.5;
 		ball.SetAngularDamping(1000);
 		createBox(2/worldScale, gHeight/worldScale, (gWidth/2 + scaleX(60))/worldScale, 0,  b2Body.b2_kinematicBody, {name: 'freezer'});
