@@ -522,7 +522,7 @@ function main(){
 						   		over();
 						   	};
 			            }else if(_name == "freezer"){
-			            	drawImg(freezer, pos.x * worldScale - scaleX(150), pos.y * worldScale - scaleY(190), scaleX(300), scaleY(360));
+			            	drawImg(freezer, pos.x * worldScale - scaleX(150), pos.y * worldScale - scaleY(180), scaleX(300), scaleY(360));
 			            }
 			    	}
 			    	//跳出屏幕则回收body
