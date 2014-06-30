@@ -89,7 +89,11 @@ window.onload = function(){
 			{path:"./img/ci.png",name:"times"},
 			{path:"./img/boli.png",name:"boli"},
 			{path:"./img/startBtn.png",name:"startBtn"},
-			{path:"./img/fireworks3.png",name:"fireworks3"}
+			{path:"./img/fireworks3.png",name:"fireworks3"},
+
+			{path:"./img/cd3.png",name:"cd3"},
+			{path:"./img/cd2.png",name:"cd2"},
+			{path:"./img/cd1.png",name:"cd1"}
 		]
     //执行图片预加载，加载完成后执行main
     loadImages(sources, main); 
@@ -119,7 +123,7 @@ function loadImages(sources,callback){
             //重绘一个进度条
             context.font = "20px Arial";
 			context.fillStyle = '#FFFF00';
-            context.clearRect(0,0,clearWidth,clearHeight);
+            context.fillRect(0,0,clearWidth,clearHeight);
             context.fillText('Loading:'+ loadedImages +'/'+numImages,(clearWidth-130)/2,clearHeight/2-30);
             context.save();
             context.strokeStyle='#555';
@@ -320,9 +324,9 @@ function main(){
 		gStatus = 'countDown';
 		flashNum = 0;
 		cds = [
-			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'num3', gImg),
-			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'num2', gImg),	
-			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'num1', gImg)
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'cd3', gImg),
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'cd2', gImg),	
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'cd1', gImg)
 		]
 	}
 	function run(){
@@ -569,7 +573,7 @@ function main(){
 	   }
 	}
 	function createBtns(){ 
-		gBtnList['startBtn'] = new Button(scaleX(345), scaleY(740), scaleX(110), scaleX(110), 'startBtn', gImg, function(){
+		gBtnList['startBtn'] = new Button(scaleX(325), scaleY(720), scaleX(150), scaleX(150), 'startBtn', gImg, function(){
 			choose();
 		});
 		gBtnList['preBtn'] = new Button(scaleX(30), scaleX(190), scaleX(76), scaleX(121), 'leftArrow', gImg, function(){
@@ -600,7 +604,7 @@ function main(){
 				};
 			})(i));
 		}
-		gBtnList['runBtn'] = new Button(scaleX(345), scaleY(770), scaleX(110), scaleX(110), 'startBtn', gImg, function(){
+		gBtnList['runBtn'] = new Button(scaleX(325), scaleY(750), scaleX(150), scaleX(150), 'startBtn', gImg, function(){
 			reading();
 		});
 	}
