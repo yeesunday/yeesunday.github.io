@@ -669,22 +669,22 @@ function main(){
 	}
 	function handleMouseDown(e) {
 	   	setMousePosition(e);
-	   	console.log(STARTX, 111);
 
 	   	for(var btn in renderBtns){
 			renderBtns[btn].click(mouseX, mouseY);
 	    }
 
 	    if(gStatus == 'run'){
-	    	var body = getBodyAtMouse();
-	       	if(body) {
-	       		if (body.GetUserData().name == 'freezer') {
-	       			isMouseDown = true;
-	       			_clicksx = mouseX;
-	       			STARTX = freezer2.GetPosition().x * worldScale;
-	       			console.log(STARTX, mouseX, 222);
-	       		};
-	        }
+	    	if (!isMouseDown) {
+	    		var body = getBodyAtMouse();
+		       	if(body) {
+		       		if (body.GetUserData().name == 'freezer') {
+		       			isMouseDown = true;
+		       			_clicksx = mouseX;
+		       			STARTX = freezer2.GetPosition().x * worldScale;
+		       		};
+		        }
+	    	};
 	    }
 	};
 
