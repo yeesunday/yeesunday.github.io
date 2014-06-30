@@ -512,11 +512,11 @@ function main(){
 	   			drawImg(gImg['back3'], 0, 0, gWidth, gHeight);
 	    		drawImg(gImg['logo'], scaleX(600), scaleY(50), scaleX(136), scaleY(53));
 
-				drawImg(gImg['boli'], scaleX(290), scaleY(210), scaleX(200), scaleY(136));
+				drawImg(gImg['boli'], scaleX(290), scaleY(135), scaleX(200), scaleY(136));
 	    		var _scoreImg = translateNumToPic(gScore);
-				drawImg(_scoreImg[0], scaleX(315), scaleY(250), scaleX(50), scaleY(60));
-				drawImg(_scoreImg[1], scaleX(365), scaleY(250), scaleX(50), scaleY(60));
-				drawImg(gImg['times'], scaleX(415), scaleY(250), scaleX(50), scaleY(60));
+				drawImg(_scoreImg[0], scaleX(315), scaleY(175), scaleX(50), scaleY(60));
+				drawImg(_scoreImg[1], scaleX(365), scaleY(175), scaleX(50), scaleY(60));
+				drawImg(gImg['times'], scaleX(415), scaleY(175), scaleX(50), scaleY(60));
 
 				drawImg(gImg['wenzi01'], scaleX(65), scaleY(360), scaleX(659), scaleY(87));
 				drawImg(freezer, scaleX(240), scaleY(478), scaleX(300), scaleY(360));
