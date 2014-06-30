@@ -93,7 +93,8 @@ window.onload = function(){
 
 			{path:"./img/cd3.png",name:"cd3"},
 			{path:"./img/cd2.png",name:"cd2"},
-			{path:"./img/cd1.png",name:"cd1"}
+			{path:"./img/cd1.png",name:"cd1"},
+			{path:"./img/300PX.jpg", name:"300px"}
 		]
     //执行图片预加载，加载完成后执行main
     loadImages(sources, main); 
@@ -317,7 +318,7 @@ function main(){
 		flashNum = 0;
 		setTimeout(function(){
 		    countDown();                    
-		},2000);
+		},5000);
 		renderBtns = [];
 	}
 	function countDown(){
@@ -353,6 +354,7 @@ function main(){
 			world.DestroyBody(b);
 	    }
 		gStatus = 'over'; 
+		document.title = '我参加了“世界杯定出彩”活动，颠球' + gScore + '次，敢来挑战吗？';
 		flashNum = 0;
 		clearInterval(GLSI);
 		ball = createCircle(scaleX(1), gWidth/worldScale, scaleY(800)/worldScale, b2Body.b2_dynamicBody, {name: 'ball'});
@@ -408,7 +410,19 @@ function main(){
 	    		renderBtn();
 	   			break;
 	   		case 'choose':
-	    		drawImg(gImg['back4'], 0, 0, gWidth, gHeight);
+	   			// if (!startchoose) {
+	   				drawImg(gImg['back4'], 0, 0, gWidth, gHeight);
+	   			// }else{
+	   			// 	var num = 
+	   			// 	if (Math.floor(flashNum / 20) % 2) {
+		    	// 		drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
+		    	// 		flashNum++;
+		    	// 	}else{
+		    	// 		drawImg(gImg['back22'], 0, 0, gWidth, gHeight);
+		    	// 		flashNum++;
+		    	// 	};
+	   			// };
+	    		
 	    		drawImg(gImg['wenzi03'], scaleX(200), scaleY(70), scaleX(360), scaleY(87));
 	    		// drawImg(freezer, scaleX(240), scaleY(360), scaleX(300), scaleY(360));
 	    		if (freezerSprite) {
@@ -509,11 +523,11 @@ function main(){
 	   			drawImg(gImg['back3'], 0, 0, gWidth, gHeight);
 	    		drawImg(gImg['logo'], scaleX(600), scaleY(50), scaleX(136), scaleY(53));
 
-				drawImg(gImg['boli'], scaleX(290), scaleY(135), scaleX(200), scaleY(136));
+				drawImg(gImg['boli'], scaleX(245), scaleY(125), scaleX(290), scaleY(156));
 	    		var _scoreImg = translateNumToPic(gScore);
-				drawImg(_scoreImg[0], scaleX(315), scaleY(175), scaleX(50), scaleY(60));
-				drawImg(_scoreImg[1], scaleX(365), scaleY(175), scaleX(50), scaleY(60));
-				drawImg(gImg['times'], scaleX(415), scaleY(175), scaleX(50), scaleY(60));
+				drawImg(_scoreImg[0], scaleX(275), scaleY(165), scaleX(80), scaleY(80));
+				drawImg(_scoreImg[1], scaleX(355), scaleY(165), scaleX(80), scaleY(80));
+				drawImg(gImg['times'], scaleX(435), scaleY(165), scaleX(80), scaleY(80));
 
 				drawImg(gImg['wenzi01'], scaleX(65), scaleY(360), scaleX(659), scaleY(87));
 				drawImg(freezer, scaleX(240), scaleY(478), scaleX(300), scaleY(360));
