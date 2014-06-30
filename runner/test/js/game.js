@@ -302,12 +302,12 @@ function main(){
 	    gLife = 5;
 	    gLevel = 1;
 		gStatus = 'start';
-		wenan1 = new MoveSprite(scaleX(459), scaleY(206), 20, {x:scaleX(-470), y:scaleY(50)}, {x:scaleX(50), y:scaleY(50)}, 'wenan1', gImg);
-		wenan2 = new MoveSprite(scaleX(162), scaleX(162), 20, {x:scaleX(830), y:scaleY(90)}, {x:scaleX(450), y:scaleY(90)}, 'wenan2', gImg);
+		wenan1 = new MoveSprite(scaleX(459), scaleY(206), 20, {x:scaleX(-470), y:scaleY(50)}, {x:scaleX(50), y:scaleY(80)}, 'wenan1', gImg);
+		wenan2 = new MoveSprite(scaleX(162), scaleX(162), 20, {x:scaleX(830), y:scaleY(90)}, {x:scaleX(420), y:scaleY(120)}, 'wenan2', gImg);
 	}
 	function start2(){
 		gStatus = 'start2';
-		wenan3 = new ZoomSprite(scaleX(87), scaleY(254), scaleX(386), scaleY(53), 2, 1, 30, 'wenan3', gImg);
+		wenan3 = new ZoomSprite(scaleX(87), scaleY(284), scaleX(386), scaleY(53), 2, 1, 30, 'wenan3', gImg);
 	}
 	function start3(){
 		gStatus = 'start3';
@@ -385,7 +385,7 @@ function main(){
 	    switch(gStatus){
 	    	case 'start':
 	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(580), scaleY(43), scaleX(176), scaleY(68));
+	    		drawImg(gImg['logo'], scaleX(550), scaleY(30), scaleX(205), scaleY(80));
 	    		if(!wenan1.action(context)){
 	    			if (!wenan2.action(context)) {
 	    				start2();
@@ -396,19 +396,19 @@ function main(){
 	   			break;
 	   		case 'start2':
 	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(580), scaleY(43), scaleX(176), scaleY(68));
-	    		drawImg(gImg['wenan1'], 50, scaleY(50), scaleX(459), scaleY(206));
-	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleX(162));
+	    		drawImg(gImg['logo'], scaleX(550), scaleY(30), scaleX(205), scaleY(80));
+	    		drawImg(gImg['wenan1'], scaleX(50), scaleY(80), scaleX(459), scaleY(206));
+	    		drawImg(gImg['wenan2'], scaleX(420), scaleY(120), scaleX(162), scaleX(162));
 	    		if(!wenan3.action(context)){
 	    			start3();
 	    		};
 	   			break;
 	   		case 'start3':
 	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(580), scaleY(43), scaleX(176), scaleY(68));
-	    		drawImg(gImg['wenan1'], 50, scaleY(50), scaleX(459), scaleY(206));
-	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleX(162));
-	    		drawImg(gImg['wenan3'], scaleX(280), scaleY(280), scaleX(386), scaleY(53));
+	    		drawImg(gImg['logo'], scaleX(550), scaleY(30), scaleX(205), scaleY(80));
+	    		drawImg(gImg['wenan1'], scaleX(50), scaleY(80), scaleX(459), scaleY(206));
+	    		drawImg(gImg['wenan2'], scaleX(420), scaleY(120), scaleX(162), scaleX(162));
+	    		drawImg(gImg['wenan3'], scaleX(280), scaleY(310), scaleX(386), scaleY(53));
 	    		drawImg(gImg['wenan4'], 0, scaleY(435), scaleX(599), scaleY(254));
 
 	    		if (Math.floor(flashNum / 20) % 2) {
@@ -533,7 +533,7 @@ function main(){
 	   			break;
 	   		case 'over':
 	   			drawImg(gImg['back3'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), scaleY(50), scaleX(136), scaleY(53));
+	    		drawImg(gImg['logo'], scaleX(550), scaleY(30), scaleX(205), scaleY(80));
 
 				drawImg(gImg['boli'], scaleX(245), scaleY(125), scaleX(290), scaleY(156));
 	    		var _scoreImg = translateNumToPic(gScore);
