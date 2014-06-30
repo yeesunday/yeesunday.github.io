@@ -285,8 +285,8 @@ function main(){
 	    gLife = 5;
 	    gLevel = 1;
 		gStatus = 'start';
-		wenan1 = new MoveSprite(scaleX(459), scaleY(206), 60, {x:scaleX(-470), y:scaleY(50)}, {x:scaleX(50), y:scaleY(50)}, 'wenan1', gImg);
-		wenan2 = new MoveSprite(scaleX(162), scaleX(162), 60, {x:scaleX(830), y:scaleY(90)}, {x:scaleX(450), y:scaleY(90)}, 'wenan2', gImg);
+		wenan1 = new MoveSprite(scaleX(459), scaleY(206), 30, {x:scaleX(-470), y:scaleY(50)}, {x:scaleX(50), y:scaleY(50)}, 'wenan1', gImg);
+		wenan2 = new MoveSprite(scaleX(162), scaleX(162), 30, {x:scaleX(830), y:scaleY(90)}, {x:scaleX(450), y:scaleY(90)}, 'wenan2', gImg);
 	}
 	function start2(){
 		gStatus = 'start2';
@@ -367,7 +367,7 @@ function main(){
 	    switch(gStatus){
 	    	case 'start':
 	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), 50, scaleX(136), scaleY(53));
+	    		drawImg(gImg['logo'], scaleX(600), scaleY(50), scaleX(136), scaleY(53));
 	    		if(!wenan1.action(context)){
 	    			if (!wenan2.action(context)) {
 	    				start2();
@@ -378,7 +378,7 @@ function main(){
 	   			break;
 	   		case 'start2':
 	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), 50, scaleX(136), scaleY(53));
+	    		drawImg(gImg['logo'], scaleX(600), scaleY(50), scaleX(136), scaleY(53));
 	    		drawImg(gImg['wenan1'], 50, scaleY(50), scaleX(459), scaleY(206));
 	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleX(162));
 	    		if(!wenan3.action(context)){
@@ -387,7 +387,7 @@ function main(){
 	   			break;
 	   		case 'start3':
 	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), 50, scaleX(136), scaleY(53));
+	    		drawImg(gImg['logo'], scaleX(600), scaleY(50), scaleX(136), scaleY(53));
 	    		drawImg(gImg['wenan1'], 50, scaleY(50), scaleX(459), scaleY(206));
 	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleX(162));
 	    		drawImg(gImg['wenan3'], scaleX(280), scaleY(280), scaleX(386), scaleY(53));
@@ -510,7 +510,7 @@ function main(){
 	   			break;
 	   		case 'over':
 	   			drawImg(gImg['back3'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), 50, scaleX(136), scaleY(53));
+	    		drawImg(gImg['logo'], scaleX(600), scaleY(50), scaleX(136), scaleY(53));
 
 				drawImg(gImg['boli'], scaleX(290), scaleY(210), scaleX(200), scaleY(136));
 	    		var _scoreImg = translateNumToPic(gScore);
