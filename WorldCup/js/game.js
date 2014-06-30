@@ -642,10 +642,10 @@ function main(){
 	}
 
 	function scaleX(x){
-		return x * (canvas.width / 770);
+		return Math.floor(x * (canvas.width / 770));
 	}
 	function scaleY(y){
-		return y * (canvas.height / HEIGHT);
+		return Math.floor(y * (canvas.height / HEIGHT));
 	}
 
 	//处理鼠标事件
