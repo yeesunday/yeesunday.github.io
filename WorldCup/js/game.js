@@ -94,7 +94,14 @@ window.onload = function(){
 			{path:"./img/cd3.png",name:"cd3"},
 			{path:"./img/cd2.png",name:"cd2"},
 			{path:"./img/cd1.png",name:"cd1"},
-			{path:"./img/300PX.jpg", name:"300px"}
+			{path:"./img/300PX.jpg", name:"300px"},
+
+			{path:"./img/41.png",name:"back41"},
+			{path:"./img/42.png",name:"back42"},
+			{path:"./img/43.png",name:"back43"},
+			{path:"./img/44.png",name:"back44"},
+			{path:"./img/45.png",name:"back45"},
+			{path:"./img/46.png",name:"back46"}
 		]
     //执行图片预加载，加载完成后执行main
     loadImages(sources, main); 
@@ -257,6 +264,9 @@ function main(){
 			}
 		}
 	}; 
+
+	var startchoose = false;
+	var bgCount = 1;
 	var flashNum;
 
 	createBtns();
@@ -410,18 +420,19 @@ function main(){
 	    		renderBtn();
 	   			break;
 	   		case 'choose':
-	   			// if (!startchoose) {
+	   			if (!startchoose) {
 	   				drawImg(gImg['back4'], 0, 0, gWidth, gHeight);
-	   			// }else{
-	   			// 	var num = 
-	   			// 	if (Math.floor(flashNum / 20) % 2) {
-		    	// 		drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
-		    	// 		flashNum++;
-		    	// 	}else{
-		    	// 		drawImg(gImg['back22'], 0, 0, gWidth, gHeight);
-		    	// 		flashNum++;
-		    	// 	};
-	   			// };
+	   			}else{
+	   				drawImg(gImg['back4' + bgCount], 0, 0, gWidth, gHeight);
+	   				flashNum++;
+	   				if (flashNum == 10) {
+	   					flashNum = 0;
+	   					bgCount++;
+	   					if (bgCount == 7) {
+	   						bgCount = 1;
+	   					};
+	   				};
+	   			};
 	    		
 	    		drawImg(gImg['wenzi03'], scaleX(200), scaleY(70), scaleX(360), scaleY(87));
 	    		// drawImg(freezer, scaleX(240), scaleY(360), scaleX(300), scaleY(360));
@@ -614,6 +625,7 @@ function main(){
 			gBtnList['team' + i] = new Button(scaleX(110 + (i%4)*140), scaleX(180), scaleX(120), scaleX(129), 'countryCircle' + i, gImg, (function(index) {
 				return function(){
 					freezer = gImg['country' + index];
+					startchoose = true;
 					freezerSprite = new ZoomSprite(scaleX(340), scaleY(468), scaleX(300), scaleY(360), 0.4, 1, 30, 'country' + index, gImg);
 				};
 			})(i));
