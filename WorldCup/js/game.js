@@ -285,8 +285,8 @@ function main(){
 	    gLife = 5;
 	    gLevel = 1;
 		gStatus = 'start';
-		wenan1 = new MoveSprite(scaleX(459), scaleY(206), 30, {x:scaleX(-470), y:scaleY(50)}, {x:scaleX(50), y:scaleY(50)}, 'wenan1', gImg);
-		wenan2 = new MoveSprite(scaleX(162), scaleX(162), 30, {x:scaleX(830), y:scaleY(90)}, {x:scaleX(450), y:scaleY(90)}, 'wenan2', gImg);
+		wenan1 = new MoveSprite(scaleX(459), scaleY(206), 20, {x:scaleX(-470), y:scaleY(50)}, {x:scaleX(50), y:scaleY(50)}, 'wenan1', gImg);
+		wenan2 = new MoveSprite(scaleX(162), scaleX(162), 20, {x:scaleX(830), y:scaleY(90)}, {x:scaleX(450), y:scaleY(90)}, 'wenan2', gImg);
 	}
 	function start2(){
 		gStatus = 'start2';
@@ -319,9 +319,9 @@ function main(){
 		gStatus = 'countDown';
 		flashNum = 0;
 		cds = [
-			new ZoomSprite(scaleX(315), scaleY(270), scaleX(100), scaleY(100), 1.5, 0, 30, 'num3', gImg),
-			new ZoomSprite(scaleX(315), scaleY(270), scaleX(100), scaleY(100), 1.5, 0, 30, 'num2', gImg),	
-			new ZoomSprite(scaleX(315), scaleY(270), scaleX(100), scaleY(100), 1.5, 0, 30, 'num1', gImg)
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'num3', gImg),
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'num2', gImg),	
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'num1', gImg)
 		]
 	}
 	function run(){
