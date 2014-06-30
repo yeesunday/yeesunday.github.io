@@ -22,6 +22,7 @@ window.onload = function(){
 			{path:"./img/21.jpg",name:"back21"},
 			{path:"./img/22.jpg",name:"back22"},
 			{path:"./img/1.jpg",name:"back1"},
+			{path:"./img/4.jpg",name:"back4"},
 			{path:"./img/0.png",name:"num0"},
 			{path:"./img/1.png",name:"num1"},
 			{path:"./img/2.png",name:"num2"},
@@ -403,13 +404,7 @@ function main(){
 	    		renderBtn();
 	   			break;
 	   		case 'choose':
-	    		if (Math.floor(flashNum / 20) % 2) {
-	    			drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
-	    			flashNum++;
-	    		}else{
-	    			drawImg(gImg['back22'], 0, 0, gWidth, gHeight);
-	    			flashNum++;
-	    		};
+	    		drawImg(gImg['back4'], 0, 0, gWidth, gHeight);
 	    		drawImg(gImg['wenzi03'], scaleX(200), scaleY(70), scaleX(360), scaleY(87));
 	    		// drawImg(freezer, scaleX(240), scaleY(360), scaleX(300), scaleY(360));
 	    		if (freezerSprite) {
@@ -434,14 +429,12 @@ function main(){
 	   			break;
 	   		case 'reading':
 	    		drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
-	    	
-	    		drawImg(gImg['wenzi02'], scaleX(110), scaleY(200), scaleX(540), scaleY(87));
+	    		drawImg(gImg['football'], gWidth/2-scaleX(15), scaleY(120), scaleX(60), scaleX(60));
+	    		drawImg(gImg['wenzi02'], scaleX(110), scaleY(310), scaleX(540), scaleY(87));
 	    		drawImg(freezer, scaleX(250), scaleY(478), scaleX(300), scaleY(360));
 	   			break;
 	   		case 'countDown':
 	    		drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
-
-	    		drawImg(gImg['wenzi02'], scaleX(110), scaleY(200), scaleX(540), scaleY(87));
 	    		drawImg(gImg['football'], gWidth/2-scaleX(15), scaleY(120), scaleX(60), scaleX(60));
 	    		
 	    		drawImg(freezer, scaleX(250), scaleY(478), scaleX(300), scaleY(360));
