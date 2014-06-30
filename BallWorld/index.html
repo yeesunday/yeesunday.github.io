@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="misapplication-tap-highlight" content="no"/>
+	<meta name="HandheldFriendly" content="true"/>
+	<meta name="MobileOptimized" content="320"/>
+    <title>海尔冰箱</title>
+		<script src="lib/Box2dWeb-2.1.a.3.js"></script>
+		<script src="lib/lufylegend-1.8.10.js"></script>
+		<script>
+		
+			LGlobal.stageScale = LStageScaleMode.NO_SCALE;
+LSystem.screen(LStage.FULL_SCREEN);
+ 
+			init(20,"mylegend",768,1024,main)
+//			LMultitouch.inputMode = LMultitouchInputMode.TOUCH_POINT;
+			var list = [
+			{path:"./src/Main.js",type:"js"},
+			{path:"./src/GoldView.js",type:"js"},
+			{path:"./src/Refrigerator.js",type:"js"},
+			{path:"./src/StartGameView.js",type:"js"},
+			{path:"./src/CountryCircle.js",type:"js"},
+			
+			{path:"./img/football.png",name:"football"},
+			{path:"./img/3.jpg",name:"back3"},
+			{path:"./img/2.jpg",name:"back2"},
+			{path:"./img/1.jpg",name:"back1"},
+			{path:"./img/1g.jpg",name:"back0"},
+			{path:"./img/0.png",name:"num0"},
+			{path:"./img/1.png",name:"num1"},
+			{path:"./img/2.png",name:"num2"},
+			{path:"./img/3.png",name:"num3"},
+			{path:"./img/4.png",name:"num4"},
+			{path:"./img/5.png",name:"num5"},
+			{path:"./img/6.png",name:"num6"},
+			{path:"./img/7.png",name:"num7"},
+			{path:"./img/8.png",name:"num8"},
+			{path:"./img/9.png",name:"num9"},
+			
+			{path:"./img/country1.png",name:"country1"},
+			{path:"./img/country2.png",name:"country2"},
+			{path:"./img/country3.png",name:"country3"},
+			{path:"./img/country4.png",name:"country4"},
+			{path:"./img/country5.png",name:"country5"},
+			{path:"./img/country6.png",name:"country6"},
+			{path:"./img/country7.png",name:"country7"},
+			{path:"./img/country8.png",name:"country8"},
+			{path:"./img/country9.png",name:"country9"},
+			{path:"./img/country10.png",name:"country10"},
+			{path:"./img/country11.png",name:"country11"},
+			{path:"./img/country12.png",name:"country12"},
+			{path:"./img/country13.png",name:"country13"},
+			{path:"./img/country14.png",name:"country14"},
+			{path:"./img/country15.png",name:"country15"},
+			{path:"./img/country16.png",name:"country16"},
+			
+			
+			{path:"./img/countryCircle1.png",name:"countryCircle1"},
+			{path:"./img/countryCircle2.png",name:"countryCircle2"},
+			{path:"./img/countryCircle3.png",name:"countryCircle3"},
+			{path:"./img/countryCircle4.png",name:"countryCircle4"},
+			{path:"./img/countryCircle5.png",name:"countryCircle5"},
+			{path:"./img/countryCircle6.png",name:"countryCircle6"},
+			{path:"./img/countryCircle7.png",name:"countryCircle7"},
+			{path:"./img/countryCircle8.png",name:"countryCircle8"},
+			{path:"./img/countryCircle9.png",name:"countryCircle9"},
+			{path:"./img/countryCircle10.png",name:"countryCircle10"},
+			{path:"./img/countryCircle11.png",name:"countryCircle11"},
+			{path:"./img/countryCircle12.png",name:"countryCircle12"},
+			{path:"./img/countryCircle13.png",name:"countryCircle13"},
+			{path:"./img/countryCircle14.png",name:"countryCircle14"},
+			{path:"./img/countryCircle15.png",name:"countryCircle15"},
+			{path:"./img/countryCircle16.png",name:"countryCircle16"},
+			
+			{path:"./img/leftArrow.png",name:"leftArrow"},
+			{path:"./img/rightArrow.png",name:"rightArrow"},
+			{path:"./img/miao.png",name:"miao"},
+			{path:"./img/wenzi01.png",name:"wenzi01"},
+			{path:"./img/wenzi02.png",name:"wenzi02"},
+			{path:"./img/wenzi03.png",name:"wenzi03"},
+			{path:"./img/shareBtn.png",name:"shareBtn"},
+			
+			
+			{path:"./img/ci.png",name:"times"},
+			{path:"./img/startBtn.png",name:"startBtn"}
+//			{path:"./img/country1.png",name:"Refrigerator"}
+						];
+			
+			var imgList = {};
+			var world;
+			function main () {
+  				LGlobal.setDebug(false)
+  				trace(innerWidth+"s"+outerHeight+"ssssssssssssssss");
+  				loadingLayer = new LoadingSample3();
+  				addChild(loadingLayer)
+  				LLoadManage.load(list,function(progress){
+			loadingLayer.setProgress(progress);
+		},function(result) {
+  					imgList = result;
+  					removeChild(loadingLayer)
+  					loadingLayer = null;
+  					world = new Main();
+  				  	addChild(world);
+  				  	world.init();
+  					var fps = new FPS();
+  					addChild(fps)
+//					LGlobal.stageScale = LStageScaleMode.EXACT_FIT;
+//  LSystem.screen(LStage.FULL_SCREEN);
+  					if(LStage.canTouch == true){
+  				document.body.style.margin = "0px";
+  				document.body.style.padding = "0px";
+//				LStage.stageScale = LStageScaleMode.SHOW_ALL;
+  				LSystem.screen(LStage.FULL_SCREEN);
+  			}
+  				})
+	
+			}
+		</script>
+		<link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8"/>
+		<style type="text/css">
+li {
+	padding: 1em;
+	border-bottom: 1px solid #eaeaea;
+}
+li:active {
+	background: #f4f4f4;
+}
+.iabout {
+	background: no-repeat center center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABYCAYAAAADWlKCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAK6wAACusBgosNWgAAABZ0RVh0Q3JlYXRpb24gVGltZQAwOS8xMi8xM5w+I3MAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAADkUlEQVR4nO2b63HTQBRGTxj+EyrAVBAzWwBKBYQO0kHcAU4HTgehApwKUArYwa4ApwJwBeGHNuAY2URaSfczuWcmk3jH+xid7N596ej+/h5HhxfWDXAe40LEcCFiuBAxXIgYLkQMFyKGCxHDhYjhQsRwIWK4EDFciBguRAwXIoYLEcOFiOFCxHAhYrgQMVyIGC5EDBcihgsRw4WI4ULEeGndgKbEGEdAkX7GwMmOry6BBVAC8xDCz/5bl8/RodztjTEWwAT40LKIG2AWQii7alMfyAuJMY6BGfC+oyJvgamqGGkhMcYZcNFT8VchhElPZbdGUkiM8Zhq7N8VH7piCRRK8UVulpWGqJL+ZZDqWKQ6JZDqIalnLIA3GcUs0+8mQmV6iloPKWkv4zPwOoQwDiGMgVNg/cS8J6luc2R6SGYAvw0hFDVlzmk2TTYP9BI9JK0xcmZTsx3pq4blXFjHEwkhwLSncs9a5NkldxDMh6zUO75mFvMoKKfJwTXtV/WnVgtHhb2sLsbsE2AVY1ykz7mr+glGQd60h6T/5B9mDdjP2xDCauhKrWNImzF+KAqLSq2FFMb176OwqNRaSFdTzDvgkmqYOaJaFOZiMv21Duq5+1VrYBJCuN5MDCGUMcbMogfZS/sL6x6SwyUw2pYBvycLB8khCllTrROmwPGOh18M2qIOOUQh58AorTm+Uz/WF0M2qEusY0gbvmx+2LGiLgZpSQ8cYg/Z5HY7IQ1hJgG5C6yFLP/9lb0satKKzDIfyG1bK6yF1D3QJpQ1aV2t/nPb1gprIWUP+YvMMveV3TuHLGS5fQaebjXmnMdvMu+onEaYCkm7qTcts5c1aaONv6+oztnbcGN14cG6h0D7E7qyJm1F2tOiOoVsux9ldmpofmIIEGMsaX6otPO8Ip2Lz2k3fNVemBgKlYXhBPjWJEOdjLQGmQCfMtoyzcibjUQPgVbXgD6GEOYp7zHVlsqEvKBufg1IRghA2p966ip7zZ+1Qhc345fpgp0pCkF9k4Knr5BfUYnoQsYdIvtfUkLSVPOc6gENxRI4U7jXC2JD1gPP+XUESSEPPMcXdqSGrG3SAzulZps9g1vgnaIMEO8hm/hLn6Kk+HJGs9eiS4tbiG04OCH/O9Ix5DniQsRwIWK4EDFciBguRAwXIoYLEcOFiOFCxHAhYrgQMVyIGC5EDBcihgsRw4WI4ULEcCFiuBAxfgHyQw1G9FJgWwAAAABJRU5ErkJggg==);
+	background-size: 50px 44px;
+}
+.item {
+	display: block;
+	background: no-repeat right center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAsCAYAAAB/nHhDAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAKwwAACsMBNCkkqwAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNC8yOC8xMqLz6JEAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAABJ0lEQVRYhe3Wv6rCMBQG8C/VN1AEd3HSzuYO3jr4knkY0UE62xTBcp9A8A0uHhc72CZp/lQQyZmT7xfSJKeMiPDOSt6aHoEIRKAbkLKioqiCrroWkLKi+51ARAhBlEAdXlcI0gLK8u8lPBRpAYvFjCUJUw72QZRbtFzOe0O0H7kvxHhM83yfhiJdF+2c5/utCTmdLnS93rQQs2mZQogN59lOdbrqmk7HmExGrZVYAU9kzXl2cEWsgSfys1r9Hk1TmogTAABFcTFOaQJOr6mUlVO4E9B8n2zCrQHfcAAYmoKFEAPOs39dOGMMaTpXX5J6jGlTTSu3CQcsGk5IuBboK1wJ6BqOT7gS0DUcn3AlALR7gW84YHGKiOAd3gn0UV/+6xiBCHwG8AByzMrOPKV7sAAAAABJRU5ErkJggg==);
+	background-size: auto 100%;
+	-ms-touch-action: auto;
+}
+		</style>
+    <!--<title>hello world</title>
+    <script type="text/javascript">
+    	function helloworld(){
+			alert("hello world!")
+		}
+   		document.addEventListener('plusready', function(){
+   			alert("welcome to Html5plus!");
+   		});
+   		
+    </script>-->
+</head>
+<body>
+	<div id="mylegend">loading.......</div>
+	<!--This is a show “helloworld” default page,your can click this button <button onclick="helloworld()">click me!</button> to show a "hello world" message!-->
+</body>
+</html>
