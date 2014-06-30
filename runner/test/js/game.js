@@ -369,7 +369,7 @@ function main(){
 		flashNum = 0;
 		clearInterval(GLSI);
 		ball = createCircle(scaleX(1), gWidth/worldScale, scaleY(800)/worldScale, b2Body.b2_dynamicBody, {name: 'ball'});
-		ball.SetLinearVelocity(new b2Vec2(-9, 0)); 
+		ball.SetLinearVelocity(new b2Vec2(-14, 0)); 
 		ball.SetAngularVelocity(Math.PI * 5 / 4);
 		ball.GetFixtureList().m_friction = 0.5;
 		ball.SetAngularDamping(1000);
