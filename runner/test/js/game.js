@@ -110,7 +110,7 @@ function loadImages(sources,callback){
 	canvas =document.getElementById("canvas");  
 	context =canvas.getContext("2d");  
 	gImg = [];
-	GWIDTH = 1540;
+	GWIDTH = 770;
 	resetCanvasStyle(); 
 	canvasPosition =getElementPosition(canvas); 
  	
@@ -384,8 +384,8 @@ function main(){
 		context.clearRect(0, 0, gWidth, gHeight);
 	    switch(gStatus){
 	    	case 'start':
-	    		drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), scaleY(50), scaleX(136), scaleY(53));
+	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
+	    		drawImg(gImg['logo'], scaleX(580), scaleY(43), scaleX(176), scaleY(68));
 	    		if(!wenan1.action(context)){
 	    			if (!wenan2.action(context)) {
 	    				start2();
@@ -395,8 +395,8 @@ function main(){
 	    		};
 	   			break;
 	   		case 'start2':
-	    		drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), scaleY(50), scaleX(136), scaleY(53));
+	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
+	    		drawImg(gImg['logo'], scaleX(580), scaleY(43), scaleX(176), scaleY(68));
 	    		drawImg(gImg['wenan1'], 50, scaleY(50), scaleX(459), scaleY(206));
 	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleX(162));
 	    		if(!wenan3.action(context)){
@@ -404,8 +404,8 @@ function main(){
 	    		};
 	   			break;
 	   		case 'start3':
-	    		drawImg(gImg['back21'], 0, 0, gWidth, gHeight);
-	    		drawImg(gImg['logo'], scaleX(600), scaleY(50), scaleX(136), scaleY(53));
+	    		drawImg(gImg['back1'], 0, 0, gWidth, gHeight);
+	    		drawImg(gImg['logo'], scaleX(580), scaleY(43), scaleX(176), scaleY(68));
 	    		drawImg(gImg['wenan1'], 50, scaleY(50), scaleX(459), scaleY(206));
 	    		drawImg(gImg['wenan2'], scaleX(450), scaleY(90), scaleX(162), scaleX(162));
 	    		drawImg(gImg['wenan3'], scaleX(280), scaleY(280), scaleX(386), scaleY(53));
