@@ -96,12 +96,12 @@ window.onload = function(){
 			{path:"./img/cd1.png",name:"cd1"},
 			{path:"./img/300PX.jpg", name:"300px"},
 
-			{path:"./img/41.png",name:"back41"},
+			{path:"./img/43.png",name:"back41"},
 			{path:"./img/42.png",name:"back42"},
-			{path:"./img/43.png",name:"back43"},
-			{path:"./img/42.png",name:"back44"},
+			{path:"./img/41.png",name:"back43"},
+			{path:"./img/4.jpg",name:"back44"},
 			{path:"./img/41.png",name:"back45"},
-			{path:"./img/4.jpg",name:"back46"}
+			{path:"./img/42.png",name:"back46"}
 		]
     //执行图片预加载，加载完成后执行main
     loadImages(sources, main); 
@@ -329,16 +329,16 @@ function main(){
 		flashNum = 0;
 		setTimeout(function(){
 		    countDown();                    
-		},5000);
+		},4000);
 		renderBtns = [];
 	}
 	function countDown(){
 		gStatus = 'countDown';
 		flashNum = 0;
 		cds = [
-			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'cd3', gImg),
-			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'cd2', gImg),	
-			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleY(100), 3, 0, 30, 'cd1', gImg)
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleX(100), 3, 0, 30, 'cd3', gImg),
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleX(100), 3, 0, 30, 'cd2', gImg),	
+			new ZoomSprite(scaleX(240), scaleY(195), scaleX(100), scaleX(100), 3, 0, 30, 'cd1', gImg)
 		]
 	}
 	function run(){
