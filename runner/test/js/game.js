@@ -101,7 +101,8 @@ window.onload = function(){
 			{path:"./img/41.png",name:"back43"},
 			{path:"./img/4.jpg",name:"back44"},
 			{path:"./img/41.png",name:"back45"},
-			{path:"./img/42.png",name:"back46"}
+			{path:"./img/42.png",name:"back46"},
+			{path:"./img/playBtn.png",name:"runBtn"}
 		]
     //执行图片预加载，加载完成后执行main
     loadImages(sources, main); 
@@ -273,8 +274,8 @@ function main(){
 	createBtns();
 
 	debugDraw();
-	run();   
-	// start();    
+	// run();   
+	start();    
 	// window.setInterval(update,1000/60); 
 	//UI界面单起一个循环
 	var _lastDate = Date.now(), _isPause = false, _playTimer, _rafRun, _ieDate = _lastDate;
@@ -633,7 +634,7 @@ function main(){
 				};
 			})(i));
 		}
-		gBtnList['runBtn'] = new Button(scaleX(325), scaleY(750), scaleX(150), scaleX(150), 'startBtn', gImg, function(){
+		gBtnList['runBtn'] = new Button(scaleX(325), scaleY(750), scaleX(150), scaleX(150), 'playBtn', gImg, function(){
 			reading();
 		});
 	}
