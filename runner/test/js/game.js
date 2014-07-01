@@ -76,7 +76,6 @@ window.onload = function(){
 			{path:"./img/wenzi01.png",name:"wenzi01"},
 			{path:"./img/wenzi02.png",name:"wenzi02"},
 			{path:"./img/wenzi03.png",name:"wenzi03"},
-			{path:"./img/shareBtn.png",name:"shareBtn"},
 			
 			{path:"./img/wenan1.png",name:"wenan1"},
 			{path:"./img/wenan2.png",name:"wenan2"},
@@ -634,7 +633,7 @@ function main(){
 				};
 			})(i));
 		}
-		gBtnList['runBtn'] = new Button(scaleX(325), scaleY(750), scaleX(150), scaleX(150), 'playBtn', gImg, function(){
+		gBtnList['runBtn'] = new Button(scaleX(325), scaleY(750), scaleX(150), scaleX(150), 'runBtn', gImg, function(){
 			reading();
 		});
 	}
