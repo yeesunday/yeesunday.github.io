@@ -170,18 +170,18 @@ function loadImages(sources,callback){
 	    return {x: x, y: y};  
 	}  
 	function resetCanvasStyle(){
-		if (window.innerWidth >= GWIDTH) {
-			canvas.style.width = GWIDTH + 'px';
-			canvas.style.left = (window.innerWidth - GWIDTH) / 2 + 'px';
-			canvas.width = GWIDTH;
-		}else{
-			canvas.style.width = window.innerWidth + 'px';
-			canvas.style.left = '0px';
-			canvas.width = window.innerWidth;
-		};
-		canvas.style.height = window.innerHeight + 'px';
-		canvas.style.top = 0;
-		canvas.height = window.innerHeight;
+		// if (window.innerWidth >= GWIDTH) {
+		// 	canvas.style.width = GWIDTH + 'px';
+		// 	canvas.style.left = (window.innerWidth - GWIDTH) / 2 + 'px';
+		// 	canvas.width = GWIDTH;
+		// }else{
+		// 	canvas.style.width = window.innerWidth + 'px';
+		// 	canvas.style.left = '0px';
+		// 	canvas.width = window.innerWidth;
+		// };
+		// canvas.style.height = window.innerHeight + 'px';
+		// canvas.style.top = 0;
+		// canvas.height = window.innerHeight;
  	}    
 } 
 function main(){
