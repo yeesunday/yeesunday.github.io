@@ -130,21 +130,21 @@ function loadImages(sources,callback){
         //当一张图片加载完成时执行    
         gImg[src.name].onload = function(){ 
             //重绘一个进度条
-   //          context.font = "20px Arial";
-			// context.fillStyle = '#FFFF00';
-   //          context.clearRect(0,0,clearWidth,clearHeight);
-   //          context.fillText('Loading:'+ loadedImages +'/'+numImages,(clearWidth-130)/2,clearHeight/2-30);
-   //          context.save();
-   //          context.strokeStyle='#555';
-   //          context.beginPath();
-   //          context.moveTo((clearWidth-130)/2 - 85,clearHeight/2+10);
-   //          context.lineTo((clearWidth-130)/2 + 215,clearHeight/2+10);
-   //          context.stroke();
-   //          context.beginPath();
-   //          context.restore();
-   //          context.moveTo((clearWidth-130)/2 - 85,clearHeight/2+10);
-   //          context.lineTo(loadedImages/numImages*300+(clearWidth-130)/2 - 85,clearHeight/2+10);  
-   //          context.stroke();
+            context.font = "20px Arial";
+			context.fillStyle = '#FFFF00';
+            context.clearRect(0,0,clearWidth,clearHeight);
+            context.fillText('Loading:'+ loadedImages +'/'+numImages,(clearWidth-130)/2,clearHeight/2-30);
+            context.save();
+            context.strokeStyle='#555';
+            context.beginPath();
+            context.moveTo((clearWidth-130)/2 - 85,clearHeight/2+10);
+            context.lineTo((clearWidth-130)/2 + 215,clearHeight/2+10);
+            context.stroke();
+            context.beginPath();
+            context.restore();
+            context.moveTo((clearWidth-130)/2 - 85,clearHeight/2+10);
+            context.lineTo(loadedImages/numImages*300+(clearWidth-130)/2 - 85,clearHeight/2+10);  
+            context.stroke();
             //当所有图片加载完成时，执行回调函数callback
             if (++loadedImages >= numImages) {    
                 callback();    
@@ -644,10 +644,12 @@ function main(){
 	}
 
 	function scaleX(x){
-		return Math.floor(x * (canvas.width / WIDTH));
+		// return Math.floor(x * (canvas.width / WIDTH));
+		return x;
 	}
 	function scaleY(y){
-		return Math.floor(y * (canvas.height / HEIGHT));
+		// return Math.floor(y * (canvas.height / HEIGHT));
+		return y;
 	}
 
 	//处理鼠标事件

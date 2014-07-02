@@ -20,11 +20,51 @@
 		    onBridgeReady();
 		}
 	</script>
-	<meta name="viewport" content="width=770,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<!-- <meta name="viewport" content="width=770,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> -->
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="misapplication-tap-highlight" content="no">
 	<meta name="HandheldFriendly" content="true">
-	<meta name="MobileOptimized" content="770">
+	<meta name="MobileOptimized" content="320">
 	<meta charset="utf-8">
+
+	<style type="text/css">
+		* {
+			-webkit-user-select: none;
+			-ms-touch-select: none;
+		/*
+			-ms-touch-action: none;
+		*/
+		}
+		html {
+			width: 100%;
+			height: 100%;
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			font-family: Arial;
+			color: #6c6c6c;
+			-webkit-touch-callout:none;
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+		}
+		header {
+			width: 100%;
+			height: 44px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			font-size: 20px;
+			text-align: center;
+			line-height: 44px;
+			background: #fff;
+			z-index: 9999;
+			-webkit-box-shadow: 0px 1px 6px #CCC;
+			box-shadow: 0px 1px 6px #CCC;
+			-ms-touch-action: none;
+		}
+	</style>
 </head>
 <body>
 	<img width="500" height="500" style="position:absolute;top:-10000px;" src="img/300PX.jpg">
