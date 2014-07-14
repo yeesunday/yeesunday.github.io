@@ -1,0 +1,8 @@
+body{
+    background-color: #333;
+    /*background-image: url(../img/game_bg.jpg);*/
+}
+#gameContainer{
+    background-color: #333;
+    background-image: url(../img/game_bg.jpg);
+}
