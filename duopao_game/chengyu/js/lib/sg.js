@@ -29,8 +29,6 @@ var SG;
             _container.width = _width;
             _container.style.height = _height + 'px';
             _container.height = _height;
-
-            console.log(_container, _width, _height);
         },
 
         loadImg: function(src, callback){
@@ -47,7 +45,6 @@ var SG;
                     if (++_loadCount >= imgCount) {
                         if(callback){
                             SG.simg = _simg;
-                            console.log(_simg, SG, 111111);
                             callback();
                         }
                     }
