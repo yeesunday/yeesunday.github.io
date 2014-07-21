@@ -20,12 +20,12 @@ body{background:url('images/backBG.jpg') repeat; padding:0px; margin:0px;}
 .t_wape01Bg input.name-m{ left:239px;}
 .t_wape01Bg a.bt,.t_wape01Bg a.bt:hover{ position:absolute;top:185px; right:58px; background:url('images/icons.jpg') -408px 0;height:38px;width:100px; display:block; }
 .t_wape01Bg a.bt:hover{ background-position: -513px 0;}
-.t_wape01Bg .state{ position:absolute; top:321px; height:85px;left:53px;width:435px;}
+.t_wape01Bg .state{ position:absolute; top:321px; height:85px;left:37px;width:435px;}
 .t_wape01Bg .state p{ padding-bottom:5px; line-height:20px; color:#758083;}
 
 
 /* t_wape02Bg */
-.t_wape02Bg{ background:url('images/cbg.png') no-repeat;background-size: 100% 100%;padding:0px; margin:0px;overflow: hidden;}
+.t_wape02Bg{ background:url('images/rbg.png') no-repeat;background-size: 100% 100%;padding:0px; margin:0px;overflow: hidden;}
 .t_wape02Bg a.home,.t_wape02Bg a.home:hover{ position:absolute;top:7px;left:9px; background:url('images/icons.jpg') -270px 0; height:24px;width:60px; }
 .t_wape02Bg a.home:hover{ background-position: -332px 0;}
 .t_wape02Bg input{height:23px;width:64px; background:#fff; border:1px #683a1c solid; padding:0 3px; line-height:23px; font-size:12px;color:#c4b7b0;  position:absolute;top:6px;}
@@ -47,8 +47,8 @@ body{background:url('images/backBG.jpg') repeat; padding:0px; margin:0px;}
 .t_area01 .title  a.renren{  background-position:-239px 0;right:5px; }
 
 .wape-c{}
-.wape-c .nav{ float:left;width:110px;}
-.wape-c .nav li{ width:85px;height:31px; margin-bottom: 8px;}
+.wape-c .nav{ position: absolute; left:30px;top:135px;width:110px;}
+.wape-c .nav li{ width:85px;height:31px; margin-bottom: 25px;}
 .wape-c .nav li a,.wape-c .nav li a:hover{ background:url('images/icons.jpg') 0 -42px ; width:85px;height:31px; display:block;}
 .wape-c .nav li a.dj{ background-position: 0 -42px; }
 .wape-c .nav li a.dj:hover{ background-position: 0 -79px; }
@@ -62,8 +62,8 @@ body{background:url('images/backBG.jpg') repeat; padding:0px; margin:0px;}
 .wape-c .nav li a.dx:hover{ background-position:-385px -79px; }
 .wape-c .nav li a span{ padding:7px 0 0 13px;color:#306565; display:block; }
 
-.wape-c  .nav-c{ float:left;width:345px;}
-.wape-c  .nav-c p{ font-size:12px;color:#6c4b39;line-height:20px;}
+.wape-c  .nav-c{  position: absolute; left:130px;width:345px;}
+.wape-c  .nav-c p{ font-size:16px;color:#6c4b39;line-height:26px;}
 .wape-c  .nav-c p.settle{ color:#45555a; background: #f1fafa;width:329px; padding:2px 3px 2px 3px; margin-bottom:8px; }
 .wape-c  .nav-c-link a{ float:left; padding-right:15px; width:auto;color:#C06225; padding-bottom:5px; display:block;}
 .tips{
