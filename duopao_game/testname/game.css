@@ -14,7 +14,7 @@ body{background:url('images/backBG.jpg') repeat; padding:0px; margin:0px;}
 .t_wape01{height:494px;width:540px; overflow:hidden; position:relative; margin:0 auto;}
 
 /* t_wape01Bg */
-.t_wape01Bg{ background:url('images/cbg.png') no-repeat;}
+.t_wape01Bg{ background:url('images/cbg.png') no-repeat;background-size: 100% 100%;padding:0px; margin:0px;overflow: hidden;}
 .t_wape01Bg input{ position:absolute; background:url('images/icons.jpg') -483px -42px; width:80px;height:36px;top:187px; border:none; padding:0 5px; line-height:36px; font-size: 12px;}
 .t_wape01Bg input.name-x{ left:95px;}
 .t_wape01Bg input.name-m{ left:239px;}
@@ -25,7 +25,7 @@ body{background:url('images/backBG.jpg') repeat; padding:0px; margin:0px;}
 
 
 /* t_wape02Bg */
-.t_wape02Bg{ background:url('images/cbg.png') no-repeat;}
+.t_wape02Bg{ background:url('images/cbg.png') no-repeat;background-size: 100% 100%;padding:0px; margin:0px;overflow: hidden;}
 .t_wape02Bg a.home,.t_wape02Bg a.home:hover{ position:absolute;top:7px;left:9px; background:url('images/icons.jpg') -270px 0; height:24px;width:60px; }
 .t_wape02Bg a.home:hover{ background-position: -332px 0;}
 .t_wape02Bg input{height:23px;width:64px; background:#fff; border:1px #683a1c solid; padding:0 3px; line-height:23px; font-size:12px;color:#c4b7b0;  position:absolute;top:6px;}
