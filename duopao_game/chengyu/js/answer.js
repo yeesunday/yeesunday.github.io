@@ -12,9 +12,8 @@ window.onload = function(){
         {path:"./img/rank.png", name:"rankbtn"},
         {path:"./img/more.png", name:"morebtn"},
         {path:"./img/contribute.png", name:"contributebtn"},
-        {path:"./img/btn_left.png", name:"backbtn"},
         {path:"./img/btn_next.png", name:"goonbtn"},
-        {path:"./img/btn_ok.png", name:"submitbtn"},
+        {path:"./img/closeBtn.png", name:"closebtn"},
 
         {path:"./img/heart.png", name:"heart"},
         {path:"./img/play_panel_bg.png", name:"playPanelbg"},
@@ -34,13 +33,55 @@ window.onload = function(){
     SG.loadImg(sources, main);
 };
 function main(){
-    var isFail = false, answer='一石二鸟', helpList = [{img:'#444', name:'张三'}, {img:'#444', name:'李四'}], _html = '';
+    var isFail = false,
+        answer='一石二鸟',
+        helpList = [{img:'#444', name:'张三'}, {img:'#444', name:'李四'}],
+        _html = '';
+
+
     var goonBtn = new SG.Button('goonBtn', '', 320, 407, 125, 70, SG.simg['goonbtn'].src, function(){
         window.location.href="game.html";
     });
     var closeBtn = new SG.Button('goonBtn', '', 350, 20, 50, 50, SG.simg['wrong'].src, function(){
         window.location.href="level.html";
     });
+
+    function refreshPage(){
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            data:{
+                'level':level,
+                'user_id':userId
+            },
+            url: server.Level,
+            success: function(result){
+                isFail = result['is_fail'];
+                answer = result['answer'];
+                helpList = result['help_list'];
+                userId = result['user_id'];
+
+                $('#pageCount').html(curPage + ' / ' + maxPage);
+                for(var i = 0; i < levelData.length; i++){
+                    levels[i] = new SG.Button('level' + i, levelData[i].level, 20 + 150*(i%3), 90 + 160*Math.floor(i/3), 140, 150, SG.simg['unlockbg'].src, function(){
+                        window.location.href="answer.html";
+                    });
+                    if(levelData[i].help > 0){
+                        $('#level' + i).children(":first").after('<div id="helpHeart">' + levelData[i].help + '</div>');
+                    }
+                }
+                levels[i] = new SG.Button('', '', 20 + 150*(i%3), 90 + 160*Math.floor(i/3), 140, 150, SG.simg['lockbg'].src, function(){
+                    window.location.href="game.html";
+                });
+                i++;
+                for(; i < maxNum; i++){
+                    levels[i] = new SG.Button('', '', 20 + 150*(i%3), 90 + 160*Math.floor(i/3), 140, 150, SG.simg['lockbg'].src, function(){
+
+                    });
+                }
+            }
+        });
+    }
 
     $('#answerbg').css("background-image","url(" + SG.simg['question'].src + ")");
     $('#itemNumber').html(111);

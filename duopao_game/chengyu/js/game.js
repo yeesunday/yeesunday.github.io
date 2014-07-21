@@ -14,6 +14,7 @@ window.onload = function(){
         {path:"./img/contribute.png", name:"contributebtn"},
         {path:"./img/btn_next.png", name:"goonbtn"},
         {path:"./img/btn_ok.png", name:"submitbtn"},
+        {path:"./img/closeBtn.png", name:"closebtn"},
 
         {path:"./img/heart.png", name:"heart"},
         {path:"./img/play_panel_bg.png", name:"playPanelbg"},
@@ -75,7 +76,8 @@ function main(){
         keyboard = [],
         isMe = false,
         helpPic,
-        helpName = 'xxx';
+        helpName = 'xxx',
+        success = false;
 
     for(var i = 0; i < letter.length; i++){
         keyboard[i] = new SG.Keyboard('', letter[i], 40+50*(i%8), 550+50*Math.floor(i/8), SG.simg['up'+letter[i]].src, (function(index){
@@ -92,7 +94,7 @@ function main(){
     var zhitiaoBtn = new SG.Button('', '', 250, 17, 100, 60, SG.simg['zhitiao'].src, function(){
 //        window.location.href="level.html";
     });
-    var closeBtn = new SG.Button('closeBtn', '', 425, 10, 50, 50, SG.simg['wrong'].src, function(){
+    var closeBtn = new SG.Button('closeBtn', '', 425, 2, 50, 50, SG.simg['closebtn'].src, function(){
         window.location.href="level.html";
     });
     var goonBtn = new SG.Button('goonBtn', '', 320, 407, 125, 70, SG.simg['goonbtn'].src, function(){
@@ -104,6 +106,70 @@ function main(){
     var moreBtn = new SG.Button('', '', 320, 700, 150, 70, SG.simg['morebtn'].src, function(){
 //        window.location.href="rank.html";
     });
+
+    function refreshPage(){
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            data:{
+                'level' : itemNum,
+                'user_id': userId
+            },
+            url: server.Level,
+            success: function(result){
+                questionBg = result['question_bg'];
+                isMe = result['is_Me'];
+                helpCount = result['help_count'];
+                userId = result['user_id'];
+
+                helpPic = result['help_pic'];
+                helpName = result['help_name'];
+            }
+        });
+    }
+
+    function submitAnswer(){
+//        answer = 0;
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            data:{
+                'answer' : answer,
+                'time_cost': timeCost,
+                'isMe' : isMe,
+                'user_id': userId
+            },
+            url: server.Level,
+            success: function(result){
+                helpCount = result['help_count'];
+                success = result['success']
+                userId = result['user_id'];
+                isMe = result['is_Me'];
+
+                helpPic = result['help_pic'];
+                helpName = result['help_name'];
+
+                $('#pageCount').html(curPage + ' / ' + maxPage);
+                for(var i = 0; i < levelData.length; i++){
+                    levels[i] = new SG.Button('level' + i, levelData[i].level, 20 + 150*(i%3), 90 + 160*Math.floor(i/3), 140, 150, SG.simg['unlockbg'].src, function(){
+                        window.location.href="answer.html";
+                    });
+                    if(levelData[i].help > 0){
+                        $('#level' + i).children(":first").after('<div id="helpHeart">' + levelData[i].help + '</div>');
+                    }
+                }
+                levels[i] = new SG.Button('', '', 20 + 150*(i%3), 90 + 160*Math.floor(i/3), 140, 150, SG.simg['lockbg'].src, function(){
+                    window.location.href="game.html";
+                });
+                i++;
+                for(; i < maxNum; i++){
+                    levels[i] = new SG.Button('', '', 20 + 150*(i%3), 90 + 160*Math.floor(i/3), 140, 150, SG.simg['lockbg'].src, function(){
+
+                    });
+                }
+            }
+        });
+    }
 
     if(isMe){
         $('#emotion').css("background-image","url(" + SG.simg['enull'].src + ")");

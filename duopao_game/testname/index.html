@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="game.js"></script>
+    <script type="text/javascript" src="template-native.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="game.css"/>
+    <meta name="viewport" content="width=480, user-scalable=no,target-densitydpi=high-dpi">
+    <meta name="misapplication-tap-highlight" content="no">
+    <meta name="HandheldFriendly" content="true">
+    <meta charset="utf-8">
+
+    <title>姓名测试</title>
+</head>
+<body>
+    <!-- 输入页 -->
+    <!--<div id="addBor" class="addBor">-->
+        <div class="t_wape01 t_wape01Bg" id="sort_home">
+            <input type="text" value="" class="name-x" id="firstName">
+            <input type="text" value="" class="name-m" id="lastName">
+            <a class="bt" onclick="calc()"></a>
+            <span class="tips">姓只能输入2个以内的汉字.</span>
+            <div class="state">
+                <p>
+                    声明：所有测算结果均不代表本应用观点，测算方法根据易经、阴阳、五行等历经数千年的占测理论为依据进行演化而来，并非现代科学研究成果。
+                </p>
+                <p>
+                    本应用仅供休闲参考，特此声明。此操作自行决定的任何事宜均为测试者自负！
+                </p>
+            </div>
+        </div>
+        <span id="content" style="display: none;"></span>
+    <!--</div>-->
+
+    <!--<script id="resultTemplate" type="text/html">-->
+        <!--<div id="template" style="display: none;" >-->
+            <!--<div class="t_wape01 t_wape02Bg" id="sort">-->
+                <!--<a href="javascript:back();" class="home"></a>-->
+                <!--<input type="text" value="<%= firstName %>" class="x" id="firstName"/>-->
+                <!--<input type="text" value="<%= lastName %>" class="m" id="lastName"/>-->
+                <!--<a class="quiz" onclick="javascript:calc();"></a>-->
+                <!--<div class="t_area01">-->
+                    <!--<div class="title clear">-->
+                        <!--<h3><%= (firstName + lastName)%></h3>-->
+                        <!--<span class="vline">|</span>-->
+                        <!--<span class="fen">得分：<%= score%></span>-->
+
+                        <!--&lt;!&ndash;<script type="text/javascript">&ndash;&gt;-->
+                        <!--&lt;!&ndash;var shareUrl = "http://app.baidu.com/xingmingtest",&ndash;&gt;-->
+                        <!--&lt;!&ndash;shareContent = "推荐给大家一个姓名测试打分，我的名字得了 85 分，你也来试试！";&ndash;&gt;-->
+                        <!--&lt;!&ndash;</script>&ndash;&gt;-->
+                    <!--</div>-->
+                    <!--<div class="wape-c clear">-->
+                        <!--<div class="nav">-->
+                            <!--<ul>-->
+                                <!--<li>-->
+                                    <!--<a class="<%= result.sancai%>">-->
+                                        <!--<span>三才</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<a class="<%= result.tiange%>">-->
+                                        <!--<span>天格</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<a class="<%= result.renge%>">-->
+                                        <!--<span>人格</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<a class="<%= result.dige%>">-->
+                                        <!--<span>地格</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<a class="<%= result.waige%>">-->
+                                        <!--<span>外格</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<a class="<%= result.zongge%>">-->
+                                        <!--<span>总格</span>-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                        <!--<div class="nav-c">-->
+                            <!--<p class="settle">-->
+                                <!--<%=settle%>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--<%=desc>-->
+                            <!--</p>-->
+                            <!--&lt;!&ndash;<div class="nav-c-link" style="width:345px;">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a target="_blank" href="http://www.juyouqu.com/qu/1486455" style="color:#306565;">那些被恶搞的姓名</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a target="_blank" href="http://www.juyouqu.com/qu/1392331">逆天的姓名</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a target="_blank" href="http://www.juyouqu.com">每日搞笑图片排行榜</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a target="_blank" href="http://www.juyouqu.com/qu/1486455">姓名，高富帅</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a target="_blank" href="http://www.juyouqu.com/qu/1486461">姓名，黑木耳</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a target="_blank" href="http://www.juyouqu.com/qu/1486467">爆笑：胡一多如何做藏头诗！</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</script>-->
+    <!--结果页-->
+    <div id="template" style="display: none;" >
+        <div class="t_wape01 t_wape02Bg" id="sort">
+            <a href="javascript:back();" class="home"></a>
+            <input type="text" value="刘" class="x" id="firstName"/>
+            <input type="text" value="志刚" class="m" id="lastName"/>
+            <a class="quiz" onclick="javascript:calc();"></a>
+            <div class="t_area01">
+                <div class="title clear">
+                    <h3>
+                        刘志刚
+                    </h3>
+                    <span class="vline">|</span>
+                    <span class="fen">得分：85</span>
+                    <script type="text/javascript">
+                        var shareUrl = "http://app.baidu.com/xingmingtest",
+                                shareContent = "推荐给大家一个姓名测试打分，我的名字得了 85 分，你也来试试！";
+                    </script>
+                </div>
+                <div class="wape-c clear">
+                    <div class="nav">
+                        <ul>
+                            <li>
+                                <a class="bj">
+                                    <span>三才</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="j">
+                                    <span>天格</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="j">
+                                    <span>人格</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="j">
+                                    <span>地格</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="j">
+                                    <span>外格</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="x">
+                                    <span>总格</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-c">
+                        <p class="settle">
+                            它具有如下数理诱导力，据此会对人生产生一定的影响。
+
+                            其人性情活跃好动,偏于急性,缺乏耐力,有良好的智谋,才识敏捷,但自制能力教差,往往固执己见,刚愎不仁,因而可能招致失败。另外,对疾病抵抗能力差。　　
+
+                        </p>
+                        <p>
+                            1、总论:有成功发展之运势,但过于急进及缺乏耐力,恐有失意之时,做事如能详细计划,稳重行事,可立于不败之地,天运五行属水时,一生变化不安。
+                            <br>2、性格:急性子,热情且礼貌周到,注重外表的装饰,为人豪爽,内藏爆发性质,且有桃花运的倾向,又不耐寂寞的生活。
+                            <br>3、意志:意志不够坚定,做事有虎头蛇尾的倾向。但思想正确,可一展抱负,财利可得。
+
+                        </p>
+                        <div class="nav-c-link" style="width:345px;">
+                            <a target="_blank" href="http://www.juyouqu.com/qu/1486455" style="color:#306565;">那些被恶搞的姓名</a>
+                            <a target="_blank" href="http://www.juyouqu.com/qu/1392331">逆天的姓名</a>
+                            <a target="_blank" href="http://www.juyouqu.com">每日搞笑图片排行榜</a>
+                            <a target="_blank" href="http://www.juyouqu.com/qu/1486455">姓名，高富帅</a>
+                            <a target="_blank" href="http://www.juyouqu.com/qu/1486461">姓名，黑木耳</a>
+                            <a target="_blank" href="http://www.juyouqu.com/qu/1486467">爆笑：胡一多如何做藏头诗！</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

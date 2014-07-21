@@ -1,0 +1,80 @@
+﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+body{font:12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif;color:#45555a;}
+dl,dt,dd,ul,ol,li{list-style:none}
+img{border:0}
+a,a:link,a:visited{text-decoration:none; color:#45555a;cursor:pointer;}
+a:hover{text-decoration:none;}
+.clear{*zoom:1;}
+.clear:after{ content:'\20'; display:block;height:0;clear:both; overflow:hidden; visibility:hidden;}
+a{outline: none;}
+a:active {star:expression(this.onFocus=this.blur());}
+a:focus{outline: none;}
+
+body{background:url('images/backBG.jpg') repeat; padding:0px; margin:0px;}
+.t_wape01{height:494px;width:540px; overflow:hidden; position:relative; margin:0 auto;}
+
+/* t_wape01Bg */
+.t_wape01Bg{ background:url('images/cbg.png') no-repeat;}
+.t_wape01Bg input{ position:absolute; background:url('images/icons.jpg') -483px -42px; width:80px;height:36px;top:187px; border:none; padding:0 5px; line-height:36px; font-size: 12px;}
+.t_wape01Bg input.name-x{ left:95px;}
+.t_wape01Bg input.name-m{ left:239px;}
+.t_wape01Bg a.bt,.t_wape01Bg a.bt:hover{ position:absolute;top:185px; right:58px; background:url('images/icons.jpg') -408px 0;height:38px;width:100px; display:block; }
+.t_wape01Bg a.bt:hover{ background-position: -513px 0;}
+.t_wape01Bg .state{ position:absolute; top:321px; height:85px;left:53px;width:435px;}
+.t_wape01Bg .state p{ padding-bottom:5px; line-height:20px; color:#758083;}
+
+
+/* t_wape02Bg */
+.t_wape02Bg{ background:url('images/cbg.png') no-repeat;}
+.t_wape02Bg a.home,.t_wape02Bg a.home:hover{ position:absolute;top:7px;left:9px; background:url('images/icons.jpg') -270px 0; height:24px;width:60px; }
+.t_wape02Bg a.home:hover{ background-position: -332px 0;}
+.t_wape02Bg input{height:23px;width:64px; background:#fff; border:1px #683a1c solid; padding:0 3px; line-height:23px; font-size:12px;color:#c4b7b0;  position:absolute;top:6px;}
+.t_wape02Bg input.x{right:171px; }
+.t_wape02Bg input.m{ right:88px;}
+.t_wape02Bg a.quiz,.t_wape02Bg a.quiz:hover{ position:absolute;top:6px;right:10px; background:url('images/icons.jpg') 0 0; width:68px;height:25px;}
+.t_wape02Bg a.quiz:hover{background-position: -77px 0;}
+/* t_area01 */
+.t_area01{margin:56px 0 0 27px; height:365px;}
+.t_area01 .title{position:relative;height:55px;width:365px;padding-left:115px;}
+.t_area01 .title h3{ float:left; width:55px; font-size:14px; font-weight: bold;color:#4d2916;}
+.t_area01 .title .vline{ color:#d0d1d1; margin:5px 5px 0 0;}
+.t_area01 .title  .fen{ color:#c06225; font-size: 14px;}
+.t_area01 .title  a{ position:absolute; top:3px; width:16px;height:17px; display:block; background:url('images/icons.jpg') -154px 0;}
+.t_area01 .title  a.douban{  background-position:-154px 0; right:87px; }
+.t_area01 .title  a.qq{  background-position:-176px 0; right:65px; }
+.t_area01 .title  a.xinlang{  background-position:-197px 0;right:45px; }
+.t_area01 .title  a.kaixin{  background-position:-218px 0;right:25px; }
+.t_area01 .title  a.renren{  background-position:-239px 0;right:5px; }
+
+.wape-c{}
+.wape-c .nav{ float:left;width:110px;}
+.wape-c .nav li{ width:85px;height:31px; margin-bottom: 8px;}
+.wape-c .nav li a,.wape-c .nav li a:hover{ background:url('images/icons.jpg') 0 -42px ; width:85px;height:31px; display:block;}
+.wape-c .nav li a.dj{ background-position: 0 -42px; }
+.wape-c .nav li a.dj:hover{ background-position: 0 -79px; }
+.wape-c .nav li a.j{ background-position: -96px -42px; }
+.wape-c .nav li a.j:hover{ background-position:-96px -79px; }
+.wape-c .nav li a.bj{ background-position: -192px -42px; }
+.wape-c .nav li a.bj:hover{ background-position:-192px -79px; }
+.wape-c .nav li a.x{ background-position: -288px -42px; }
+.wape-c .nav li a.x:hover{ background-position:-288px -79px; }
+.wape-c .nav li a.dx{ background-position: -385px -42px; }
+.wape-c .nav li a.dx:hover{ background-position:-385px -79px; }
+.wape-c .nav li a span{ padding:7px 0 0 13px;color:#306565; display:block; }
+
+.wape-c  .nav-c{ float:left;width:345px;}
+.wape-c  .nav-c p{ font-size:12px;color:#6c4b39;line-height:20px;}
+.wape-c  .nav-c p.settle{ color:#45555a; background: #f1fafa;width:329px; padding:2px 3px 2px 3px; margin-bottom:8px; }
+.wape-c  .nav-c-link a{ float:left; padding-right:15px; width:auto;color:#C06225; padding-bottom:5px; display:block;}
+.tips{
+	display:block;
+	text-align:left;
+	width:100%;
+	height:26px;
+	line-height:26px;
+	color:red;
+	position:absolute;
+	top:230px;
+	left:60px;
+	display:none;
+}

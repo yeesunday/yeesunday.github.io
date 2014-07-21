@@ -21,6 +21,11 @@ body{
     background-image: url(../img/game_bg.jpg);
     background-size: 100% 100%;
 }
+#contributeContainer{
+    background-color: #cfc5a5;
+    background-image: url(../img/rank_bg.jpg);
+    background-size: 100% 100%;
+}
 
 #ownrank{
     position: absolute;
@@ -96,6 +101,15 @@ body{
     color: #000;
     line-height: 60px;
     text-align: center;
+}
+#askhelp{
+    position: absolute;
+    left: 155px;
+    top: 0px;
+    width: 91px;
+    height: 55px;
+    background-image: url(../img/play_help.png);
+    background-size: 100% 100%;
 }
 #emotion{
     position: absolute;

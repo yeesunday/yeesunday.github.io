@@ -1,4 +1,10 @@
 (function(SG){
+    function playAudio() {
+        var au = document.createElement('audio');
+        au.src = '././src/click.wav'; //设置音频文件的路径
+        au.play();
+    }
+
     function Button(id, value, x, y, w, h, img, callback){
         this.x = x || 0;
         this.y = y || 0;
@@ -29,7 +35,11 @@
         btn.innerHTML = '<div style="position: absolute;left: 0px;top: 0px;width: 100%; height:' + this.height + 'px;text-align: center;line-height: ' +
             this.height + 'px;font-size:50px;font-family: cursive;color:#000;font-weight: bold;">' + this.value + '</div>';
 
-        btn.onclick = this.callback;
+        var that = this;
+        btn.onclick = function(){
+            playAudio();
+            that.callback();
+        } 
         SG.container.appendChild(btn);
     }
     SG.Button = Button;
@@ -62,7 +72,11 @@
         }
         btn.id = this.id;
 
-        btn.onclick = this.callback;
+        var that = this;
+        btn.onclick = function(){
+            playAudio();
+            that.callback();
+        } 
         SG.container.appendChild(btn);
     }
     SG.Keyboard = Keyboard;
