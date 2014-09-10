@@ -91,15 +91,17 @@ function checkName(str,n){
     return true;
 }
 
-//(function(){
-//    if(window.location.toString().indexOf('canvas_pos=search') === -1){
-//        document.getElementById('addBor').className = 'addBor';
-//    }
-//})()
-
 document.onkeydown = function(e){
     var e = window.event || e;
     if(e.keyCode == 13){
         calc();
+    }
+}
+
+document.addEventListener("mousemove", handleMouseMove, true);
+document.addEventListener("touchmove", handleMouseMove, true);
+function handleMouseMove(e){
+    if (e.preventDefault) {
+        e.preventDefault();
     }
 }
