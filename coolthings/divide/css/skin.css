@@ -1,0 +1,1398 @@
+/*-----------------------------全局样式-------------------------------------*/
+dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,span,a,input,textarea,p,blockquote,th,td,header,nav,footer,article,section,aside,time,figure {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0)
+}
+h1,h2,h3,h4,h5,h6 {
+    font-size: 14px;
+    font-weight: normal
+}
+ul {
+    list-style: none
+}
+legend {
+    display: none
+}
+fieldset,img {
+    border: none;
+    vertical-align: middle
+}
+em,cite,i {
+    font-style: normal
+}
+input,button,textarea {
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    border: 0;
+    font-family: Microsoft YaHei
+}
+input[type="submit"],input[type="reset"],input[type="button"],button {
+    -webkit-appearance: none;
+    border-radius: 0
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+textarea {
+    resize: none
+}
+html {
+    height: 100%;
+    -webkit-text-size-adjust: none;
+    overflow: hidden
+}
+body {
+    font: 12px/18px Microsoft YaHei;
+    position: relative;
+    margin: 0 auto;
+    color: #000;
+    min-width: 320px;
+    word-break: break-all;
+    height: 100%;
+    overflow: hidden;
+    max-width: 640px
+}
+body a {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer
+}
+body a:hover,body a:active,body a:focus {
+    text-decoration: none;
+    outline: none
+}
+/*-----------------------------动画-------------------------------------*/
+.swiper-container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: 640px;
+    right: 0;
+    margin: auto
+}
+.swiper-wrapper {
+    height: 100%;
+    overflow: hidden
+}
+.swiper-slide {
+    float: left;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative
+}
+.swiper-slide>div {
+    position: absolute;
+    margin: auto;
+    opacity: 0
+}
+.swiper-slide>div>div {
+    position: absolute;
+    text-indent: -9999px;
+    overflow: hidden
+}
+.tip {
+    z-index: 10000
+}
+.goNext {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    width: 14px;
+    height: 22px;
+    z-index: 1000;
+    margin: auto;
+    display: none
+}
+.goNext img {
+    width: 100%;
+    display: block
+}
+@-webkit-keyframes c1 {
+    0% {
+        -webkit-transform: rotate(0)
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+}
+.sound {
+    position: absolute;
+    right: 6px;
+    top: 10px;
+    width: 32px;
+    height: 30px;
+    background: url(../images/soundSW.png) no-repeat center 2px;
+    background-size: 90%;
+    z-index: 900;
+}
+.sounds {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../images/soundSW.png) no-repeat left -49px;
+    background-size: 100%;
+    z-index: 10;
+    animation: c1 2s linear infinite;
+    -moz-animation: c1 2s linear infinite;
+    -webkit-animation: c1 2s linear infinite
+}
+.soundstop .sounds {
+    animation: none;
+    -moz-animation: none;
+    -webkit-animation: none;
+    background-position: left -100px
+}
+
+/*-----------------------------第一屏-------------------------------------*/
+.page1 .animate1 {
+    top: 57px;
+    left: 0;
+    right: 0;
+    width: 199px;
+    height: 169px;
+    z-index: 1000
+}
+.page1 .animate1>div {
+    background-image: url(../images/1-1.png);
+    background-repeat: no-repeat;
+    margin: auto;
+    background-size: 199px
+}
+.animate1-1-1 {
+    left: 0;
+    top: 0;
+    width: 199px;
+    height: 169px;
+    background-position: left bottom
+}
+.animate1-1-2 {
+    left: 0;
+    right: 0;
+    top: 13px;
+    width: 62px;
+    height: 44px;
+    background-position: center -13px
+}
+.animate1-1-3 {
+    left: 0;
+    right: 0;
+    top: 75px;
+    width: 168px;
+    height: 55px;
+    background-position: center -75px
+}
+.page1 .animate2 {
+    top: 280px;
+    left: 0;
+    right: 0;
+    width: 248px;
+    height: 30px;
+    z-index: 1000
+}
+.page1 .animate2>div {
+    background-image: url(../images/1-2.png);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    width: 31px;
+    height: 30px;
+    top: 0
+}
+.animate1-2-1 {
+    background-position: 0 0;
+    left: 0
+}
+.animate1-2-2 {
+    background-position: -31px 0;
+    left: 31px
+}
+.animate1-2-3 {
+    background-position: -62px 0;
+    left: 62px
+}
+.animate1-2-4 {
+    background-position: -93px 0;
+    left: 93px
+}
+.animate1-2-5 {
+    background-position: -124px 0;
+    left: 124px
+}
+.animate1-2-6 {
+    background-position: -155px 0;
+    left: 155px
+}
+.animate1-2-7 {
+    background-position: -186px 0;
+    left: 186px
+}
+.animate1-2-8 {
+    background-position: -217px 0;
+    left: 217px
+}
+.tip {
+    width: 103px;
+    height: 133px;
+    background: url(../images/tip.png) no-repeat;
+    background-size: 100%;
+    left: 0;
+    right: 0;
+    top: 176px
+}
+.hand {
+    width: 44px;
+    height: 62px;
+    background: url(../images/hand.png) no-repeat;
+    background-size: 100%;
+    display: block;
+    left: -40px;
+    top: 10px;
+    position: absolute
+}
+/*-----------------------------第二屏-------------------------------------*/
+.page2 {
+    background: #c4553c
+}
+.page2 .animate1 {
+    top: 47px;
+    left: -11px;
+    width: 241px;
+    height: 207px;
+    z-index: 1000
+}
+.page2 .animate1>div {
+    background-image: url(../images/2-1.png);
+    background-repeat: no-repeat;
+    background-size: 241px
+}
+.animate2-1-1 {
+    left: 0;
+    top: 0;
+    width: 241px;
+    height: 207px;
+    background-position: 0 0
+}
+.page2 .animate2 {
+    top: 230px;
+    right: -30px;
+    width: 240px;
+    height: 209px
+}
+.page2 .animate2>div {
+    background-image: url(../images/2-2.png);
+    background-repeat: no-repeat;
+    background-size: 240px
+}
+.animate2-2-1 {
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 209px;
+    background-position: 0 0
+}
+.page2 .tip {
+    width: 60px;
+    height: 152px;
+    background-image: url(../images/tip2.png);
+    left: 110px;
+    top: 170px;
+    margin: 0
+}
+.page2 .hand {
+    left: 30px;
+    top: 20px;
+    background-image: url(../images/hand.png)
+}
+/*-----------------------------第三屏-------------------------------------*/
+.page3 {
+    background: #65828c
+}
+.page3 .animate1 {
+    top: 30px;
+    left: 0;
+    width: 297px;
+    height: 171px;
+    z-index: 1000;
+    right: 0
+}
+.page3 .animate1>div {
+    background-image: url(../images/n3-1.png);
+    background-repeat: no-repeat;
+    background-size: 100%
+}
+.animaten3-1-1 {
+    left: 0;
+    top: 0;
+    width: 297px;
+    height: 171px;
+    background-position: 0 0;
+    right: 0
+}
+.page3 .animate2 {
+    top: 300px;
+    left: 0;
+    right: 0;
+    width: 297px;
+    height: 171px
+}
+.page3 .animate2>div {
+    background-image: url(../images/n3-2.png);
+    background-repeat: no-repeat;
+    background-size: 100%
+}
+.animaten3-2-1 {
+    left: 0;
+    top: 0;
+    width: 297px;
+    height: 171px;
+    background-position: 0 0;
+    right: 0
+}
+.page3 .tip {
+    width: 26px;
+    height: 133px;
+    background-image: url(../images/ntip.png);
+    left: 0;
+    right: 0;
+    top: 180px;
+    margin: auto
+}
+.page3 .hand {
+    left: 40px;
+    top: 20px;
+    background-image: url(../images/hand.png)
+}
+/*-----------------------------第四屏-------------------------------------*/
+.page4 {
+    background: #65828c
+}
+.page4 .animate1 {
+    top: -100px;
+    left: 50px;
+    width: 141px;
+    height: 350px;
+    z-index: 1000
+}
+.page4 .animate1>div {
+    background-image: url(../images/3-1.png);
+    background-repeat: no-repeat;
+    background-size: 100%
+}
+.animate3-1-1 {
+    left: 0;
+    top: 0;
+    width: 141px;
+    height: 350px;
+    background-position: 0 0
+}
+.page4 .animate2 {
+    bottom: -130px;
+    right: 26px;
+    width: 144px;
+    height: 385px
+}
+.page4 .animate2>div {
+    background-image: url(../images/3-2.png);
+    background-repeat: no-repeat;
+    background-size: 100%
+}
+.animate3-2-1 {
+    left: 0;
+    top: 0;
+    width: 144px;
+    height: 385px;
+    background-position: 0 0
+}
+.page4 .tip {
+    width: 70px;
+    height: 110px;
+    background-image: url(../images/tip3.png);
+    left: auto;
+    right: 90px;
+    top: 160px;
+    margin: 0
+}
+.page4 .hand {
+    left: 40px;
+    top: 20px;
+    background-image: url(../images/hand.png)
+}
+/*-----------------------------第五屏-------------------------------------*/
+.page5 {
+    background: #806f66
+}
+.page5 .animate1 {
+    top: 125px;
+    left: 75px;
+    width: 75px;
+    height: 156px;
+    z-index: 1000
+}
+.page5 .animate1>div {
+    background-image: url(../images/4-1.png);
+    background-repeat: no-repeat;
+    background-size: 75px
+}
+.animate4-1-1 {
+    left: 0;
+    top: 0;
+    width: 75px;
+    height: 156px;
+    background-position: 0 0
+}
+.animate4-1-2 {
+    background: url(../images/4-1-2.png) no-repeat;
+    width: 132px;
+    height: 66px;
+    background-size: 100% !important;
+    top: 27px;
+    left: 17px
+}
+.animate4-1-3 {
+    background: url(../images/4-1-3.png) no-repeat;
+    width: 2px;
+    height: 127px;
+    background-size: 100% !important;
+    left: 80px;
+    top: 95px;
+    z-index: 1000
+}
+.page5 .animate2 {
+    top: 182px;
+    left: 173px;
+    width: 73px;
+    height: 157px
+}
+.page5 .animate2>div {
+    background-image: url(../images/4-2.png);
+    background-repeat: no-repeat;
+    background-size: 73px
+}
+.animate4-2-1 {
+    left: 0;
+    top: 0;
+    width: 73px;
+    height: 157px;
+    background-position: 0 0
+}
+.animate4-2-2 {
+    background: url(../images/4-1-3.png) no-repeat;
+    width: 2px;
+    height: 95px;
+    background-size: 100% !important;
+    left: 231px;
+    top: 260px
+}
+.animate4-2-3 {
+    background: url(../images/4-2-3.png) no-repeat;
+    width: 262px;
+    height: 25px;
+    background-size: 100% !important;
+    left: 42px;
+    top: auto;
+    top: 386px
+}
+.page5 .tip {
+    width: 104px;
+    height: 104px;
+    background-image: url(../images/tip4.png);
+    right: auto;
+    left: 100px;
+    top: 230px;
+    margin: 0
+}
+.page5 .hand {
+    left: 30px;
+    top: 10px;
+    background-image: url(../images/hand.png)
+}
+/*-----------------------------第六屏-------------------------------------*/
+.page6 {
+    background: #a6d6ca
+}
+.page6 .animate1 {
+    top: 247px;
+    left: 12px;
+    width: 131px;
+    height: 103px;
+    z-index: 1000
+}
+.page6 .animate1>div {
+    background-image: url(../images/5-1.png);
+    background-repeat: no-repeat;
+    background-size: 131px
+}
+.animate5-1-1 {
+    width: 131px;
+    height: 103px;
+    background-position: 0 0
+}
+.page6 .animate2 {
+    top: 133px;
+    right: 36px;
+    width: 75px;
+    height: 253px
+}
+.page6 .animate2>div {
+    background-image: url(../images/5-2.png);
+    background-repeat: no-repeat;
+    background-size: 75px
+}
+.animate5-2-1 {
+    left: 0;
+    top: 0;
+    width: 75px;
+    height: 253px;
+    background-position: 0 0
+}
+.bo {
+    background: #5b809b;
+    width: 10000px;
+    top: 350px;
+    height: 100%;
+    z-index: 10000
+}
+.bo:before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -20px;
+    background: url(../images/bo.png) repeat-x;
+    background-size: 338px;
+    content: "";
+    height: 59px
+}
+.page6 .tip {
+    width: 121px;
+    height: 25px;
+    background-image: url(../images/tip5.png);
+    right: auto;
+    left: 118px;
+    top: 282px;
+    margin: 0
+}
+.page6 .hand {
+    left: 0;
+    top: 30px;
+    background-image: url(../images/hand.png)
+}
+.hits {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    top: 70px;
+    color: #fff;
+    font-size: 36px
+}
+.hits span {
+    margin: 0 4px
+}
+.hits img {
+    height: 22px;
+    vertical-align: top
+}
+.hits p {
+    margin: 0 0 26px
+}
+/*-----------------------------第七屏-------------------------------------*/
+.page7 {
+    background: #e2a469
+}
+.page7 .animate1 {
+    width: 160px;
+    height: 75px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000
+}
+.bm {
+    background-image: url(../images/bm.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-indent: -9999px;
+    overflow: hidden
+}
+.animate6-1-1 {
+    left: 0;
+    top: 0;
+    width: 67px;
+    height: 113px;
+    background-position: 0 0
+}
+.animate6-1-2 {
+    right: 0;
+    top: 0;
+    width: 67px;
+    height: 113px;
+    background-position: right 0
+}
+.page7 .animate2 {
+    top: -50px;
+    right: 0;
+    bottom: 0;
+    left: 0
+}
+.page7 .animate2>div {
+    left: 0;
+    top: 0;
+    background-image: url(../images/6.png);
+    background-repeat: no-repeat;
+    background-size: 600px
+}
+.animate6-2-1 {
+    width: 24px;
+    height: 24px;
+    background-position: 0 0
+}
+.animate6-2-2 {
+    width: 24px;
+    height: 24px;
+    background-position: -30px 0
+}
+.animate6-2-3 {
+    width: 24px;
+    height: 24px;
+    background-position: -60px 0
+}
+.animate6-2-4 {
+    width: 24px;
+    height: 24px;
+    background-position: -90px 0
+}
+.animate6-2-5 {
+    width: 24px;
+    height: 24px;
+    background-position: -120px 0
+}
+.animate6-2-6 {
+    width: 24px;
+    height: 24px;
+    background-position: -150px 0
+}
+.animate6-2-7 {
+    width: 24px;
+    height: 24px;
+    background-position: -180px 0
+}
+.animate6-2-8 {
+    width: 24px;
+    height: 24px;
+    background-position: -210px 0
+}
+.animate6-2-9 {
+    width: 24px;
+    height: 24px;
+    background-position: -240px 0
+}
+.animate6-2-10 {
+    width: 24px;
+    height: 24px;
+    background-position: -270px 0
+}
+.animate6-2-11 {
+    width: 24px;
+    height: 24px;
+    background-position: -300px 0
+}
+.animate6-2-12 {
+    width: 24px;
+    height: 24px;
+    background-position: -330px 0
+}
+.animate6-2-13 {
+    width: 24px;
+    height: 24px;
+    background-position: -360px 0
+}
+.animate6-2-14 {
+    width: 18px;
+    height: 18px;
+    background-position: -390px 0
+}
+.animate6-2-15 {
+    width: 12px;
+    height: 18px;
+    background-position: -420px 0
+}
+.animate6-2-16 {
+    width: 18px;
+    height: 18px;
+    background-position: -450px 0
+}
+
+/*8*/
+.animate6-2-17 {
+    width: 24px;
+    height: 24px;
+    background-position: 0 -30px
+}
+.animate6-2-18 {
+    width: 24px;
+    height: 24px;
+    background-position: -30px -30px
+}
+.animate6-2-19 {
+    width: 24px;
+    height: 24px;
+    background-position: -60px -30px
+}
+.animate6-2-20 {
+    width: 24px;
+    height: 24px;
+    background-position: -90px -30px
+}
+.animate6-2-21 {
+    width: 24px;
+    height: 24px;
+    background-position: -120px -30px
+}
+.animate6-2-22 {
+    width: 24px;
+    height: 24px;
+    background-position: -150px -30px
+}
+.animate6-2-23 {
+    width: 24px;
+    height: 24px;
+    background-position: -180px -30px
+}
+.animate6-2-24 {
+    width: 24px;
+    height: 24px;
+    background-position: -210px -30px
+}
+.animate6-2-25 {
+    width: 20px;
+    height: 20px;
+    background-position: 0 -60px
+}
+.animate6-2-26 {
+    width: 20px;
+    height: 20px;
+    background-position: -30px -60px
+}
+.animate6-2-27 {
+    width: 20px;
+    height: 20px;
+    background-position: -60px -60px
+}
+.animate6-2-28 {
+    width: 20px;
+    height: 20px;
+    background-position: -90px -60px
+}
+.animate6-2-29 {
+    width: 18px;
+    height: 18px;
+    background-position: -120px -60px
+}
+.animate6-2-30 {
+    width: 18px;
+    height: 18px;
+    background-position: -150px -60px
+}
+.animate6-2-31 {
+    width: 18px;
+    height: 18px;
+    background-position: -180px -60px
+}
+.animate6-2-32 {
+    width: 18px;
+    height: 18px;
+    background-position: -210px -60px
+}
+.animate6-2-33 {
+    width: 18px;
+    height: 18px;
+    background-position: -240px -60px
+}
+.animate6-2-34 {
+    width: 18px;
+    height: 18px;
+    background-position: -270px -60px
+}
+.animate6-2-32 {
+    width: 18px;
+    height: 18px;
+    background-position: -300px -60px
+}
+.animate6-2-36 {
+    width: 18px;
+    height: 18px;
+    background-position: -330px -60px
+}
+.animate6-2-37 {
+    width: 18px;
+    height: 18px;
+    background-position: -360px -60px
+}
+.animate6-2-38 {
+    width: 18px;
+    height: 18px;
+    background-position: -390px -60px
+}
+.animate6-2-39 {
+    width: 20px;
+    height: 20px;
+    background-position: 0 -90px
+}
+.animate6-2-40 {
+    width: 20px;
+    height: 20px;
+    background-position: -30px -90px
+}
+.animate6-2-41 {
+    width: 20px;
+    height: 20px;
+    background-position: -60px -90px
+}
+.animate6-2-42 {
+    width: 20px;
+    height: 20px;
+    background-position: -90px -90px
+}
+.animate6-2-43 {
+    width: 20px;
+    height: 20px;
+    background-position: -120px -90px
+}
+.animate6-2-44 {
+    width: 20px;
+    height: 20px;
+    background-position: -150px -90px
+}
+.animate6-2-45 {
+    width: 20px;
+    height: 20px;
+    background-position: -180px -90px
+}
+.animate6-2-46 {
+    width: 20px;
+    height: 20px;
+    background-position: -210px -90px
+}
+.animate6-2-47 {
+    width: 20px;
+    height: 20px;
+    background-position: -240px -90px
+}
+.animate6-2-48 {
+    width: 20px;
+    height: 20px;
+    background-position: -270px -90px
+}
+.animate6-2-49 {
+    width: 20px;
+    height: 20px;
+    background-position: -300px -90px
+}
+.animate6-2-50 {
+    width: 20px;
+    height: 20px;
+    background-position: -330px -90px
+}
+.animate6-2-51 {
+    width: 20px;
+    height: 20px;
+    background-position: -360px -90px
+}
+.animate6-2-52 {
+    width: 20px;
+    height: 20px;
+    background-position: -390px -90px
+}
+.animate6-2-53 {
+    width: 20px;
+    height: 20px;
+    background-position: -420px -90px
+}
+.animate6-2-54 {
+    width: 20px;
+    height: 20px;
+    background-position: -450px -90px
+}
+.animate6-2-55 {
+    width: 20px;
+    height: 20px;
+    background-position: 0 -120px
+}
+.animate6-2-56 {
+    width: 20px;
+    height: 20px;
+    background-position: -30px -120px
+}
+.animate6-2-57 {
+    width: 20px;
+    height: 20px;
+    background-position: -60px -120px
+}
+.animate6-2-58 {
+    width: 20px;
+    height: 20px;
+    background-position: -90px -120px
+}
+.animate6-2-59 {
+    width: 20px;
+    height: 20px;
+    background-position: -120px -120px
+}
+.animate6-2-60 {
+    width: 20px;
+    height: 20px;
+    background-position: -150px -120px
+}
+.animate6-2-61 {
+    width: 20px;
+    height: 20px;
+    background-position: -180px -120px
+}
+.animate6-2-62 {
+    width: 20px;
+    height: 20px;
+    background-position: -210px -120px
+}
+.animate6-2-63 {
+    width: 20px;
+    height: 20px;
+    background-position: 0 -150px
+}
+.animate6-2-64 {
+    width: 20px;
+    height: 20px;
+    background-position: -30px -150px
+}
+.animate6-2-65 {
+    width: 20px;
+    height: 20px;
+    background-position: -60px -150px
+}
+.animate6-2-66 {
+    width: 20px;
+    height: 20px;
+    background-position: -90px -150px
+}
+.animate6-2-67 {
+    width: 20px;
+    height: 20px;
+    background-position: -120px -150px
+}
+.animate6-2-68 {
+    width: 20px;
+    height: 22px;
+    background-position: -150px -150px
+}
+.animate6-2-69 {
+    width: 20px;
+    height: 20px;
+    background-position: -180px -150px
+}
+.animate6-2-70 {
+    width: 20px;
+    height: 20px;
+    background-position: -210px -150px
+}
+.animate6-2-71 {
+    width: 20px;
+    height: 20px;
+    background-position: -240px -150px
+}
+.animate6-2-72 {
+    width: 20px;
+    height: 20px;
+    background-position: -270px -150px
+}
+.animate6-2-73 {
+    width: 20px;
+    height: 20px;
+    background-position: -300px -150px
+}
+.animate6-2-74 {
+    width: 20px;
+    height: 22px;
+    background-position: -330px -150px
+}
+.animate6-2-75 {
+    width: 20px;
+    height: 22px;
+    background-position: -360px -150px
+}
+.animate6-2-76 {
+    width: 20px;
+    height: 20px;
+    background-position: -390px -150px
+}
+.animate6-2-77 {
+    width: 20px;
+    height: 20px;
+    background-position: -420px -150px
+}
+.animate6-2-78 {
+    width: 20px;
+    height: 20px;
+    background-position: -450px -150px
+}
+.animate6-2-79 {
+    width: 20px;
+    height: 20px;
+    background-position: -480px -150px
+}
+.animate6-2-80 {
+    width: 20px;
+    height: 20px;
+    background-position: -510px -150px
+}
+.animate6-2-81 {
+    width: 20px;
+    height: 20px;
+    background-position: -540px -150px
+}
+.animate6-2-82 {
+    width: 20px;
+    height: 20px;
+    background-position: -570px -150px
+}
+.animate6-2-83 {
+    width: 20px;
+    height: 20px;
+    background-position: 0 -180px
+}
+.animate6-2-84 {
+    width: 20px;
+    height: 20px;
+    background-position: -30px -180px
+}
+.animate6-2-85 {
+    width: 20px;
+    height: 20px;
+    background-position: -60px -180px
+}
+.animate6-2-86 {
+    width: 20px;
+    height: 20px;
+    background-position: -90px -180px
+}
+.animate6-2-87 {
+    width: 20px;
+    height: 20px;
+    background-position: -120px -180px
+}
+.animate6-2-88 {
+    width: 20px;
+    height: 20px;
+    background-position: -150px -180px
+}
+.animate6-2-89 {
+    width: 20px;
+    height: 20px;
+    background-position: -180px -180px
+}
+.animate6-2-90 {
+    width: 20px;
+    height: 20px;
+    background-position: -210px -180px
+}
+.animate6-2-91 {
+    width: 20px;
+    height: 20px;
+    background-position: -240px -180px
+}
+.animate6-2-92 {
+    width: 20px;
+    height: 20px;
+    background-position: -270px -180px
+}
+.animate6-2-93 {
+    width: 20px;
+    height: 20px;
+    background-position: -300px -180px
+}
+.animate6-2-94 {
+    width: 20px;
+    height: 20px;
+    background-position: -330px -180px
+}
+.animate6-2-95 {
+    width: 20px;
+    height: 20px;
+    background-position: -360px -180px
+}
+.animate6-2-96 {
+    width: 20px;
+    height: 20px;
+    background-position: -390px -180px
+}
+.animate6-2-97 {
+    width: 8px;
+    height: 14px;
+    background-position: -420px -180px
+}
+.animate6-2-98 {
+    width: 8px;
+    height: 14px;
+    background-position: -450px -180px
+}
+.animate6-2-99 {
+    width: 8px;
+    height: 14px;
+    background-position: -480px -180px
+}
+.animate6-2-100 {
+    width: 12px;
+    height: 38px;
+    background-position: 0 -210px
+}
+.animate6-2-101 {
+    width: 23px;
+    height: 38px;
+    background-position: -30px -210px
+}
+.animate6-2-102 {
+    width: 23px;
+    height: 38px;
+    background-position: -60px -210px
+}
+.animate6-2-103 {
+    width: 16px;
+    height: 36px;
+    background-position: -90px -210px
+}
+.animate6-2-104 {
+    width: 17px;
+    height: 37px;
+    background-position: -120px -210px
+}
+.animate6-2-105 {
+    width: 30px;
+    height: 30px;
+    background-position: 0 -250px
+}
+.animate6-2-106 {
+    width: 30px;
+    height: 30px;
+    background-position: -30px -250px
+}
+.animate6-2-107 {
+    width: 30px;
+    height: 30px;
+    background-position: -60px -250px
+}
+.animate6-2-108 {
+    width: 30px;
+    height: 30px;
+    background-position: -90px -250px
+}
+.animate6-2-109 {
+    width: 30px;
+    height: 30px;
+    background-position: -120px -250px
+}
+.animate6-2-110 {
+    width: 24px;
+    height: 24px;
+    background-position: -150px -250px
+}
+.animate6-2-111 {
+    width: 24px;
+    height: 24px;
+    background-position: -180px -250px
+}
+.animate6-2-112 {
+    width: 24px;
+    height: 24px;
+    background-position: -210px -250px
+}
+.animate6-2-113 {
+    width: 22px;
+    height: 22px;
+    background-position: -240px -250px
+}
+.animate6-2-114 {
+    width: 22px;
+    height: 22px;
+    background-position: -270px -250px
+}
+.animate6-2-115 {
+    width: 22px;
+    height: 22px;
+    background-position: -300px -250px
+}
+/*-----------------------------iphone4-------------------------------------*/
+@media screen and (max-height: 416px) {
+    /*-----------------------------第一屏-------------------------------------*/
+    .page1 .animate1 {
+        top:27px
+    }
+    .page1 .animate2 {
+        top: 250px
+    }
+    .tip {
+        top: 146px
+    }
+    /*-----------------------------第二屏-------------------------------------*/
+    .page2 .animate1 {
+        top: 14px
+    }
+    .page2 .animate2 {
+        top: 214px;
+        right: -15px
+    }
+    .page2 .tip {
+        top: 72px;
+        left: 166px
+    }
+    /*-----------------------------第三屏-------------------------------------*/
+    .page3 .animate1 {
+        top: 15px
+    }
+    .page3 .animate2 {
+        top: 230px
+    }
+    .page3 .tip {
+        top: 150px
+    }
+    /*-----------------------------第四屏-------------------------------------*/
+    .page4 .animate1 {
+        top: -100px;
+        width: 120px;
+        height: 320px
+    }
+    .page4 .animate3-1-1 {
+        width: 120px;
+        height: 320px
+    }
+    .page4 .animate2 {
+        bottom: -120px;
+        width: 125px;
+        height: 335px
+    }
+    .page4 .animate3-2-1 {
+        width: 125px;
+        height: 335px
+    }
+    .page4 .tip {
+        top: 120px;
+        right: 108px
+    }
+    /*-----------------------------第五屏-------------------------------------*/
+    .page5 .animate1 {
+        top: 105px
+    }
+    .page5 .animate2 {
+        top: 162px
+    }
+    .page5 .tip {
+        top: 209px
+    }
+}
+/*-----------------------------iphone4system-------------------------------------*/
+@media screen and (max-height: 372px) {
+    /*-----------------------------第一屏-------------------------------------*/
+    .page1 .animate2 {
+        top:230px
+    }
+    .tip {
+        top: 146px
+    }
+    /*-----------------------------第二屏-------------------------------------*/
+    .page2 .animate1 {
+        top: 4px
+    }
+    .page2 .animate2 {
+        top: 184px;
+        right: -15px
+    }
+    .page2 .tip {
+        top: 40px;
+        left: 161px
+    }
+    /*-----------------------------第三屏-------------------------------------*/
+    .page3 .animate1 {
+        top: 10px
+    }
+    .page3 .animate2 {
+        top: 190px
+    }
+    .page3 .tip {
+        top: 120px
+    }
+    /*-----------------------------第四屏-------------------------------------*/
+    .page4 .tip {
+        top: 120px;
+        right: 110px
+    }
+    /*-----------------------------第五屏-------------------------------------*/
+    .page5 .animate1 {
+        top: 75px
+    }
+    .page5 .animate4-1-2 {
+        top: 5px
+    }
+    .page5 .animate2 {
+        top: 132px
+    }
+    .page5 .tip {
+        top: 179px
+    }
+    .page5 .animate4-2-3 {
+        top: 340px
+    }
+    /*-----------------------------第六屏-------------------------------------*/
+    .page6 .animate1 {
+        top: 217px
+    }
+    .page6 .animate2 {
+        top: 103px
+    }
+    .bo {
+        top: 320px
+    }
+    .page6 .tip {
+        top: 250px
+    }
+    .hits {
+        top: 40px
+    }
+}
+/*-----------------------------for width 360-------------------------------------*/
+@media screen and (min-width: 360px) {
+    /*-----------------------------第二屏-------------------------------------*/
+    .page2 .tip {
+        top:148px;
+        left: 168px
+    }
+    /*-----------------------------第四屏-------------------------------------*/
+    .page4 .animate2 {
+        bottom: -100px;
+        right: 66px
+    }
+    .page4 .tip {
+        top: 213px;
+        right: 166px
+    }
+    /*-----------------------------第六屏-------------------------------------*/
+    .page6 .animate1 {
+        left: 42px
+    }
+    .page6 .tip {
+        left: 158px
+    }
+}
