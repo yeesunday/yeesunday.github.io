@@ -4,7 +4,7 @@
 	<title>跳转测试</title>
 </head>
 <body>
-	<button style="width: 100px;height: 60px;margin: 100px auto;" onclick="go('taobao://item.taobao.com/item.htm?id=12688928896')">点击</button>
+	<button style="width: 100px;height: 60px;margin: 100px auto;" onclick="go('taobao://redirect.simba.taobao.com/rd?w=unionnojs&f=http%3A%2F%2Fai.taobao.com%2Fauction%2Fedetail.htm%3Fe%3DkCL8QtzOm5rebLdhAWchHKgsKtSrNDhHcd3R8ZkWJ%252FiLltG5xFicOdXrTUTgh9sMDPIwxrc30rgY1kmV4OH%252Fwapgj0pkpn4aH7q9%252BPwwNiT38Hd5nuaTom3abJM7sDg2DshXnlxGR%252F17m4LyBZasjw%253D%253D%26ptype%3D100010%26from%3Dbasic&k=5ccfdb950740ca16&c=un&b=alimm_0&p=mm_56503797_7636840_25698716')">点击</button>
 	<!--<button onclick="go('http://item.taobao.com/item.htm?id=12688928896')">点击</button>-->
 	<script language="javascript">
 		function go(url){
@@ -16,7 +16,7 @@
 			    window.setTimeout(function() {
 			    	var timeOutDateTime = new Date();
 			      	if (timeOutDateTime - loadDateTime < 5000) {
-			        	window.location = "http://item.taobao.com/item.htm?id=12688928896";
+			        	window.location = "http://redirect.simba.taobao.com/rd?w=unionnojs&f=http%3A%2F%2Fai.taobao.com%2Fauction%2Fedetail.htm%3Fe%3DkCL8QtzOm5rebLdhAWchHKgsKtSrNDhHcd3R8ZkWJ%252FiLltG5xFicOdXrTUTgh9sMDPIwxrc30rgY1kmV4OH%252Fwapgj0pkpn4aH7q9%252BPwwNiT38Hd5nuaTom3abJM7sDg2DshXnlxGR%252F17m4LyBZasjw%253D%253D%26ptype%3D100010%26from%3Dbasic&k=5ccfdb950740ca16&c=un&b=alimm_0&p=mm_56503797_7636840_25698716";
 			      	} else {
 			        	window.close();
 			      	}
