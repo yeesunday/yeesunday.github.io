@@ -4,30 +4,49 @@
 	<title>跳转测试</title>
 </head>
 <body>
-	<button style="width: 100px;height: 60px;margin: 100px auto;" onclick="go('taobao://redirect.simba.taobao.com/rd?w=unionnojs&f=http%3A%2F%2Fai.taobao.com%2Fauction%2Fedetail.htm%3Fe%3DkCL8QtzOm5rebLdhAWchHKgsKtSrNDhHcd3R8ZkWJ%252FiLltG5xFicOdXrTUTgh9sMDPIwxrc30rgY1kmV4OH%252Fwapgj0pkpn4aH7q9%252BPwwNiT38Hd5nuaTom3abJM7sDg2DshXnlxGR%252F17m4LyBZasjw%253D%253D%26ptype%3D100010%26from%3Dbasic&k=5ccfdb950740ca16&c=un&b=alimm_0&p=mm_56503797_7636840_25698716')">点击</button>
-	<script language="javascript">
+	<a style="width: 100px;height: 60px;margin: 100px auto;" href="http://redirect.simba.taobao.com/rd?w=unionnojs&f=http%3A%2F%2Fai.taobao.com%2Fauction%2Fedetail.htm%3Fe%3DkCL8QtzOm5rebLdhAWchHKgsKtSrNDhHcd3R8ZkWJ%252FiLltG5xFicOdXrTUTgh9sMDPIwxrc30rgY1kmV4OH%252Fwapgj0pkpn4aH7q9%252BPwwNiT38Hd5nuaTom3abJM7sDg2DshXnlxGR%252F17m4LyBZasjw%253D%253D%26ptype%3D100010%26from%3Dbasic&k=5ccfdb950740ca16&c=un&b=alimm_0&p=mm_56503797_7636840_25698716">点击</a>
+	<a style="width: 100px;height: 60px;margin: 100px auto;" href="http://redirect.simba.taobao.com/rd?w=unionnojs&f=http%3A%2F%2Fai.taobao.com%2Fauction%2Fedetail.htm%3Fe%3DkCL8QtzOm5rebLdhAWchHKgsKtSrNDhHcd3R8ZkWJ%252FiLltG5xFicOdXrTUTgh9sMDPIwxrc30rgY1kmV4OH%252Fwapgj0pkpn4aH7q9%252BPwwNiT38Hd5nuaTom3abJM7sDg2DshXnlxGR%252F17m4LyBZasjw%253D%253D%26ptype%3D100010%26from%3Dbasic&k=5ccfdb950740ca16&c=un&b=alimm_0&p=mm_56503797_7636840_25698716">点击</a>
+	<a style="width: 100px;height: 60px;margin: 100px auto;" href="http://redirect.simba.taobao.com/rd?w=unionnojs&f=http%3A%2F%2Fai.taobao.com%2Fauction%2Fedetail.htm%3Fe%3DkCL8QtzOm5rebLdhAWchHKgsKtSrNDhHcd3R8ZkWJ%252FiLltG5xFicOdXrTUTgh9sMDPIwxrc30rgY1kmV4OH%252Fwapgj0pkpn4aH7q9%252BPwwNiT38Hd5nuaTom3abJM7sDg2DshXnlxGR%252F17m4LyBZasjw%253D%253D%26ptype%3D100010%26from%3Dbasic&k=5ccfdb950740ca16&c=un&b=alimm_0&p=mm_56503797_7636840_25698716">点击</a>
+	<a style="width: 100px;height: 60px;margin: 100px auto;" href="http://redirect.simba.taobao.com/rd?w=unionnojs&f=http%3A%2F%2Fai.taobao.com%2Fauction%2Fedetail.htm%3Fe%3DkCL8QtzOm5rebLdhAWchHKgsKtSrNDhHcd3R8ZkWJ%252FiLltG5xFicOdXrTUTgh9sMDPIwxrc30rgY1kmV4OH%252Fwapgj0pkpn4aH7q9%252BPwwNiT38Hd5nuaTom3abJM7sDg2DshXnlxGR%252F17m4LyBZasjw%253D%253D%26ptype%3D100010%26from%3Dbasic&k=5ccfdb950740ca16&c=un&b=alimm_0&p=mm_56503797_7636840_25698716">点击</a>
+    <a href="http://www.baidu.com">百度</a>
+    <script language="javascript">
+        var urls = document.getElementsByTagName('a');
+        for(var i = 0; i < urls.length; i++){
+            urls[i].onclick = (function(i){
+                return function(){
+                    go(urls[i].href);
+                    return false;
+                }
+            })(i);
+        }
 		function go(url){
-            if(isWeixinBrowser()){
-                new TipWindow();
-            }else if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
-			    var loadDateTime = new Date();
-			    window.setTimeout(function() {
-			    	var timeOutDateTime = new Date();
-			      	if (timeOutDateTime - loadDateTime < 1000) {
-			        	window.location = url.replace('taobao', 'http');
-                    } else {
-			        	window.close();
-			      	}
-			    }, 500);
-			    window.location = url;
-            }else if (navigator.userAgent.indexOf('Android') > -1) {
-                var iframe = document.createElement('iframe');
-                iframe.style.visibility = 'hidden';
-                iframe.src = url;
-                iframe.onload = function noapp() {
-                    window.location = url.replace('taobao', 'http');
-                };
-                document.body.appendChild(iframe);
+            if(url.indexOf('taobao') > 0){
+                if(isWeixinBrowser()){
+                    new TipWindow();
+                }else if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
+                    var loadDateTime = new Date();
+                    window.setTimeout(function() {
+                        var timeOutDateTime = new Date();
+                        if (timeOutDateTime - loadDateTime < 1000) {
+                            window.location = url;
+                        } else {
+                            window.close();
+                        }
+                    }, 500);
+                    window.location = url.replace('http', 'taobao');
+                }else if (navigator.userAgent.indexOf('Android') > -1) {
+                    var iframe = document.createElement('iframe');
+                    iframe.style.visibility = 'hidden';
+                    iframe.src = url.replace('http', 'taobao');
+                    iframe.onload = function noapp() {
+                        window.location = url;
+                    };
+                    document.body.appendChild(iframe);
+                }else{
+                    window.location = url;
+                }
+            }else{
+                window.location = url;
             }
 		}
 	  
@@ -53,5 +72,6 @@
             };
         }
 	</script>
+
 </body>
 </html>
