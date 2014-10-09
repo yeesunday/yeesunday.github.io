@@ -25,7 +25,7 @@
             }else if (navigator.userAgent.indexOf('Android') > -1) {
                 var iframe = document.createElement('iframe');
                 iframe.style.visibility = 'hidden';
-                iframe.src = 'taobao:';
+                iframe.src = url;
                 iframe.onload = function noapp() {
                     window.location = url.replace('taobao', 'http');
                 };
