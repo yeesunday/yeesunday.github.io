@@ -8,7 +8,7 @@
 	<!--<button onclick="go('http://item.taobao.com/item.htm?id=12688928896')">点击</button>-->
 	<script language="javascript">
 		function go(url){
-            if(!isWeixinBrowser()){
+            if(isWeixinBrowser()){
                 new TipWindow();
             }else if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i) ||
                       navigator.userAgent.match(/android/i)) {
@@ -16,7 +16,7 @@
 			    window.setTimeout(function() {
 			    	var timeOutDateTime = new Date();
 			      	if (timeOutDateTime - loadDateTime < 5000) {
-			        	window.location = "http://www.baidu.com";
+			        	window.location = "http://item.taobao.com/item.htm?id=12688928896";
 			      	} else {
 			        	window.close();
 			      	}
