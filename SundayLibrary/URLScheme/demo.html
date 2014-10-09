@@ -5,23 +5,21 @@
 </head>
 <body>
 	<button style="width: 100px;height: 60px;margin: 100px auto;" onclick="go('taobao://redirect.simba.taobao.com/rd?w=unionnojs&f=http%3A%2F%2Fai.taobao.com%2Fauction%2Fedetail.htm%3Fe%3DkCL8QtzOm5rebLdhAWchHKgsKtSrNDhHcd3R8ZkWJ%252FiLltG5xFicOdXrTUTgh9sMDPIwxrc30rgY1kmV4OH%252Fwapgj0pkpn4aH7q9%252BPwwNiT38Hd5nuaTom3abJM7sDg2DshXnlxGR%252F17m4LyBZasjw%253D%253D%26ptype%3D100010%26from%3Dbasic&k=5ccfdb950740ca16&c=un&b=alimm_0&p=mm_56503797_7636840_25698716')">点击</button>
-	<!--<button onclick="go('http://item.taobao.com/item.htm?id=12688928896')">点击</button>-->
 	<script language="javascript">
 		function go(url){
             if(isWeixinBrowser()){
                 new TipWindow();
             }else if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
-//                      navigator.userAgent.match(/android/i)) {
 			    var loadDateTime = new Date();
 			    window.setTimeout(function() {
 			    	var timeOutDateTime = new Date();
-			      	if (timeOutDateTime - loadDateTime < 5000) {
+			      	if (timeOutDateTime - loadDateTime < 1000) {
 			        	window.location = url.replace('taobao', 'http');
                     } else {
 			        	window.close();
 			      	}
-			    	},1000);
-			    	window.location = url;
+			    }, 500);
+			    window.location = url;
             }else if (navigator.userAgent.indexOf('Android') > -1) {
                 var iframe = document.createElement('iframe');
                 iframe.style.visibility = 'hidden';
@@ -42,9 +40,9 @@
             var tipCC = document.createElement('div');
             tipCC.innerHTML =
                 '<div style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.7);z-index: 1000000;">'+
-                    '<div style="position: relative;height: 200px;border-radius: 5px;-webkit-border-radius: 5px;z-index: 1000001;margin: 0 auto;max-width: 960px;width: 100%;background: #f1f1f1;text-align: center;">' +
-                          '<div style="height: 7px;"></div>' +
-                          '<h1>请在浏览器内打开</h1>' +
+                    '<div style="position: relative;height: 300px;border-radius: 5px;-webkit-border-radius: 5px;z-index: 1000001;margin: 0 auto;max-width: 960px;width: 100%;background: #f1f1f1;text-align: center;">' +
+                          '<div style="height: 47px;"></div>' +
+                          '<h1>链接打不开？</h1>' +
                           '<h3>请点击右上角</h3>' +
                           '<h3>选择<span style="color: #ff0000;">“在浏览器里打开”</span></h3>' +
                     '</div>' +
