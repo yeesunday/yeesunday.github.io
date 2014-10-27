@@ -1,6 +1,6 @@
 <ul class="gifts">
     <li class="gift-item" ng-repeat="gift in gifts">
-        <a class="gi-tp" ng-href="/view/{{gift.id}}">
+        <a class="gi-tp" ng-href="view/{{gift.id}}">
             <div class="gi-desc" ng-class="{true: 'add-margin', false: 'no-margin'}[gift.hasPic]">{{gift.desc}}</div>
             <div class="gi-pic" ng-show="gift.hasPic"><img ng-src="{{gift.imgList[0]}}" alt=""/></div>
         </a>
