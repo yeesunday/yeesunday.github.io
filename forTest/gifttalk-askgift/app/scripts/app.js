@@ -27,7 +27,7 @@ app.config(['$routeProvider', function($routeProvider) {
                     return MultiGiftLoader();
                 }]
             },
-            templateUrl:'/views/giftList.html'
+            templateUrl:'views/giftList.html'
         }).when('/edit/:giftId', {
             controller: 'EditCtrl',
             resolve: {
