@@ -1,0 +1,48 @@
+<div id="view-content" class="content">
+    <div class="sponsor-info">
+        <div class="avatar">
+            <img ng-src="{{gift.sponsor.avatar}}" alt=""/>
+        </div>
+        <div class="sponsor-brief">
+            <h3><span class="name">{{subName(gift.sponsor.name)}}</span>发起求礼物</h3>
+            <p class="grey-text">已筹得<span class="name">{{gift.sponsor.total}}</span>元，<span class="name">{{gift.sponsor.count}}</span>人支持</p>
+        </div>
+        <div class="sponsor-time grey-text">{{gift.sponsor.posttime}}</div>
+    </div>
+    <div class="gift-content">
+        <div class="gift-desc">{{gift.desc}}</div>
+        <div class="gift-img" ng-repeat="img in gift.imgList track by $index">
+            <img ng-src="{{img}}" alt=""/>
+        </div>
+    </div>
+    <div class="finish-label" ng-show="gift.status != 0">
+        <i class="icon-money"></i>
+        <p>已完成，共筹得{{gift.sponsor.total}}元</p>
+    </div>
+    <div class="funds-detail" ng-repeat="funds in gift.fundsList">
+        <div class="avatar">
+            <img ng-src="{{funds.avatar}}" alt=""/>
+        </div>
+        <div class="funds-content">
+            <em class="pop-em"></em>    
+            <span class="pop-span"></span>
+            <div class="comment-title"><span data-id="funds.id" class="name name-from click-name">{{funds.name}}</span>支持了<span class="name">{{funds.money}}</span>元</div>
+            <div style="margin-bottom:5px;padding: 1px 0px 5px 0;" ng-class="{true: 'add-line', false: 'no-line'}[funds.hasComment]"><p>{{funds.desc}}</p></div>
+            <div class="comment" ng-repeat="com in funds.commentList">
+                <p><span data-id="com.id" class="name name-from click-name">{{com.from}}</span> 回复 <span data-id="com.to.id" class="name click-name">{{com.to}}</span>: {{com.text}}</p>
+            </div>
+            <div style="margin-top: 5px;">
+                <div class="time"><span class="grey-text">{{funds.time}}</span></div>
+                <div class="btn-com click-name" data-id="funds.id"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bottom-menu" ng-show="false">
+    <button class="btn btn-success btn-lg" ng-click="showTip()">扩散给小伙伴</button>
+    <button class="btn btn-default btn-lg">编辑</button>
+</div>
+<div class="bottom-menu">
+    <button class="btn btn-success btn-lg">我要求礼物</button>
+    <button class="btn btn-default btn-lg" ng-click="showTip()">分享给好友</button>
+</div>

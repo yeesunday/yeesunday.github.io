@@ -1,0 +1,13 @@
+<form id="withdrawForm" name="sponsorForm" class="form-horizontal">
+    <p class="withdraw-count">筹得金额：<span>￥{{gift.sponsor.total}}</span></p>
+    <div class="edit-area withdraw-from-group sponsor-textarea">
+        <input id="account" placeholder="支付宝账号" required>
+    </div>
+    <div class="edit-area withdraw-from-group sponsor-textarea">
+        <input id="real-name" placeholder="真实姓名" required>
+    </div>
+
+    <div class="form-actions-wc">
+        <button class="btn-success btn btn-wide" ng-disabled="withdrawForm.$invalid" ng-click="withdraw();">确认提交</button>
+    </div>
+</form>

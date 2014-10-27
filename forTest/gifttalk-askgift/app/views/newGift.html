@@ -1,0 +1,19 @@
+<form name="giftForm" ng-submit="save()" class="form-horizontal">
+    <div class="edit-area">
+        <textarea class="desc-textarea" placeholder="说点什么吧……"></textarea>
+        <div class="img-list">
+            <div class="img-item"  ng-repeat="img in imgList track by $index">
+                <img ng-src="{{img.src}}" alt=""/>
+                <progress value="{{progress}}"></progress>
+                <i class="glyphicon glyphicon-ok-circle"></i>
+            </div>
+            <div class="img-item btn-select-img" ng-click="selectFile();"></div>
+        </div>
+        <div class=""></div>
+    </div>
+
+    <div class="form-actions-wc">
+        <button class="btn-success btn btn-wide" ng-disabled="giftForm.$invalid">确认提交</button>
+        <input id="upload-input" type="file" ng-hide="true" ng-file-select="onFileSelect($files)" >
+    </div>
+</form>

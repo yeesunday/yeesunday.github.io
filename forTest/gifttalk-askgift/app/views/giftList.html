@@ -1,0 +1,13 @@
+<ul class="gifts">
+    <li class="gift-item" ng-repeat="gift in gifts">
+        <a class="gi-tp" href="/#/view/{{gift.id}}">
+            <div class="gi-desc" ng-class="{true: 'add-margin', false: 'no-margin'}[gift.hasPic]">{{gift.desc}}</div>
+            <div class="gi-pic" ng-show="gift.hasPic"><img ng-src="{{gift.imgList[0]}}" alt=""/></div>
+        </a>
+        <div class="gi-option">
+           <p class="grey-text">已筹得<span class="name">{{gift.sponsor.total}}</span>元, <span class="name">{{gift.sponsor.count}}</span>人支持</p>
+          <button class="btn btn-success btn-normal" ng-click="goWithdraw(gift.id)" ng-show="gift.status == 1">提取筹款</button>
+          <button class="btn btn-default btn-normal" disabled="disabled" ng-show="gift.status == 2" >已完成</button>
+        </div>
+    </li>
+</ul>

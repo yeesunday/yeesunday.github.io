@@ -1,0 +1,12 @@
+<form id="sponsorForm" name="sponsorForm" class="form-horizontal" ng-submit="processForm()">
+    <div class="edit-area sponsor-textarea">
+        <input class="count" ng-model="formData.count" placeholder="支持金额" type="number" min="-5" max="20" required><span>元</span>
+    </div>
+    <div class="edit-area sponsor-textarea">
+        <textarea class="words" ng-model="formData.words" placeholder="捎两句话给TA吧~"></textarea>
+    </div>
+
+    <div class="form-actions-wc">
+        <button class="btn-success btn btn-wide" ng-disabled="sponsorForm.$invalid" type="submit">支付宝支付</button>
+    </div>
+</form>
