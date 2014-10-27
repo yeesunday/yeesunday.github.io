@@ -35,7 +35,7 @@ app.config(['$routeProvider', function($routeProvider) {
                     return GiftLoader();
                 }]
             },
-            templateUrl:'/views/recipeForm.html'
+            templateUrl:'views/recipeForm.html'
         }).when('/view/:giftId', {
             controller: 'ViewGiftCtrl',
             resolve: {
@@ -43,16 +43,16 @@ app.config(['$routeProvider', function($routeProvider) {
                     return GiftLoader();
                 }]
             },
-            templateUrl:'/views/viewGift.html'
+            templateUrl:'views/viewGift.html'
         }).when('/new', {
             controller: 'NewGiftCtrl',
-            templateUrl:'/views/newGift.html'
+            templateUrl:'views/newGift.html'
         }).when('/sponsor/:giftId', {
             controller: 'SponsorCtrl',
-            templateUrl:'/views/sponsor.html'
+            templateUrl:'views/sponsor.html'
         }).when('/sponsor/:giftId/success', {
 //            controller: 'SponsorCtrl',
-            templateUrl:'/views/sponsorSuccess.html'
+            templateUrl:'views/sponsorSuccess.html'
         }).when('/withdraw/:giftId', {
             resolve: {
                 gift: ["GiftLoader", function(GiftLoader) {
@@ -60,9 +60,9 @@ app.config(['$routeProvider', function($routeProvider) {
                 }]
             },
             controller: 'WithdrawCtrl',
-            templateUrl:'/views/withdraw.html'
+            templateUrl:'views/withdraw.html'
         }).when('/withdraw/:giftId/success', {
 //            controller: 'SponsorCtrl',
-            templateUrl:'/views/withdrawSuccess.html'
-        }).otherwise({redirectTo:'/'});
+            templateUrl:'views/withdrawSuccess.html'
+        }).otherwise({redirectTo:''});
 }]);
