@@ -20,7 +20,7 @@ Mock.mockjax(app);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
-        when('/', {
+        when('', {
             controller: 'GiftListCtrl',
             resolve: {
                 gifts: ["MultiGiftLoader", function(MultiGiftLoader) {
@@ -36,7 +36,7 @@ app.config(['$routeProvider', function($routeProvider) {
                 }]
             },
             templateUrl:'views/recipeForm.html'
-        }).when('/view/:giftId', {
+        }).when('view/:giftId', {
             controller: 'ViewGiftCtrl',
             resolve: {
                 gift: ["GiftLoader", function(GiftLoader) {
@@ -44,16 +44,16 @@ app.config(['$routeProvider', function($routeProvider) {
                 }]
             },
             templateUrl:'views/viewGift.html'
-        }).when('/new', {
+        }).when('new', {
             controller: 'NewGiftCtrl',
             templateUrl:'views/newGift.html'
-        }).when('/sponsor/:giftId', {
+        }).when('sponsor/:giftId', {
             controller: 'SponsorCtrl',
             templateUrl:'views/sponsor.html'
-        }).when('/sponsor/:giftId/success', {
+        }).when('sponsor/:giftId/success', {
 //            controller: 'SponsorCtrl',
             templateUrl:'views/sponsorSuccess.html'
-        }).when('/withdraw/:giftId', {
+        }).when('withdraw/:giftId', {
             resolve: {
                 gift: ["GiftLoader", function(GiftLoader) {
                     return GiftLoader();
@@ -61,7 +61,7 @@ app.config(['$routeProvider', function($routeProvider) {
             },
             controller: 'WithdrawCtrl',
             templateUrl:'views/withdraw.html'
-        }).when('/withdraw/:giftId/success', {
+        }).when('withdraw/:giftId/success', {
 //            controller: 'SponsorCtrl',
             templateUrl:'views/withdrawSuccess.html'
         }).otherwise({redirectTo:''});
