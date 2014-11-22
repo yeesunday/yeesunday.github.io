@@ -88,6 +88,12 @@ ul,ol{
   src: local('Rye Regular'), local('Rye-Regular'), url('../fonts/Rye-Regular.woff') format('woff');
 }
 @font-face {
+  font-family: 'Rye';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Rye Regular'), local('Rye-Regular'), url('../fonts/Rye-Regular.tff') format('woff');
+}
+@font-face {
   font-family: 'Monda';
   font-style: normal;
   font-weight: normal;
