@@ -91,7 +91,7 @@ ul,ol{
   font-family: 'Rye';
   font-style: normal;
   font-weight: 400;
-  src: local('Rye Regular'), local('Rye-Regular'), url('../fonts/Rye-Regular.tff') format('woff');
+  src: local('Rye Regular'), local('Rye-Regular'), url('../fonts/Rye-Regular.ttf') format('woff');
 }
 @font-face {
   font-family: 'Monda';
