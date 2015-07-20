@@ -1,0 +1,8 @@
+.modals-backdrop {
+  background: transparent;
+}
+.modal {
+  background-color: rgba(255, 255, 255, 0.93);
+  -moz-box-shadow:-1px 1px 20px #FFFFFF; -webkit-box-shadow:-1px 1px 20px #FFFFFF; box-shadow:-1px 1px 20px #FFFFFF;
+  color: #003399;
+}
