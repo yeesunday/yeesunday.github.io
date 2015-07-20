@@ -2,7 +2,11 @@
   background: transparent;
 }
 .modal {
-  background-color: rgba(255, 255, 255, 0.93);
-  -moz-box-shadow:-1px 1px 20px #FFFFFF; -webkit-box-shadow:-1px 1px 20px #FFFFFF; box-shadow:-1px 1px 20px #FFFFFF;
-  color: #003399;
+  background-color: rgba(0, 14, 37, 0.85);
+  -moz-box-shadow:0px 0px 20px #13AACC; -webkit-box-shadow:0px 0px 20px #13AACC; box-shadow:0px 0px 20px #13AACC;
+  color: #FFFFFF;
+}
+.modal .title {
+  text-shadow: 0px 0px 10px rgba(23, 212, 245, 1);
+  font-weight: bolder;
 }
