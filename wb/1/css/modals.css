@@ -55,7 +55,7 @@
   font-size: 30px;
 }
 .modal .modal-body {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .modal h3 {
