@@ -2,11 +2,31 @@
   background: transparent;
 }
 .modal {
-  background-color: rgba(0, 14, 37, 0.85);
-  -moz-box-shadow:0px 0px 20px #13AACC; -webkit-box-shadow:0px 0px 20px #13AACC; box-shadow:0px 0px 20px #13AACC;
+  background-color: rgba(0, 14, 37, 0.93);
   color: #FFFFFF;
 }
 .modal .title {
   text-shadow: 0px 0px 10px rgba(23, 212, 245, 1);
   font-weight: bolder;
+}
+
+
+@keyframes blink {
+  0% { box-shadow: 0 0 20px #13AACC; }
+  50% { box-shadow: 0 0 5px #13AACC; }
+  100% { box-shadow: 0 0 20px #13AACC; }
+}
+
+@-webkit-keyframes blink {
+  0% { box-shadow: 0 0 20px #13AACC; }
+  50% { box-shadow: 0 0 5px #13AACC; }
+  100% { box-shadow: 0 0 20px #13AACC; }
+}
+
+.modal {
+  -webkit-animation: blink 2.0s linear infinite;
+  -moz-animation: blink 2.0s linear infinite;
+  -ms-animation: blink 2.0s linear infinite;
+  -o-animation: blink 2.0s linear infinite;
+  animation: blink 2.0s linear infinite;
 }
