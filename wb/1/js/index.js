@@ -13,26 +13,10 @@ $(function () {
       },
       cache: false,
       success: function(res){
-        isFinished = res.ret.is_finished;
-        currentFragment = res.ret.img_url;
+        res = JSON.parse(res);
+        isFinished = res.ret.complete;
+        currentFragment = res.ret.image_url;
 
-        if (isFinished) {
-          shareData = {
-            'image_url':'',
-            'link_url':'http://www.baidu.com',
-            'title':'和别克一起，拼出炫彩夜色！',
-            'content':'我已成功点亮炫彩夜色，大奖马上来！不要眼红，一起来玩！',
-            'shared_to':'0'
-          }
-        } else {
-          shareData = {
-            'image_url':'',
-            'link_url':'http://www.baidu.com',
-            'title':'和别克一起，拼出炫彩夜色！',
-            'content':'我已开始拼色之旅，有木有一起夜跑的，约起！',
-            'shared_to':'0'
-          }
-        }
         main();
       }
     });
@@ -50,34 +34,51 @@ $(function () {
     });
   });
 
-  $('.btn-pick').click(function () {
-    //var _img;
-    //$.ajax({
-    //  type: "post",
-    //  url: Server.getTask,
-    //  data: {
-    //    openid: openId,
-    //    access_token: token
-    //  },
-    //  cache: false,
-    //  success: function(res){
-    //    _img = res.ret.img_url;
-        Modal.normal({
-          title:'领取任务',
-          content:'<img src="../img/fragment-2.png" >' +
-                  '<h3>任务一奖励碎片</h3>' +
-                  '<a class="btn btn-go">前往任务！</a>'
-        });
-      //}
-    //});
-  });
+
   function main() {
+    if (isFinished) {
+      shareData = {
+        'image_url':'',
+        'link_url':'http://www.baidu.com',
+        'title':'和别克一起，拼出炫彩夜色！',
+        'content':'我已成功点亮炫彩夜色，大奖马上来！不要眼红，一起来玩！',
+        'shared_to':'0'
+      }
+    } else {
+      shareData = {
+        'image_url':'',
+        'link_url':'http://www.baidu.com',
+        'title':'和别克一起，拼出炫彩夜色！',
+        'content':'我已开始拼色之旅，有木有一起夜跑的，约起！',
+        'shared_to':'0'
+      }
+    }
+    $('.car').attr('src', currentFragment);
+    $('.btn-pick').click(function () {
+      var _img;
+      $.ajax({
+        type: "post",
+        url: Server.getTask,
+        data: {
+          openid: openId,
+          access_token: token
+        },
+        cache: false,
+        success: function (res) {
+          res = JSON.parse(res);
+          _img = res.ret;
+          Modal.normal({
+            title: '领取任务',
+            content: '<img src="' + _img + '" >' +
+            '<h3>任务一奖励碎片</h3>' +
+            '<a class="btn btn-go">前往任务！</a>'
+          });
+        }
+      });
+    });
+
     $('.btn-share').click(function () {
       setShare(shareData);
     });
-
-    
-
-
   }
 })

@@ -20,11 +20,12 @@
 //  }
 //});
 
-var root = 'http://walk.ledongli.cn:8090/v2/rest/open';
+//var root = 'http://walk.ledongli.cn:8090/v2/rest/open';
+var root = 'http://test.ledongli.cn:7080/v2/rest/open';
 var Server = {
   getToken: root + '/web_access_token',
   getTask: root + '/buick/get_task',
-  getStatus: root + '/buick/get_status'
+  getStatus: root + '/buick/get_pics'
 }
 
 var openId, token;
@@ -36,24 +37,26 @@ function getAuthen (callback) {
   //  return false;
   //}
 
-  $.ajax({
-    type: "get",
-    url: Server.getToken,
-    data: {
-      appid: 'BuickIllumiRun',
-      appsecret: 'b403716b6435ca9f3491272ddd94217f',
-      uid: uid
-    },
-    cache: false,
-    success: function(res){
-      openId = res.ret.openid;
-      token = res.ret.access_token;
-
-      if (callback) {
-        callback();
-      }
-    }
-  });
+  //$.ajax({
+  //  type: "get",
+  //  url: Server.getToken,
+  //  data: {
+  //    appid: 'BuickIllumiRun',
+  //    appsecret: 'b403716b6435ca9f3491272ddd94217f'
+  //  },
+  //  cache: false,
+  //  success: function(res){
+  //    openId = res.ret.openid;
+  //    token = res.ret.access_token;
+  //
+  //    if (callback) {
+  //      callback();
+  //    }
+  //  }
+  //});
+  openId = 123;
+  token = 'test';
+  callback();
 }
 
 var ios = false;
