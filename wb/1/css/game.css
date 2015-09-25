@@ -75,13 +75,21 @@ body {
 }
 .options {
   position: absolute;
-  bottom: 12%;
+  bottom: 7%;
   width: 100%;
-  height: 23%;
+  height: 13%;
 }
 .btn {
   display: block;
   width: 43%;
-  height: 16%;
-  margin: 2rem auto;
+  height: 40%;
+  left: 30%;
+}
+.btn-begin {
+  position: absolute;
+  top: 0%;
+}
+.btn-history {
+  position: absolute;
+  top: 58%;
 }
