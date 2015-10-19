@@ -132,7 +132,7 @@ $(function () {
 
   getDistance(setLevelData);
   function setLevelData (distanceData) {
-    alert(JSON.stringify(distanceData));
+    alert(1+ ' ' + JSON.stringify(distanceData));
     if (distanceData && distanceData.report) {
       currentLevel = Math.floor(distanceData.report.runningdistance / 4);
     } else {
