@@ -108,3 +108,17 @@ function getUserInfo () {
     });
   }
 }
+function getDistance() {
+  var start = 10000000;
+  var now = new Date();
+
+  if (android) {
+    return window.web && web.getDailyStatsWithData({startDate: start, endDate: now.getTime()});
+  } else if (ios) {
+    connectWebViewJavascriptBridge(function (bridge) {
+      bridge.callHandler('getDailyStatsWithData', {startDate: start, endDate: now.getTime()}, function(response) {
+        return response;
+      })
+    });
+  }
+}
