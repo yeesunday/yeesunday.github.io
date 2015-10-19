@@ -130,7 +130,7 @@ $(function () {
   }
 
   function setLevelData () {
-    currentLevel = Math.floor(userData.report.runningdistance / 4);
+    currentLevel = Math.floor(userData.report.runningdistance / 4 || 0);
     if (currentLevel > 4) {
       currentLevel = 4;
     }
