@@ -124,6 +124,7 @@ function getDistance(callback) {
   } else if (ios) {
     connectWebViewJavascriptBridge(function (bridge) {
       bridge.callHandler('getDailyStatsWithData', {startDate: start, endDate: now}, function(response) {
+        alert('response ' + JSON.stringify(response))
         callback(response);
       })
     });
