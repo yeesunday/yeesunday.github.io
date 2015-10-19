@@ -97,6 +97,7 @@ function setShare (conf) {
     });
   }
 }
+
 function getUserInfo () {
   if (android) {
     return window.web && web.getUserInfo();
@@ -108,15 +109,19 @@ function getUserInfo () {
     });
   }
 }
+
 function getDistance() {
-  var start = 10000000;
+  var start = new Date();
+  start.setHours(0);
+  start.setMinutes(0);
+  start.setSeconds(0);
   var now = new Date();
 
   if (android) {
-    return window.web && web.getDailyStatsWithData({startDate: start, endDate: now.getTime()});
+    return window.web && web.getDailyStatsWithData({startDate: start.getTime()/1000, endDate: now.getTime()/1000});
   } else if (ios) {
     connectWebViewJavascriptBridge(function (bridge) {
-      bridge.callHandler('getDailyStatsWithData', {startDate: start, endDate: now.getTime()}, function(response) {
+      bridge.callHandler('getDailyStatsWithData', {startDate: start.getTime()/1000, endDate: now.getTime()/1000}, function(response) {
         return response;
       })
     });
