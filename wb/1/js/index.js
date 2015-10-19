@@ -32,7 +32,6 @@ $(function () {
   var last;
   var shareData;
   var userData = getUserInfo();
-  var distance = getDistance();
 
   if (cookie.get('last')) {
     last = JSON.parse(cookie.get('last'));
@@ -44,7 +43,7 @@ $(function () {
     };
   };
 
-  setLevelData();
+  //setLevelData();
   refreshView(currentLevel);
 
   for (var i = last.level; i < currentLevel; i++) {
