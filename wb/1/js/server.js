@@ -110,7 +110,7 @@ function getUserInfo () {
   }
 }
 
-function getDistance() {
+function getDistance(callback) {
   var start = new Date();
   start.setHours(0);
   start.setMinutes(0);
@@ -120,11 +120,11 @@ function getDistance() {
   now = Math.floor(now.getTime()/1000);
 
   if (android) {
-    return window.web && web.getDailyStatsWithData({startDate: start, endDate: now});
+    callback(web.getDailyStatsWithData({startDate: start, endDate: now}));
   } else if (ios) {
     connectWebViewJavascriptBridge(function (bridge) {
       bridge.callHandler('getDailyStatsWithData', {startDate: start, endDate: now}, function(response) {
-        return response;
+        callback(response);
       })
     });
   }
