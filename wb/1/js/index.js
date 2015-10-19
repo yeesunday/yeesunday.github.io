@@ -44,6 +44,7 @@ $(function () {
   };
 
   //setLevelData();
+  getDistance(setLevelData);
   refreshView(currentLevel);
 
   for (var i = last.level; i < currentLevel; i++) {
