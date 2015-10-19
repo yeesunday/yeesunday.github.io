@@ -1,49 +1,123 @@
 $(function () {
-  var isFinished = false;
-  var currentFragment;
+  var numCn = ['一', '二', '三', '四'];
+  var levelData = [
+    {
+      level: 0,
+      finished: false,
+      claimed: false
+    },
+    {
+      level: 1,
+      finished: false,
+      claimed: false
+    },
+    {
+      level: 2,
+      finished: false,
+      claimed: false
+    },
+    {
+      level: 3,
+      finished: false,
+      claimed: false
+    },
+    {
+      level: 4,
+      finished: false,
+      claimed: false
+    }
+  ];
+  var currentLevel = 0;
+  var nextLevel = 0;
+  var last;
   var shareData;
+  var userData = getUserInfo();
 
-  getAuthen(function () {
-    $.ajax({
-      type: "get",
-      url: Server.getStatus,
-      data: {
-        openid: openId,
-        access_token: token
-      },
-      cache: false,
-      success: function(res){
-        res = JSON.parse(res);
-        isFinished = res.ret.complete;
-        currentFragment = res.ret.image_url;
+  if (cookie.get('last')) {
+    last = JSON.parse(cookie.get('last'));
+  } else {
+    last = {
+      level: 0,
+      finished: false,
+      claimed: false
+    };
+  };
 
-        main();
-      }
-    });
+  setLevelData();
+  refreshView(currentLevel);
+
+  for (var i = last.level; i < currentLevel; i++) {
+    alert('恭喜完成第' + numCn[i] + '关挑战！获得碎片一枚');
+  }
+  if (currentLevel == 4) {
+    cookie.set('last', JSON.stringify({
+      level: 4,
+      claimed: true,
+      finished: true
+    }));
+  }
+
+  $('.btn-pick').click(function () {
+    if (!levelData[currentLevel].claimed) {
+      Modal.normal({
+        title: '第' + numCn[nextLevel - 1] + '个任务',
+        content: '<img class="fragment" src="../img/fragment-' + nextLevel + '.png" >' +
+        '<p class="fragment-text">完成' + 3*nextLevel + '公里跑步<br>即可点亮第' + numCn[nextLevel - 1] + '个碎片！</p>' +
+        '<a class="btn-go"></a>'
+      });
+    } else {
+      Modal.normal({
+        title: '第' + numCn[nextLevel - 1] + '个任务',
+        content: '<img class="fragment" src="../img/fragment-' + nextLevel + '.png" >' +
+        '<p class="fragment-text">完成' + 3*nextLevel + '公里跑步<br>即可点亮第' + numCn[nextLevel - 1] + '个碎片！</p>' +
+        '<a class="btn-run"></a>'
+      });
+    }
   });
+
+
 
   $('.btn-rule').click(function () {
     Modal.normal({
-      title:'活动规则',
-      content:'<h3>STEP 1</h3>' +
-      '<p>领到神秘碎片后前往乐动力跑步页面，每次完成3公里任务，回到活动页面，碎片立刻为你点亮。一共4张碎片，需要手动领取哦。' +
-      '<h3>STEP2</h3>' +
-      '<p>点亮至少一块碎片并分享至朋友圈有更大机会赢取帅跑奖品哦。</p>' +
-      '<h3>STEP3</h3>' +
-      '<p>当你点亮全部碎片时可要站稳咯，五彩酷炫的颜色风暴即将向你袭来！</p>'
+      title:'',
+      content:'<img src="../img/rule_bg.png" class="rule-bg">'
+    });
+  });
+  $('.btn-share').click(function () {
+    setShare(shareData);
+  });
+  $('body').delegate('.btn-go', 'click', function() {
+    $(this).removeClass('btn-go').addClass('btn-run');
+    cookie.set('last', JSON.stringify({
+      level: currentLevel,
+      claimed: true,
+      finished: false
+    }));
+  })
+  $('.btn-lucky').click(function () {
+    Modal.normal({
+      title: '',
+      content:
+      '<img src="../img/s_1.png" class="s_1">' +
+      '<p class="s_2">恭喜您获得了活动奖品！请留下你的联系信息，我们将在活动结束后统一发出奖品。</p>' +
+      '<input type="text" placeholder="姓名" class="modal-input lucky-name">' +
+      '<input type="tel" placeholder="电话" class="modal-input lucky-mobile">' +
+      '<a class="btn-submit"></a>'
     });
   });
 
-
-  function main() {
-    if (isFinished) {
+  function refreshView(level) {
+    $('.car').attr('src', '../img/car-' + level + '.png');
+    if (level == 4) {
       shareData = {
         'image_url':'',
         'link_url':'http://www.baidu.com',
         'title':'和别克一起，拼出炫彩夜色！',
         'content':'我已成功点亮炫彩夜色，大奖马上来！不要眼红，一起来玩！',
         'shared_to':'0'
-      }
+      };
+      $('.btn-pick').hide();
+      $('.btn-lucky').show();
     } else {
       shareData = {
         'image_url':'',
@@ -51,34 +125,63 @@ $(function () {
         'title':'和别克一起，拼出炫彩夜色！',
         'content':'我已开始拼色之旅，有木有一起夜跑的，约起！',
         'shared_to':'0'
+      };
+    }
+  }
+
+  function setLevelData () {
+    currentLevel = Math.floor(userData.report.runningdistance / 4);
+    if (currentLevel > 4) {
+      currentLevel = 4;
+    }
+    nextLevel = currentLevel + 1;
+
+    if (last.level == currentLevel) {
+      levelData[currentLevel] = last;
+    } else {
+      for (var i = 0; i < currentLevel; i++) {
+        levelData[i] = {
+          level: i,
+          finished: true,
+          claim: true
+        }
       }
     }
-    $('.car').attr('src', currentFragment);
-    $('.btn-pick').click(function () {
-      var _img;
-      $.ajax({
-        type: "post",
-        url: Server.getTask,
-        data: {
-          openid: openId,
-          access_token: token
-        },
-        cache: false,
-        success: function (res) {
-          res = JSON.parse(res);
-          _img = res.ret;
-          Modal.normal({
-            title: '领取任务',
-            content: '<img src="' + _img + '" >' +
-            '<h3>任务一奖励碎片</h3>' +
-            '<a class="btn btn-go">前往任务！</a>'
-          });
-        }
-      });
-    });
-
-    $('.btn-share').click(function () {
-      setShare(shareData);
-    });
   }
+  //Modal.normal({
+  //  title: '',
+  //  content:
+  //  '<img class="f_1" src="../img/f_1.png"/>' +
+  //  '<h3 class="f_2 text-c">但是，炫彩夜色已属于你！</h3>' +
+  //  '<a class="btn-modal-share"></a>' +
+  //  '<a class="btn-experience"></a>'
+  //});
+
+
+  //Modal.normal({
+  //  title: '',
+  //  content:
+  //  '<img class="s_2_1" src="../img/s_2.png"/>' +
+  //  '<a class="btn-modal-share"></a>' +
+  //  '<a class="btn-experience"></a>'
+  //});
+
+  //getAuthen(function () {
+  //  $.ajax({
+  //    type: "get",
+  //    url: Server.getStatus,
+  //    data: {
+  //      openid: openId,
+  //      access_token: token
+  //    },
+  //    cache: false,
+  //    success: function(res){
+  //      res = JSON.parse(res);
+  //      isFinished = res.ret.complete;
+  //      currentFragment = res.ret.image_url;
+  //
+  //      main();
+  //    }
+  //  });
+  //});
 })

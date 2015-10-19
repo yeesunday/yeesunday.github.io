@@ -40,6 +40,10 @@ Modal.normal = function (config) {
   var wh = window.innerHeight;
   var ww = window.document.body.clientWidth;
 
+  if (_config.title == '') {
+    $modal.find('.title').remove();
+  }
+
   $modal.css({
     width: $wrapper.width() * _config.width / 100,
     height: _config.adaptive ? '' : wh * _config.height / 100

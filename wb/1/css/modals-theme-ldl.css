@@ -30,3 +30,43 @@
   -o-animation: blink 2.0s linear infinite;
   animation: blink 2.0s linear infinite;
 }
+
+.text-c {
+  text-align: center;
+}
+.modal-input {
+  display: block;
+  float: left;
+  padding: 0.5rem;
+  background: transparent;
+  margin-top: 2px;
+  overflow: hidden;
+  border: 1px solid #aeaeae;
+  margin-right: 5%;
+  font-size: 1.8rem;
+  color: #22b1ff;
+  line-height: 22px;
+  border-radius: 3px;
+}
+.lucky-name {
+  width: 30%;
+}
+.lucky-mobile {
+  width: 53%;
+  margin-right: 0%;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: #22b1ff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #22b1ff;
+  opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #22b1ff;
+  opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #22b1ff;
+}

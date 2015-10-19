@@ -97,3 +97,14 @@ function setShare (conf) {
     });
   }
 }
+function getUserInfo () {
+  if (android) {
+    return window.web && web.getUserInfo();
+  } else if (ios) {
+    connectWebViewJavascriptBridge(function (bridge) {
+      bridge.callHandler('getUserInfo', {}, function(response) {
+        return response;
+      })
+    });
+  }
+}
