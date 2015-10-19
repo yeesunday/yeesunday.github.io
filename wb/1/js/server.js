@@ -115,13 +115,15 @@ function getDistance() {
   start.setHours(0);
   start.setMinutes(0);
   start.setSeconds(0);
+  start = Math.floor(start.getTime()/1000);
   var now = new Date();
+  now = Math.floor(now.getTime()/1000);
 
   if (android) {
-    return window.web && web.getDailyStatsWithData({startDate: start.getTime()/1000, endDate: now.getTime()/1000});
+    return window.web && web.getDailyStatsWithData({startDate: start, endDate: now});
   } else if (ios) {
     connectWebViewJavascriptBridge(function (bridge) {
-      bridge.callHandler('getDailyStatsWithData', {startDate: start.getTime()/1000, endDate: now.getTime()/1000}, function(response) {
+      bridge.callHandler('getDailyStatsWithData', {startDate: start, endDate: now}, function(response) {
         return response;
       })
     });
