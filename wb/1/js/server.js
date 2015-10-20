@@ -118,13 +118,14 @@ function getDistance(callback) {
   start = Math.floor(start.getTime());
   var now = new Date();
   now = Math.floor(now.getTime());
+  var data = JSON.stringify({startDate: start, endDate: now});
 
   alert(2);
   if (android) {
-    callback(web.getDailyStatsWithData({startDate: start, endDate: now}));
+    callback(web.getDailyStatsWithData(data));
   } else if (ios) {
     connectWebViewJavascriptBridge(function (bridge) {
-      bridge.callHandler('getDailyStatsWithData', {startDate: start, endDate: now}, function(response) {
+      bridge.callHandler('getDailyStatsWithData', data, function(response) {
         alert('response ' + JSON.stringify(response))
         callback(response);
       })
