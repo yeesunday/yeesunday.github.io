@@ -119,6 +119,7 @@ function getDistance(callback) {
   var now = new Date();
   now = Math.floor(now.getTime()/1000);
   var data = JSON.stringify({startDate: start, endDate: now});
+  console.log(data);
 
   alert(3);
   if (android) {
