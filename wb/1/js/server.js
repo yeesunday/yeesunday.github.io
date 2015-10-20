@@ -115,12 +115,12 @@ function getDistance(callback) {
   start.setHours(0);
   start.setMinutes(0);
   start.setSeconds(0);
-  start = Math.floor(start.getTime());
+  start = Math.floor(start.getTime()/1000);
   var now = new Date();
-  now = Math.floor(now.getTime());
+  now = Math.floor(now.getTime()/1000);
   var data = JSON.stringify({startDate: start, endDate: now});
 
-  alert(1);
+  alert(3);
   if (android) {
     callback(web.getDailyStatsWithData(data));
   } else if (ios) {
