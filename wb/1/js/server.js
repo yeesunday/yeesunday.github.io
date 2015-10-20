@@ -115,11 +115,10 @@ function getDistance(callback) {
   start.setHours(0);
   start.setMinutes(0);
   start.setSeconds(0);
-  start = Math.floor(start.getTime()/1000);
+  start = Math.floor(start.getTime());
   var now = new Date();
-  now = Math.floor(now.getTime()/1000);
+  now = Math.floor(now.getTime());
 
-  alert(1);
   if (android) {
     callback(web.getDailyStatsWithData({startDate: start, endDate: now}));
   } else if (ios) {
