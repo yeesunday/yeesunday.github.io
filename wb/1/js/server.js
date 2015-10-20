@@ -119,6 +119,7 @@ function getDistance(callback) {
   var now = new Date();
   now = Math.floor(now.getTime());
 
+  alert(2);
   if (android) {
     callback(web.getDailyStatsWithData({startDate: start, endDate: now}));
   } else if (ios) {
