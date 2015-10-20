@@ -120,7 +120,7 @@ function getDistance(callback) {
   now = Math.floor(now.getTime());
   var data = JSON.stringify({startDate: start, endDate: now});
 
-  alert(2);
+  alert(1);
   if (android) {
     callback(web.getDailyStatsWithData(data));
   } else if (ios) {
