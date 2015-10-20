@@ -43,69 +43,87 @@ $(function () {
     };
   };
 
-  //setLevelData();
-  getDistance(setLevelData);
-  refreshView(currentLevel);
+  getDistance(main);
 
-  for (var i = last.level; i < currentLevel; i++) {
-    alert('恭喜完成第' + numCn[i] + '关挑战！获得碎片一枚');
-  }
-  if (currentLevel == 4) {
-    cookie.set('last', JSON.stringify({
-      level: 4,
-      claimed: true,
-      finished: true
-    }));
-  }
-
-  $('.btn-pick').click(function () {
-    if (!levelData[currentLevel].claimed) {
-      Modal.normal({
-        title: '第' + numCn[nextLevel - 1] + '个任务',
-        content: '<img class="fragment" src="../img/fragment-' + nextLevel + '.png" >' +
-        '<p class="fragment-text">完成' + 3*nextLevel + '公里跑步<br>即可点亮第' + numCn[nextLevel - 1] + '个碎片！</p>' +
-        '<a class="btn-go"></a>'
-      });
+  function main (distanceData) {
+    alert(1+ ' ' + JSON.stringify(distanceData));
+    if (distanceData && distanceData.report) {
+      currentLevel = Math.floor(distanceData.report.runningdistance / 4);
     } else {
-      Modal.normal({
-        title: '第' + numCn[nextLevel - 1] + '个任务',
-        content: '<img class="fragment" src="../img/fragment-' + nextLevel + '.png" >' +
-        '<p class="fragment-text">完成' + 3*nextLevel + '公里跑步<br>即可点亮第' + numCn[nextLevel - 1] + '个碎片！</p>' +
-        '<a class="btn-run"></a>'
-      });
+      currentLevel = 0;
     }
-  });
 
+    if (currentLevel > 4) {
+      currentLevel = 4;
+    }
+    nextLevel = currentLevel + 1;
 
+    if (last.level == currentLevel) {
+      levelData[currentLevel] = last;
+    } else {
+      for (var i = 0; i < currentLevel; i++) {
+        levelData[i] = {
+          level: i,
+          finished: true,
+          claim: true
+        }
+      }
+    }
 
-  $('.btn-rule').click(function () {
-    Modal.normal({
-      title:'',
-      content:'<img src="../img/rule_bg.png" class="rule-bg">'
+    for (var i = last.level; i < currentLevel; i++) {
+      alert('恭喜完成第' + numCn[i] + '关挑战！获得碎片一枚');
+    }
+    if (currentLevel == 4) {
+      cookie.set('last', JSON.stringify({
+        level: 4,
+        claimed: true,
+        finished: true
+      }));
+    }
+
+    refreshView(currentLevel);
+
+    $('.btn-pick').click(function () {
+      if (!levelData[currentLevel].claimed) {
+        Modal.normal({
+          title: '第' + numCn[nextLevel - 1] + '个任务',
+          content: '<img class="fragment" src="../img/fragment-' + nextLevel + '.png" >' +
+          '<p class="fragment-text">完成' + 3*nextLevel + '公里跑步<br>即可点亮第' + numCn[nextLevel - 1] + '个碎片！</p>' +
+          '<a class="btn-go"></a>'
+        });
+      } else {
+        Modal.normal({
+          title: '第' + numCn[nextLevel - 1] + '个任务',
+          content: '<img class="fragment" src="../img/fragment-' + nextLevel + '.png" >' +
+          '<p class="fragment-text">完成' + 3*nextLevel + '公里跑步<br>即可点亮第' + numCn[nextLevel - 1] + '个碎片！</p>' +
+          '<a class="btn-run"></a>'
+        });
+      }
     });
-  });
-  $('.btn-share').click(function () {
-    setShare(shareData);
-  });
-  $('body').delegate('.btn-go', 'click', function() {
-    $(this).removeClass('btn-go').addClass('btn-run');
-    cookie.set('last', JSON.stringify({
-      level: currentLevel,
-      claimed: true,
-      finished: false
-    }));
-  })
-  $('.btn-lucky').click(function () {
-    Modal.normal({
-      title: '',
-      content:
-      '<img src="../img/s_1.png" class="s_1">' +
-      '<p class="s_2">恭喜您获得了活动奖品！请留下你的联系信息，我们将在活动结束后统一发出奖品。</p>' +
-      '<input type="text" placeholder="姓名" class="modal-input lucky-name">' +
-      '<input type="tel" placeholder="电话" class="modal-input lucky-mobile">' +
-      '<a class="btn-submit"></a>'
+
+    $('.btn-share').click(function () {
+      setShare(shareData);
     });
-  });
+    $('body').delegate('.btn-go', 'click', function() {
+      $(this).removeClass('btn-go').addClass('btn-run');
+      cookie.set('last', JSON.stringify({
+        level: currentLevel,
+        claimed: true,
+        finished: false
+      }));
+    })
+    $('.btn-lucky').click(function () {
+      Modal.normal({
+        title: '',
+        content:
+        '<img src="../img/s_1.png" class="s_1">' +
+        '<p class="s_2">恭喜您获得了活动奖品！请留下你的联系信息，我们将在活动结束后统一发出奖品。</p>' +
+        '<input type="text" placeholder="姓名" class="modal-input lucky-name">' +
+        '<input type="tel" placeholder="电话" class="modal-input lucky-mobile">' +
+        '<a class="btn-submit"></a>'
+      });
+    });
+  }
 
   function refreshView(level) {
     $('.car').attr('src', '../img/car-' + level + '.png');
@@ -130,32 +148,12 @@ $(function () {
     }
   }
 
-  getDistance(setLevelData);
-  function setLevelData (distanceData) {
-    alert(1+ ' ' + JSON.stringify(distanceData));
-    if (distanceData && distanceData.report) {
-      currentLevel = Math.floor(distanceData.report.runningdistance / 4);
-    } else {
-      currentLevel = 0;
-    }
-
-    if (currentLevel > 4) {
-      currentLevel = 4;
-    }
-    nextLevel = currentLevel + 1;
-
-    if (last.level == currentLevel) {
-      levelData[currentLevel] = last;
-    } else {
-      for (var i = 0; i < currentLevel; i++) {
-        levelData[i] = {
-          level: i,
-          finished: true,
-          claim: true
-        }
-      }
-    }
-  }
+  $('.btn-rule').click(function () {
+    Modal.normal({
+      title:'',
+      content:'<img src="../img/rule_bg.png" class="rule-bg">'
+    });
+  });
   //Modal.normal({
   //  title: '',
   //  content:
