@@ -89,6 +89,7 @@ function getUid () {
   }
 }
 function setShare (conf) {
+  conf = JSON.stringify(conf);
   if (android) {
     return window.web && web.setWebViewShare(conf);
   } else if (ios) {
