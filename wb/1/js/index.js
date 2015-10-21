@@ -31,7 +31,7 @@ $(function () {
   var nextLevel = 0;
   var last;
   var shareData;
-  var userData = getUserInfo();
+  var claimedFirst = cookie.get('claimedFirst');
 
   if (cookie.get('last')) {
     last = JSON.parse(cookie.get('last'));
@@ -46,44 +46,51 @@ $(function () {
   getDistance(main);
 
   function main (distanceData) {
-    alert(1+ ' ' + JSON.stringify(distanceData));
-    if (distanceData && distanceData.report) {
-      currentLevel = Math.floor(distanceData.report.runningdistance / 4);
+    if (claimedFirst) {
+      if (distanceData && distanceData.report) {
+        currentLevel = Math.floor(distanceData.report.runningdistance / 3);
+      } else {
+        currentLevel = 0;
+      }
+
+      if (currentLevel > 4) {
+        currentLevel = 4;
+      }
+
+      console.log(currentLevel);
+      if (last.level == currentLevel) {
+        levelData[currentLevel] = last;
+      } else {
+        for (var i = 0; i < currentLevel; i++) {
+          levelData[i] = {
+            level: i,
+            finished: true,
+            claim: true
+          }
+        }
+      }
+      for (var i = last.level; i < currentLevel; i++) {
+        alert('恭喜完成第' + numCn[i] + '关挑战！获得碎片一枚');
+      }
+      if (currentLevel == 4) {
+        cookie.set('last', JSON.stringify({
+          level: 4,
+          claimed: true,
+          finished: true
+        }));
+      }
     } else {
       currentLevel = 0;
     }
 
-    if (currentLevel > 4) {
-      currentLevel = 4;
-    }
     nextLevel = currentLevel + 1;
-
-    if (last.level == currentLevel) {
-      levelData[currentLevel] = last;
-    } else {
-      for (var i = 0; i < currentLevel; i++) {
-        levelData[i] = {
-          level: i,
-          finished: true,
-          claim: true
-        }
-      }
-    }
-
-    for (var i = last.level; i < currentLevel; i++) {
-      alert('恭喜完成第' + numCn[i] + '关挑战！获得碎片一枚');
-    }
-    if (currentLevel == 4) {
-      cookie.set('last', JSON.stringify({
-        level: 4,
-        claimed: true,
-        finished: true
-      }));
-    }
-
     refreshView(currentLevel);
 
     $('.btn-pick').click(function () {
+      if (currentLevel == 0) {
+        cookie.set('claimedFirst', true);
+      }
+
       if (!levelData[currentLevel].claimed) {
         Modal.normal({
           title: '第' + numCn[nextLevel - 1] + '个任务',
@@ -111,17 +118,27 @@ $(function () {
         claimed: true,
         finished: false
       }));
+    }).delegate('.btn-modal-share', 'click', function() {
+      setShare(shareData);
     })
     $('.btn-lucky').click(function () {
       Modal.normal({
         title: '',
         content:
-        '<img src="../img/s_1.png" class="s_1">' +
-        '<p class="s_2">恭喜您获得了活动奖品！请留下你的联系信息，我们将在活动结束后统一发出奖品。</p>' +
-        '<input type="text" placeholder="姓名" class="modal-input lucky-name">' +
-        '<input type="tel" placeholder="电话" class="modal-input lucky-mobile">' +
-        '<a class="btn-submit"></a>'
+        '<img class="f_1" src="../img/f_1.png"/>' +
+        '<h3 class="f_2 text-c">但是，炫彩夜色已属于你！</h3>' +
+        '<a class="btn-modal-share"></a>' +
+        '<a class="btn-experience"></a>'
       });
+      //Modal.normal({
+      //  title: '',
+      //  content:
+      //  '<img src="../img/s_1.png" class="s_1">' +
+      //  '<p class="s_2">恭喜您获得了活动奖品！请留下你的联系信息，我们将在活动结束后统一发出奖品。</p>' +
+      //  '<input type="text" placeholder="姓名" class="modal-input lucky-name">' +
+      //  '<input type="tel" placeholder="电话" class="modal-input lucky-mobile">' +
+      //  '<a class="btn-submit"></a>'
+      //});
     });
   }
 
@@ -154,15 +171,6 @@ $(function () {
       content:'<img src="../img/rule_bg.png" class="rule-bg">'
     });
   });
-  //Modal.normal({
-  //  title: '',
-  //  content:
-  //  '<img class="f_1" src="../img/f_1.png"/>' +
-  //  '<h3 class="f_2 text-c">但是，炫彩夜色已属于你！</h3>' +
-  //  '<a class="btn-modal-share"></a>' +
-  //  '<a class="btn-experience"></a>'
-  //});
-
 
   //Modal.normal({
   //  title: '',
@@ -170,24 +178,5 @@ $(function () {
   //  '<img class="s_2_1" src="../img/s_2.png"/>' +
   //  '<a class="btn-modal-share"></a>' +
   //  '<a class="btn-experience"></a>'
-  //});
-
-  //getAuthen(function () {
-  //  $.ajax({
-  //    type: "get",
-  //    url: Server.getStatus,
-  //    data: {
-  //      openid: openId,
-  //      access_token: token
-  //    },
-  //    cache: false,
-  //    success: function(res){
-  //      res = JSON.parse(res);
-  //      isFinished = res.ret.complete;
-  //      currentFragment = res.ret.image_url;
-  //
-  //      main();
-  //    }
-  //  });
   //});
 })
