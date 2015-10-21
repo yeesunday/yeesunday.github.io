@@ -46,9 +46,19 @@ $(function () {
   getDistance(main);
 
   function main (distanceData) {
+    alert('response ' + JSON.stringify(distanceData));
     if (claimedFirst) {
-      if (distanceData && distanceData.report) {
-        currentLevel = Math.floor(distanceData.report.runningdistance / 3);
+      if (distanceData) {
+        var data = distanceData.dailystats[0].report;
+        var hasRun = false;
+        for(var i = 0; i < data.length; i++) {
+          if (data[i].activity == 'running') {
+            hasRun = true;
+            currentLevel = Math.floor(data[i].distance / 3000);
+            break;
+          }
+        }
+        if(!hasRun) {currentLevel = 0;}
       } else {
         currentLevel = 0;
       }

@@ -37,17 +37,11 @@ function getDistance(callback) {
   now = Math.floor(now.getTime()/1000);
   var data = JSON.stringify({startDate: start, endDate: now});
 
-  //callback({
-  //  report:{
-  //    runningdistance: 12
-  //  }
-  //})
   if (android) {
     callback(web.getDailyStatsWithData(data));
   } else if (ios) {
     connectWebViewJavascriptBridge(function (bridge) {
       bridge.callHandler('getDailyStatsWithData', data, function(response) {
-        alert('response ' + JSON.stringify(response));
         callback(response);
       })
     });
