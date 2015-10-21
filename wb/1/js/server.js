@@ -43,10 +43,10 @@ function getDistance(callback) {
   //  }
   //})
   if (android) {
-    callback(web.getDailyStatsWithData(data));
+    callback(web.getActivityWithData(data));
   } else if (ios) {
     connectWebViewJavascriptBridge(function (bridge) {
-      bridge.callHandler('getDailyStatsWithData', data, function(response) {
+      bridge.callHandler('getActivityWithData', data, function(response) {
         alert('response ' + JSON.stringify(response));
         callback(response);
       })
