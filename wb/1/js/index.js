@@ -138,7 +138,7 @@ $(function () {
         '<img class="f_1" src="../img/f_1.png"/>' +
         '<h3 class="f_2 text-c">但是，炫彩夜色已属于你！</h3>' +
         '<a class="btn-modal-share"></a>' +
-        '<a class="btn-experience"></a>'
+        '<a href="http://m.buick.com.cn/v3/testdrive.html?utm_source=ledongli&utm_medium=app&utm_term=SP-BU1500860_HS201504335_YGPTH5_426748&utm_content=SGMMRK2015000135&utm_campaign=H5-ledongli-APP" class="btn-experience"></a>'
       });
       //Modal.normal({
       //  title: '',
