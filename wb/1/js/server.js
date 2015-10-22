@@ -18,17 +18,20 @@ function connectWebViewJavascriptBridge (callback) {
 }
 function setShare (conf) {
   conf = JSON.stringify(conf);
-  if (android) {
-    return window.web && web.setWebViewShare(conf);
-  } else if (ios) {
-    ldl.getUserDataInapp().done(function() {
-      ldl.app.setWebViewShare(conf);
-    });
+  ldl.getUserDataInapp().done(function() {
+    ldl.app.setWebViewShare(conf);
+  });
+  //if (android) {
+  //  return window.web && web.setWebViewShare(conf);
+  //} else if (ios) {
+  //  ldl.getUserDataInapp().done(function() {
+  //    ldl.app.setWebViewShare(conf);
+  //  });
 
     //connectWebViewJavascriptBridge(function (bridge) {
     //  bridge.callHandler('setWebViewShare', conf, function() {});
     //});
-  }
+  //}
 }
 
 function getDistance(callback) {
@@ -41,20 +44,27 @@ function getDistance(callback) {
   now = Math.floor(now.getTime()/1000);
   var data = JSON.stringify({startDate: start, endDate: now});
 
-  if (android) {
-    callback(web.getDailyStatsWithData(data));
-  } else if (ios) {
+  ldl.getUserDataInapp().done(function() {
+    //获取当天运动数据
+    ldl.app.getDailyStatsWithData(data).done(function(d) {
+      callback(d);
+    });
+  });
+
+  //if (android) {
+  //  callback(web.getDailyStatsWithData(data));
+  //} else if (ios) {
     //connectWebViewJavascriptBridge(function (bridge) {
     //  bridge.callHandler('getDailyStatsWithData', data, function(response) {
     //    callback(response);
     //  })
     //});
-    console.log(ldl);
-    ldl.getUserDataInapp().done(function() {
-      //获取当天运动数据
-      ldl.app.getDailyStatsWithData(data).done(function(d) {
-        callback(d);
-      });
-    });
-  }
+  //  console.log(ldl);
+  //  ldl.getUserDataInapp().done(function() {
+  //    //获取当天运动数据
+  //    ldl.app.getDailyStatsWithData(data).done(function(d) {
+  //      callback(d);
+  //    });
+  //  });
+  //}
 }

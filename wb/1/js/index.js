@@ -46,7 +46,12 @@ $(function () {
   getDistance(main);
 
   function main (distanceData) {
-    alert('response ' + JSON.stringify(distanceData));
+    if (distanceData) {
+      alert('response ' + JSON.stringify(distanceData));
+    } else {
+      alert('response undefined');
+    }
+
     if (claimedFirst) {
       if (distanceData) {
         var data = distanceData.dailystats[0].report;
@@ -55,6 +60,7 @@ $(function () {
           if (data[i].activity == 'running') {
             hasRun = true;
             currentLevel = Math.floor(data[i].distance / 3000);
+            alert('running distance ' + data[i].distance);
             break;
           }
         }
