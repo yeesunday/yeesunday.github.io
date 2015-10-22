@@ -21,10 +21,7 @@ function setShare (conf) {
   if (android) {
     return window.web && web.setWebViewShare(conf);
   } else {
-    //ldl.app.setWebViewShare(conf);
-    connectWebViewJavascriptBridge(function (bridge) {
-      bridge.callHandler('setWebViewShare', conf, function() {});
-    });
+    ldl.app.setWebViewShare(conf);
   }
 }
 
@@ -41,20 +38,11 @@ function getDistance(callback) {
   if (android) {
     callback(web.getDailyStatsWithData(data));
   } else {
-    //ldl.getUserDataInapp().done(function() {
-    //  //获取当天运动数据
-    //  ldl.app.getDailyStatsWithData(data).done(function(d) {
-    //    var data = JSON.parse(d);
-    //    alert(d);
-    //    alert('1 ' + data.dailystats[0]);
-    //    //alert('3' + JSON.parse(JSON.parse(d)));
-    //    callback(JSON.parse(d));
-    //  });
-    //});
-    connectWebViewJavascriptBridge(function(bridge){
-      bridge.callHandler('getDailyStatsWithData', data, function(res) {
-        alert('dd' + res);
-        callback(res);
+    ldl.getUserDataInapp().done(function() {
+      //获取当天运动数据
+      ldl.app.getDailyStatsWithData(data).done(function(d) {
+        alert(d);
+        callback(JSON.parse(d));
       });
     });
   }

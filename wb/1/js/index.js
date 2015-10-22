@@ -46,16 +46,13 @@ $(function () {
   getDistance(main);
 
   function main (distanceData) {
-    alert('origin ' + distanceData);
-    //if (claimedFirst) {
+    if (claimedFirst) {
       if (distanceData) {
         distanceData = JSON.parse(distanceData);
         var data = distanceData.dailystats[0].report;
         var hasRun = false;
         data = JSON.parse(data);
-        alert('running distance ' + data + ' ' + JSON.stringify(data) + ' dddddddddddddd ' + data.length);
         for(var i = 0; i < data.length; i++) {
-          alert(JSON.stringify(data[i]));
           if (data[i].activity == 'running') {
             hasRun = true;
             currentLevel = Math.floor(data[i].distance / 3000);
@@ -92,10 +89,10 @@ $(function () {
           finished: true
         }));
       }
-    //} else {
-    //  alert('claim first wrong');
-    //  currentLevel = 0;
-    //}
+    } else {
+      alert('claim first wrong');
+      currentLevel = 0;
+    }
 
     nextLevel = currentLevel + 1;
     refreshView(currentLevel);
@@ -130,6 +127,7 @@ $(function () {
         finished: false
       }));
     }).delegate('.btn-modal-share', 'click', function() {
+      $('.share-mask').show();
       setShare(shareData);
     });
     $('.btn-lucky').click(function () {
@@ -183,7 +181,11 @@ $(function () {
     });
   });
   $('.btn-share').click(function () {
+    $('.share-mask').show();
     setShare(shareData);
+  });
+  $('.share-mask').click(function () {
+    $(this).toggle();
   });
   //Modal.normal({
   //  title: '',
