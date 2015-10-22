@@ -47,12 +47,12 @@ $(function () {
 
   function main (distanceData) {
     alert('origin ' + distanceData);
-    if (claimedFirst) {
+    //if (claimedFirst) {
       if (distanceData) {
         distanceData = JSON.parse(distanceData);
         var data = distanceData.dailystats[0].report;
         var hasRun = false;
-        alert('running distance ' + data.length);
+        alert('running distance ' + JSON.stringify(data) + ' dddddddddddddd 'data.length);
         for(var i = 0; i < data.length; i++) {
           if (data[i].activity == 'running') {
             hasRun = true;
@@ -90,10 +90,10 @@ $(function () {
           finished: true
         }));
       }
-    } else {
-      alert('claim first wrong');
-      currentLevel = 0;
-    }
+    //} else {
+    //  alert('claim first wrong');
+    //  currentLevel = 0;
+    //}
 
     nextLevel = currentLevel + 1;
     refreshView(currentLevel);
