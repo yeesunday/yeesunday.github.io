@@ -52,7 +52,7 @@ $(function () {
         distanceData = JSON.parse(distanceData);
         var data = distanceData.dailystats[0].report;
         var hasRun = false;
-        alert('running distance ' + JSON.stringify(data) + ' dddddddddddddd 'data.length);
+        alert('running distance ' + JSON.stringify(data) + ' dddddddddddddd ' + data.length);
         for(var i = 0; i < data.length; i++) {
           if (data[i].activity == 'running') {
             hasRun = true;
