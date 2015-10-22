@@ -21,7 +21,10 @@ function setShare (conf) {
   if (android) {
     return window.web && web.setWebViewShare(conf);
   } else {
-    ldl.app.setWebViewShare(conf);
+    //ldl.app.setWebViewShare(conf);
+    connectWebViewJavascriptBridge(function (bridge) {
+      bridge.callHandler('setWebViewShare', conf, function() {});
+    });
   }
 }
 
