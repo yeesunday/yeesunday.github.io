@@ -41,7 +41,9 @@ function getDistance(callback) {
     ldl.getUserDataInapp().done(function() {
       //获取当天运动数据
       ldl.app.getDailyStatsWithData(data).done(function(d) {
-        callback(d);
+        alert('1 ' +  d);
+        alert('2' + JSON.parse(d))
+        callback(JSON.parse(d));
       });
     });
   }
