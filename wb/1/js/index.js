@@ -46,6 +46,7 @@ $(function () {
   getDistance(main);
 
   function main (distanceData) {
+    alert('origin ' + distanceData);
     if (distanceData) {
       alert('response ' + JSON.stringify(distanceData));
     } else {
@@ -54,6 +55,7 @@ $(function () {
 
     if (claimedFirst) {
       if (distanceData) {
+        distanceData = JSON.parse(distanceData);
         var data = distanceData.dailystats[0].report;
         var hasRun = false;
         for(var i = 0; i < data.length; i++) {
@@ -73,7 +75,6 @@ $(function () {
         currentLevel = 4;
       }
 
-      console.log(currentLevel);
       if (last.level == currentLevel) {
         levelData[currentLevel] = last;
       } else {
