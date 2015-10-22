@@ -47,22 +47,16 @@ $(function () {
 
   function main (distanceData) {
     alert('origin ' + distanceData);
-    if (distanceData) {
-      alert('response ' + JSON.stringify(distanceData));
-    } else {
-      alert('response undefined');
-    }
-
     if (claimedFirst) {
       if (distanceData) {
         distanceData = JSON.parse(distanceData);
         var data = distanceData.dailystats[0].report;
         var hasRun = false;
+        alert('running distance ' + data.length);
         for(var i = 0; i < data.length; i++) {
           if (data[i].activity == 'running') {
             hasRun = true;
             currentLevel = Math.floor(data[i].distance / 3000);
-            alert('running distance ' + data[i].distance);
             break;
           }
         }
@@ -97,6 +91,7 @@ $(function () {
         }));
       }
     } else {
+      alert('claim first wrong');
       currentLevel = 0;
     }
 
@@ -161,7 +156,7 @@ $(function () {
     if (level == 4) {
       shareData = {
         'image_url':'',
-        'link_url':'http://www.baidu.com',
+        'link_url':'http://yeesunday.github.io/wb/1/html/share.html',
         'title':'和别克一起，拼出炫彩夜色！',
         'content':'我已成功点亮炫彩夜色，大奖马上来！不要眼红，一起来玩！',
         'shared_to':'0'
@@ -171,7 +166,7 @@ $(function () {
     } else {
       shareData = {
         'image_url':'',
-        'link_url':'http://www.baidu.com',
+        'link_url':'http://yeesunday.github.io/wb/1/html/share.html',
         'title':'和别克一起，拼出炫彩夜色！',
         'content':'我已开始拼色之旅，有木有一起夜跑的，约起！',
         'shared_to':'0'
