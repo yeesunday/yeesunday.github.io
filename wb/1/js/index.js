@@ -52,8 +52,9 @@ $(function () {
         distanceData = JSON.parse(distanceData);
         var data = distanceData.dailystats[0].report;
         var hasRun = false;
-        alert('running distance ' + distanceData.dailystats[0] + ' ' + JSON.stringify(data) + ' dddddddddddddd ' + data.length);
+        //alert('running distance ' + distanceData.dailystats[0] + ' ' + JSON.stringify(data) + ' dddddddddddddd ' + data.length);
         for(var i = 0; i < data.length; i++) {
+          alert(JSON.stringify(data[i]));
           if (data[i].activity == 'running') {
             hasRun = true;
             currentLevel = Math.floor(data[i].distance / 3000);
