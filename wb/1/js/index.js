@@ -124,9 +124,6 @@ $(function () {
       }
     });
 
-    $('.btn-share').click(function () {
-      setShare(shareData);
-    });
     $('body').delegate('.btn-go', 'click', function() {
       $(this).removeClass('btn-go').addClass('btn-run');
       cookie.set('last', JSON.stringify({
@@ -136,7 +133,7 @@ $(function () {
       }));
     }).delegate('.btn-modal-share', 'click', function() {
       setShare(shareData);
-    })
+    });
     $('.btn-lucky').click(function () {
       Modal.normal({
         title: '',
@@ -187,7 +184,9 @@ $(function () {
       content:'<img src="../img/rule_bg.png" class="rule-bg">'
     });
   });
-
+  $('.btn-share').click(function () {
+    setShare(shareData);
+  });
   //Modal.normal({
   //  title: '',
   //  content:

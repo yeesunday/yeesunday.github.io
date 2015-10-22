@@ -18,9 +18,7 @@ function connectWebViewJavascriptBridge (callback) {
 }
 function setShare (conf) {
   conf = JSON.stringify(conf);
-  ldl.getUserDataInapp().done(function() {
-    ldl.app.setWebViewShare(conf);
-  });
+  ldl.app.setWebViewShare(conf);
   //if (android) {
   //  return window.web && web.setWebViewShare(conf);
   //} else if (ios) {
@@ -47,7 +45,7 @@ function getDistance(callback) {
   ldl.getUserDataInapp().done(function() {
     //获取当天运动数据
     ldl.app.getDailyStatsWithData(data).done(function(d) {
-      callback(d);
+      callback(JSON.parse(d));
     });
   });
 
