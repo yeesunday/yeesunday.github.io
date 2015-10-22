@@ -37,11 +37,12 @@ function getDistance(callback) {
 
   if (android) {
     callback(web.getDailyStatsWithData(data));
-  } else  {
+  } else {
     ldl.getUserDataInapp().done(function() {
       //获取当天运动数据
       ldl.app.getDailyStatsWithData(data).done(function(d) {
         var data = JSON.parse(d);
+        alert(d);
         alert('1 ' + data.dailystats[0]);
         //alert('3' + JSON.parse(JSON.parse(d)));
         callback(JSON.parse(d));
