@@ -54,23 +54,14 @@ $(function () {
         if(android) {
           alert('android ' + distanceData);
           distanceData = JSON.parse(distanceData);
-          //alert(distanceData.DailyStats[0])
-          data = JSON.parse(distanceData.dailystats[0]);
+          alert(distanceData.dailystats[0])
+          data = distanceData.dailystats[0];
         } else {
           alert('ios')
           data = distanceData;
         }
 
         alert('data ' + data.distance)
-
-        //for(var i = 0; i < data.length; i++) {
-        //  if (data[i].activity == 'running') {
-        //    hasRun = true;
-        //    alert('ddddd ' + data[i].distance);
-        //    currentLevel = Math.floor(data[i].distance / 3000);
-        //    break;
-        //  }
-        //}
         currentLevel = Math.floor(data.distance / 3000);
         if(!hasRun) {currentLevel = 0;}
       } else {
