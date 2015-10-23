@@ -48,23 +48,29 @@ $(function () {
   function main (distanceData) {
     //if (claimedFirst) {
       if (distanceData) {
-        distanceData = JSON.parse(distanceData);
-        var data = distanceData.dailystats[0].report;
+        var data;
         var hasRun = false;
 
         if(android) {
-          data = JSON.parse(data);
+          alert('android');
+          distanceData = JSON.parse(distanceData);
+          data = JSON.parse(distanceData.dailystats[0]);
+        } else {
+          alert('ios')
+          data = distanceData;
         }
-        alert(distanceData.dailystats[0].distance + ' ' + data.distance)
 
-        for(var i = 0; i < data.length; i++) {
-          if (data[i].activity == 'running') {
-            hasRun = true;
-            alert('ddddd ' + data[i].distance);
-            currentLevel = Math.floor(data[i].distance / 3000);
-            break;
-          }
-        }
+        alert('data ' + data.distance)
+
+        //for(var i = 0; i < data.length; i++) {
+        //  if (data[i].activity == 'running') {
+        //    hasRun = true;
+        //    alert('ddddd ' + data[i].distance);
+        //    currentLevel = Math.floor(data[i].distance / 3000);
+        //    break;
+        //  }
+        //}
+        currentLevel = Math.floor(data.distance / 3000);
         if(!hasRun) {currentLevel = 0;}
       } else {
         currentLevel = 0;
