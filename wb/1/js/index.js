@@ -51,13 +51,16 @@ $(function () {
         distanceData = JSON.parse(distanceData);
         var data = distanceData.dailystats[0].report;
         var hasRun = false;
-        alert(distanceData.distance + ' ' + data.distance)
-        if (android) {
+
+        if(android) {
           data = JSON.parse(data);
         }
+        alert(distanceData.distance + ' ' + data.distance)
+
         for(var i = 0; i < data.length; i++) {
           if (data[i].activity == 'running') {
             hasRun = true;
+            alert('ddddd ' + data[i].distance);
             currentLevel = Math.floor(data[i].distance / 3000);
             break;
           }
@@ -92,10 +95,10 @@ $(function () {
           finished: true
         }));
       }
-    } else {
-      alert('claim first wrong');
-      currentLevel = 0;
-    }
+    //} else {
+    //  alert('claim first wrong');
+    //  currentLevel = 0;
+    //}
 
     nextLevel = currentLevel + 1;
     refreshView(currentLevel);
@@ -166,15 +169,15 @@ $(function () {
       };
       $('.btn-pick').hide();
       $('.btn-lucky').show();
-    //} else {
-    //  shareData = {
-    //    'image_url':'',
-    //    'link_url':'http://yeesunday.github.io/wb/1/html/share.html',
-    //    'title':'和别克一起，拼出炫彩夜色！',
-    //    'content':'我已开始拼色之旅，有木有一起夜跑的，约起！',
-    //    'shared_to':'0'
-    //  };
-    //}
+    } else {
+      shareData = {
+        'image_url':'',
+        'link_url':'http://yeesunday.github.io/wb/1/html/share.html',
+        'title':'和别克一起，拼出炫彩夜色！',
+        'content':'我已开始拼色之旅，有木有一起夜跑的，约起！',
+        'shared_to':'0'
+      };
+    }
   }
 
   $('.btn-rule').click(function () {
