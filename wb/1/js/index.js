@@ -52,9 +52,10 @@ $(function () {
         var hasRun = false;
 
         if(android) {
-          alert('android');
+          alert('android ' + distanceData);
           distanceData = JSON.parse(distanceData);
-          data = JSON.parse(distanceData.Dailystats[0]);
+          //alert(distanceData.DailyStats[0])
+          data = JSON.parse(distanceData.DailyStats[0]);
         } else {
           alert('ios')
           data = distanceData;
