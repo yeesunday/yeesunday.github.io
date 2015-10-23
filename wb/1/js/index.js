@@ -46,22 +46,18 @@ $(function () {
   getDistance(main);
 
   function main (distanceData) {
-    //if (claimedFirst) {
+    if (claimedFirst) {
       if (distanceData) {
         var data;
         var hasRun = false;
 
         if(android) {
-          alert('android ' + distanceData);
           distanceData = JSON.parse(distanceData);
-          alert(distanceData.dailystats[0])
           data = distanceData.dailystats[0];
         } else {
-          alert('ios')
           data = distanceData;
         }
 
-        alert('data ' + data.distance)
         currentLevel = Math.floor(data.distance / 3000);
         if(!hasRun) {currentLevel = 0;}
       } else {
@@ -93,10 +89,9 @@ $(function () {
           finished: true
         }));
       }
-    //} else {
-    //  alert('claim first wrong');
-    //  currentLevel = 0;
-    //}
+    } else {
+      currentLevel = 0;
+    }
 
     nextLevel = currentLevel + 1;
     refreshView(currentLevel);
