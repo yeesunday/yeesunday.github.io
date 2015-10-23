@@ -1,3 +1,5 @@
+var linkUrl = 'http://yeesunday.github.io/wb/1/html/share.html';
+var imgUrl = '';
 var android = false;
 var ua = navigator.userAgent.toLowerCase();
 if (/(android)/i.test(ua)) {

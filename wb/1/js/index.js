@@ -154,8 +154,8 @@ $(function () {
     $('.car').attr('src', '../img/car-' + level + '.png');
     if (level == 4) {
       shareData = {
-        'image_url':'',
-        'link_url':'http://yeesunday.github.io/wb/1/html/share.html',
+        'image_url': imgUrl,
+        'link_url': linkUrl,
         'title':'和别克一起，拼出炫彩夜色！',
         'content':'我已成功点亮炫彩夜色，大奖马上来！不要眼红，一起来玩！',
         'shared_to':'0'
@@ -164,8 +164,8 @@ $(function () {
       $('.btn-lucky').show();
     } else {
       shareData = {
-        'image_url':'',
-        'link_url':'http://yeesunday.github.io/wb/1/html/share.html',
+        'image_url': imgUrl,
+        'link_url': linkUrl,
         'title':'和别克一起，拼出炫彩夜色！',
         'content':'我已开始拼色之旅，有木有一起夜跑的，约起！',
         'shared_to':'0'
