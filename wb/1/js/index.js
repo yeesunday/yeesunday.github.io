@@ -54,7 +54,7 @@ $(function () {
         if(android) {
           alert('android');
           distanceData = JSON.parse(distanceData);
-          data = JSON.parse(distanceData.dailystats[0]);
+          data = JSON.parse(distanceData.Dailystats[0]);
         } else {
           alert('ios')
           data = distanceData;

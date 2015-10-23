@@ -41,7 +41,7 @@ function getDistance(callback) {
         alert('bridge ' + res);
         if (res + '' != 'null') {
           var re = JSON.parse(res),
-            dailystats = JSON.parse(re.DailyStats[0]);
+              dailystats = JSON.parse(re.DailyStats[0]);
           callback(dailystats);
         }
       })
