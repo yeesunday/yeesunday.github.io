@@ -43,6 +43,7 @@ function getDistance(callback) {
       ldl.app.getDailyStatsWithData(data).done(function(d) {
         alert(d);
         d = d.replace('"DailyStats":["', '"DailyStats":[').replace('}"]}', '}]}');
+        alert(d);
         callback(d);
       });
     });

@@ -55,7 +55,7 @@ $(function () {
         if(android) {
           data = JSON.parse(data);
         }
-        alert(distanceData.distance + ' ' + data.distance)
+        alert(distanceData.dailystats[0].distance + ' ' + data.distance)
 
         for(var i = 0; i < data.length; i++) {
           if (data[i].activity == 'running') {
