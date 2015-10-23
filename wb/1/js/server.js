@@ -36,7 +36,15 @@ function getDistance(callback) {
     callback(web.getDailyStatsWithData(data));
   } else {
     alert(1);
-    ldl.getUserDataInapp().done(function() {
+    ldl.app.getDailyStatsWithData(data).done(function(res) {
+      alert(3 + ' ' + res);
+      if (res + '' != 'null') {
+        var re = JSON.parse(res),
+          dailystats = JSON.parse(re.DailyStats[0]);
+        callback(dailystats);
+      }
+    });
+    //ldl.getUserDataInapp().done(function() {
       //获取当天运动数据
       //ldl.app.getDailyStatsWithData(data).done(function(d) {
       //  alert(d);
@@ -44,15 +52,8 @@ function getDistance(callback) {
       //  alert(d);
       //  callback(d);
       //});
-      alert(2);
-      ldl.app.getDailyStatsWithData(data).done(function(res) {
-        alert(3 + ' ' + res);
-        if (res + '' != 'null') {
-          var re = JSON.parse(res),
-          dailystats = JSON.parse(re.DailyStats[0]);
-          callback(dailystats);
-        }
-      });
-    });
+    //  alert(2);
+    //
+    //});
   }
 }
