@@ -1,9 +1,6 @@
-var ios = false;
 var android = false;
 var ua = navigator.userAgent.toLowerCase();
-if (/(iphone|ipod|ipad)/i.test(ua)) {
-  ios = true;
-} else if (/(android)/i.test(ua)) {
+if (/(android)/i.test(ua)) {
   android = true;
 }
 
@@ -38,6 +35,7 @@ function getDistance(callback) {
   if (android) {
     callback(web.getDailyStatsWithData(data));
   } else {
+    alert(1);
     ldl.getUserDataInapp().done(function() {
       //获取当天运动数据
       //ldl.app.getDailyStatsWithData(data).done(function(d) {
@@ -46,7 +44,9 @@ function getDistance(callback) {
       //  alert(d);
       //  callback(d);
       //});
+      alert(2);
       ldl.app.getDailyStatsWithData(data).done(function(res) {
+        alert(3 + ' ' + res);
         if (res + '' != 'null') {
           var re = JSON.parse(res),
           dailystats = JSON.parse(re.DailyStats[0]);
