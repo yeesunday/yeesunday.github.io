@@ -32,7 +32,7 @@ $(function () {
   var last;
   var shareData;
   var claimedFirst = cookie.get('claimedFirst');
-  localStorage.set('test', true);
+  localStorage.setItem('test', true);
   alert('claimedFirst ' + claimedFirst);
   alert('test ' + localStorage.getItem('test'));
 
