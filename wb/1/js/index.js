@@ -57,7 +57,6 @@ $(function () {
         } else {
           data = distanceData;
         }
-        alert(7 + data.distance);
         currentLevel = Math.floor(data.distance / 3000);
         if(!hasRun) {currentLevel = 0;}
       } else {
@@ -98,7 +97,6 @@ $(function () {
 
     $('.btn-pick').click(function () {
       if (currentLevel == 0) {
-        alert('setClaimedFirst');
         localStorage.setItem('claimedFirst', true);
       }
 
