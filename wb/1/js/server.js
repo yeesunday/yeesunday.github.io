@@ -42,23 +42,12 @@ function getDistance(callback) {
         if (res + '' != 'null') {
           var re = JSON.parse(res);
           var dailystats = JSON.parse(re.DailyStats[0]);
-          alert('6 ' + dailystats.distance);
           callback(dailystats);
         }
       })
     });
     ldl.getUserDataInapp().done(function() {
-      //获取当天运动数据
-      ldl.app.getDailyStatsWithData(data).done(function(res) {
-        //alert(3 + ' ' + res);
-        //if (res + '' != 'null') {
-        //  var re = JSON.parse(res);
-        //  alert(4);
-        //  var dailystats = JSON.parse(re.DailyStats[0]);
-        //  alert(5);
-        //  callback(dailystats);
-        //}
-      });
+      ldl.app.getDailyStatsWithData(data).done(function(res) {});
     });
   }
 }

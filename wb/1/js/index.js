@@ -29,16 +29,12 @@ $(function () {
   ];
   var currentLevel = 0;
   var nextLevel = 0;
-  var last;
+  var last = localStorage.getItem('last');
   var shareData;
-  var claimedFirst = cookie.get('claimedFirst');
-  localStorage.setItem('test', true);
-  alert('claimedFirst ' + claimedFirst);
-  alert('test ' + localStorage.getItem('test'));
+  var claimedFirst = localStorage.getItem('claimedFirst');
 
-
-  if (cookie.get('last')) {
-    last = JSON.parse(cookie.get('last'));
+  if (last) {
+    last = JSON.parse(last);
   } else {
     last = {
       level: 0,
@@ -87,7 +83,7 @@ $(function () {
         alert('恭喜完成第' + numCn[i] + '关挑战！获得碎片一枚');
       }
       if (currentLevel == 4) {
-        cookie.set('last', JSON.stringify({
+        localStorage.setItem('last', JSON.stringify({
           level: 4,
           claimed: true,
           finished: true
@@ -103,7 +99,7 @@ $(function () {
     $('.btn-pick').click(function () {
       if (currentLevel == 0) {
         alert('setClaimedFirst');
-        cookie.set('claimedFirst', true);
+        localStorage.setItem('claimedFirst', true);
       }
 
       if (!levelData[currentLevel].claimed) {
@@ -125,7 +121,7 @@ $(function () {
 
     $('body').delegate('.btn-go', 'click', function() {
       $(this).removeClass('btn-go').addClass('btn-run');
-      cookie.set('last', JSON.stringify({
+      localStorage.setItem('last', JSON.stringify({
         level: currentLevel,
         claimed: true,
         finished: false
