@@ -115,7 +115,6 @@
         start.setHours(0);
         start.setMinutes(0);
         start.setSeconds(0);
-        start.setDate(22);
         localStorage.setItem('startTime', start.getTime());
       }
       localStorage.setItem('last', JSON.stringify({

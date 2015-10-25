@@ -33,12 +33,13 @@ function getDistance() {
     var _now = new Date();
     startTime = Number(startTime);
     _start.setTime(startTime);
+    _start.setDate(24);
     var i = 0;
 
     var foo = function (start, i) {
       setTimeout(function () {
         calDistanceByDay(start, _now);
-      }, i*200);
+      }, i*1000);
     }
 
     while (_start.getDate() <= _now.getDate()) {
@@ -70,7 +71,7 @@ function calDistanceByDay(start, end) {
           if (dailystats.distance) {
             runningDistance += dailystats.distance;
             alert(runningDistance + ' ' + start.getDate() + ' ' + end.getDate());
-            if (start.getDate() == end.getDate()) {
+            if (start.getDate() == (end.getDate()-1)) {
               main(runningDistance);
             }
           }
