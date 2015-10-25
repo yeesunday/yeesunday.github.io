@@ -32,7 +32,7 @@ function getDistance() {
     var _start = new Date();
     var _now = new Date();
     startTime = Number(startTime);
-    startTime += 1000*60*60*24*3;
+    startTime -= 1000;
     _start.setTime(startTime);
     var i = 0;
 
@@ -42,7 +42,7 @@ function getDistance() {
       }, i*1000);
     }
 
-    while (_start.getDate() <= _now.getDate()) {
+    while (_start.getDate() < _now.getDate()) {
       foo(new Date(_start.getTime()), i);
       i++;
       startTime += 1000*60*60*24;
@@ -54,7 +54,7 @@ function getDistance() {
 }
 
 function calDistanceByDay(start, end) {
-  console.log(start.getDate());
+  console.log(start);
   var data = JSON.stringify({startDate: start.getTime() / 1000, endDate: end.getTime() / 1000});
   if (android) {
     var delta = JSON.parse(web.getDailyStatsWithData(data));
