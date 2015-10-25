@@ -51,7 +51,7 @@ function getDistance(callback) {
     setTimeout(function () {
       alert(i + ' ' + runningDistance);
       callback(runningDistance);
-    }, (i+5)*200);
+    }, (i+10)*200);
   } else {
     callback(0);
   }
@@ -71,6 +71,7 @@ function calDistanceByDay(start, end) {
           var dailystats = JSON.parse(re.DailyStats[0]);
           if (dailystats.distance) {
             runningDistance += dailystats.distance;
+            alert('runningDistance' + runningDistance);
           }
         }
       });
