@@ -1,5 +1,6 @@
-var linkUrl = 'http://yeesunday.github.io/wb/1/html/share.html';
-var imgUrl = '';
+var linkUrl = 'http://h5.ledongli.cn/bieke/html/share.html';
+//var imgUrl = 'http://h5.ledongli.cn/bieke/img/share_icon.jpg';
+var imgUrl = 'http://yeesunday.github.io/wb/1/img/share_icon.jpg';
 var android = false;
 var ua = navigator.userAgent.toLowerCase();
 if (/(android)/i.test(ua)) {

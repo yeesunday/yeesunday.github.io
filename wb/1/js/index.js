@@ -56,6 +56,7 @@ $(function () {
         } else {
           data = distanceData;
         }
+        alert('你跑了' + data.distance + '米');
         currentLevel = Math.floor(data.distance / 3000);
       } else {
         currentLevel = 0;
