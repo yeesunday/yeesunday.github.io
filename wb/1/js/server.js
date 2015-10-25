@@ -58,7 +58,6 @@ function getDistance(callback) {
 }
 
 function calDistanceByDay(start, end) {
-  alert(start.getDate());
   var data = JSON.stringify({startDate: start.getTime() / 1000, endDate: end.getTime() / 1000});
 
   if (android) {
