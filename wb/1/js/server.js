@@ -36,9 +36,12 @@ function getDistance(callback) {
     var i = 0;
 
     while (_start.getDate() <= _now.getDate()) {
-      setTimeout(function() {
-        calDistanceByDay(_start, _now);
-      }, i*200)
+      (function (_start, _now, i) {
+        setTimeout(function() {
+          calDistanceByDay(_start, _now);
+        }, i*200);
+      })(_start, _now, i);
+
       i++;
       startTime += 1000*60*60*24;
       _start.setTime(startTime);
@@ -53,6 +56,7 @@ function getDistance(callback) {
 }
 
 function calDistanceByDay(start, end) {
+  alert(start.getDate());
   var data = JSON.stringify({startDate: start.getTime() / 1000, endDate: end.getTime() / 1000});
 
   if (android) {
@@ -65,8 +69,10 @@ function calDistanceByDay(start, end) {
         if (res + '' != 'null') {
           var re = JSON.parse(res);
           var dailystats = JSON.parse(re.DailyStats[0]);
-          alert('4 ' + dailystats.distance);
-          runningDistance += dailystats.distance;
+          if (dailystats.distance) {
+            runningDistance += dailystats.distance;
+            alert('4 ' + dailystats.distance);
+          }
         }
       });
     });
