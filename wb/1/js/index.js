@@ -44,12 +44,11 @@ $(function () {
   };
 
   getDistance(main);
-
+  
   function main (distanceData) {
     if (claimedFirst) {
       if (distanceData) {
         var data;
-        var hasRun = false;
 
         if(android) {
           distanceData = JSON.parse(distanceData);
@@ -57,9 +56,7 @@ $(function () {
         } else {
           data = distanceData;
         }
-        alert(data.distance);
         currentLevel = Math.floor(data.distance / 3000);
-        if(!hasRun) {currentLevel = 0;}
       } else {
         currentLevel = 0;
       }
