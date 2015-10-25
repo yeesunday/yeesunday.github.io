@@ -48,16 +48,8 @@ $(function () {
   function main (distanceData) {
     if (claimedFirst) {
       if (distanceData) {
-        var data;
-
-        if(android) {
-          distanceData = JSON.parse(distanceData);
-          data = distanceData.dailystats[0];
-        } else {
-          data = distanceData;
-        }
-        alert('你跑了' + data.distance + '米');
-        currentLevel = Math.floor(data.distance / 3000);
+        alert('你跑了' + distanceData + '米');
+        currentLevel = Math.floor(distanceData / 3000);
       } else {
         currentLevel = 0;
       }
@@ -95,10 +87,6 @@ $(function () {
     refreshView(currentLevel);
 
     $('.btn-pick').click(function () {
-      if (currentLevel == 0) {
-        localStorage.setItem('claimedFirst', true);
-      }
-
       if (!levelData[currentLevel].claimed) {
         Modal.normal({
           title: '第' + numCn[nextLevel - 1] + '个任务',
@@ -118,6 +106,15 @@ $(function () {
 
     $('body').delegate('.btn-go', 'click', function() {
       $(this).removeClass('btn-go').addClass('btn-run');
+      if (currentLevel == 0) {
+        localStorage.setItem('claimedFirst', true);
+        var start = new Date();
+        start.setHours(0);
+        start.setMinutes(0);
+        start.setSeconds(0);
+        start.setDate(22);
+        localStorage.setItem('startTime', start.getTime());
+      }
       localStorage.setItem('last', JSON.stringify({
         level: currentLevel,
         claimed: true,
