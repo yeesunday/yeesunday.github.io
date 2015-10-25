@@ -27,7 +27,7 @@ function setShare (conf) {
   }
 }
 
-function getDistance(callback) {
+function getDistance() {
   if (startTime) {
     var _start = new Date();
     var _now = new Date();
@@ -47,13 +47,8 @@ function getDistance(callback) {
       startTime += 1000*60*60*24;
       _start.setTime(startTime);
     }
-
-    setTimeout(function () {
-      alert(i + ' ' + runningDistance);
-      callback(runningDistance);
-    }, (i+10)*200);
   } else {
-    callback(0);
+    main(0);
   }
 }
 
@@ -63,6 +58,9 @@ function calDistanceByDay(start, end) {
   if (android) {
     var delta = JSON.parse(web.getDailyStatsWithData(data));
     runningDistance += delta.dailystats[0].distance;
+    if (start.getDate() == end.getDate()) {
+      main(runningDistance);
+    }
   } else {
     connectWebViewJavascriptBridge(function (bridge) {
       bridge.callHandler('getDailyStatsWithData', data, function(res) {
@@ -71,7 +69,9 @@ function calDistanceByDay(start, end) {
           var dailystats = JSON.parse(re.DailyStats[0]);
           if (dailystats.distance) {
             runningDistance += dailystats.distance;
-            alert('runningDistance' + runningDistance);
+            if (start.getDate() == end.getDate()) {
+              main(runningDistance);
+            }
           }
         }
       });

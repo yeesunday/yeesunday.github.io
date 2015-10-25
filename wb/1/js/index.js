@@ -1,4 +1,4 @@
-$(function () {
+//$(function () {
   var numCn = ['一', '二', '三', '四'];
   var levelData = [
     {
@@ -43,13 +43,12 @@ $(function () {
     };
   };
 
-  getDistance(main);
+  getDistance();
   ldl.getUserDataInapp().done(function() {
     ldl.app.getDailyStatsWithData(data).done(function(res) {});
   });
 
   function main (distanceData) {
-    alert('222222 ' + distanceData)
     if (claimedFirst) {
       if (distanceData) {
         alert('你跑了' + distanceData + '米');
@@ -192,4 +191,4 @@ $(function () {
   //  '<a class="btn-modal-share"></a>' +
   //  '<a class="btn-experience"></a>'
   //});
-})
+//})
