@@ -29,6 +29,7 @@ function getDistance(callback) {
   start.setHours(0);
   start.setMinutes(0);
   start.setSeconds(0);
+  start.setDate(24);
   start = Math.floor(start.getTime()/1000);
   var now = new Date();
   now = Math.floor(now.getTime()/1000);

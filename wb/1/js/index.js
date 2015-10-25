@@ -44,7 +44,7 @@ $(function () {
   };
 
   getDistance(main);
-  
+
   function main (distanceData) {
     if (claimedFirst) {
       if (distanceData) {
