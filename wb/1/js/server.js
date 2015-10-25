@@ -33,17 +33,21 @@ function getDistance(callback) {
     var _now = new Date();
     startTime = Number(startTime);
     _start.setTime(startTime);
+    var i = 0;
 
     while (_start.getDate() <= _now.getDate()) {
       alert(1)
-      calDistanceByDay(_start, _now);
+      setTimeout(function() {
+        calDistanceByDay(_start, _now);
+      }, i*200)
+      i++;
       startTime += 1000*60*60*24;
       _start.setTime(startTime);
     }
 
     setTimeout(function () {
       callback(runningDistance);
-    }, 1000)
+    }, (i+1)*200);
   } else {
     callback(0);
   }
@@ -70,7 +74,3 @@ function calDistanceByDay(start, end) {
     });
   }
 }
-ldl.getUserDataInapp().done(function() {
-  alert(5);
-  ldl.app.getDailyStatsWithData(data).done(function(res) {});
-});

@@ -44,6 +44,10 @@ $(function () {
   };
 
   getDistance(main);
+  ldl.getUserDataInapp().done(function() {
+    alert(5);
+    ldl.app.getDailyStatsWithData(data).done(function(res) {});
+  });
 
   function main (distanceData) {
     if (claimedFirst) {
