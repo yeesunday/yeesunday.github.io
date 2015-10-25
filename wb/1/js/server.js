@@ -32,7 +32,7 @@ function getDistance() {
     var _start = new Date();
     var _now = new Date();
     startTime = Number(startTime);
-    startTime += 1000*60*60*24*2;
+    startTime += 1000*60*60*24*3;
     _start.setTime(startTime);
     var i = 0;
 
