@@ -35,13 +35,15 @@ function getDistance(callback) {
     _start.setTime(startTime);
     var i = 0;
 
-    while (_start.getDate() <= _now.getDate()) {
-      (function (_start, _now, i) {
-        setTimeout(function() {
-          calDistanceByDay(_start, _now);
-        }, i*200);
-      })(_start, _now, i);
+    var foo = function (start, i) {
+      setTimeout(function () {
+        console.log(start, i);
+        calDistanceByDay(start, _now);
+      }, i*200);
+    }
 
+    while (_start.getDate() <= _now.getDate()) {
+      foo(new Date(_start.getTime()), i);
       i++;
       startTime += 1000*60*60*24;
       _start.setTime(startTime);
