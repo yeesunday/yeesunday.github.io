@@ -36,7 +36,6 @@ function getDistance(callback) {
     var i = 0;
 
     while (_start.getDate() <= _now.getDate()) {
-      alert(1)
       setTimeout(function() {
         calDistanceByDay(_start, _now);
       }, i*200)
@@ -60,10 +59,9 @@ function calDistanceByDay(start, end) {
     var delta = JSON.parse(web.getDailyStatsWithData(data));
     runningDistance += delta.dailystats[0].distance;
   } else {
-    alert(2)
     connectWebViewJavascriptBridge(function (bridge) {
       bridge.callHandler('getDailyStatsWithData', data, function(res) {
-        alert(3)
+        alert('3 ' + res)
         if (res + '' != 'null') {
           var re = JSON.parse(res);
           var dailystats = JSON.parse(re.DailyStats[0]);
