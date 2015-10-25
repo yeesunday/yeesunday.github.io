@@ -37,10 +37,23 @@ function getDistance(callback) {
   if (android) {
     callback(web.getDailyStatsWithData(data));
   } else {
-    alert(1)
-    connectWebViewJavascriptBridge(function (bridge) {
-      alert(2)
-      bridge.callHandler('getDailyStatsWithData', data, function(res) {
+    alert(2)
+    //connectWebViewJavascriptBridge(function (bridge) {
+    //  alert(2)
+    //  bridge.callHandler('getDailyStatsWithData', data, function(res) {
+    //    alert(3 + ' ' + res);
+    //    if (res + '' != 'null') {
+    //      var re = JSON.parse(res);
+    //      alert(4);
+    //      var dailystats = JSON.parse(re.DailyStats[0]);
+    //      alert(5);
+    //      callback(dailystats);
+    //    }
+    //  })
+    //});
+    ldl.getUserDataInapp().done(function() {
+      //获取当天运动数据
+      ldl.app.getDailyStatsWithData(data).done(function(res) {
         alert(3 + ' ' + res);
         if (res + '' != 'null') {
           var re = JSON.parse(res);
@@ -49,7 +62,7 @@ function getDistance(callback) {
           alert(5);
           callback(dailystats);
         }
-      })
+      });
     });
   }
 }
