@@ -37,11 +37,16 @@ function getDistance(callback) {
   if (android) {
     callback(web.getDailyStatsWithData(data));
   } else {
+    alert(1)
     connectWebViewJavascriptBridge(function (bridge) {
+      alert(2)
       bridge.callHandler('getDailyStatsWithData', data, function(res) {
+        alert(3 + ' ' + res);
         if (res + '' != 'null') {
-          var re = JSON.parse(res),
-              dailystats = JSON.parse(re.DailyStats[0]);
+          var re = JSON.parse(res);
+          alert(4);
+          var dailystats = JSON.parse(re.DailyStats[0]);
+          alert(5);
           callback(dailystats);
         }
       })

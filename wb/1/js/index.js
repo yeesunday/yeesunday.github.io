@@ -57,7 +57,7 @@ $(function () {
         } else {
           data = distanceData;
         }
-
+        alert(6 + data.distance);
         currentLevel = Math.floor(data.distance / 3000);
         if(!hasRun) {currentLevel = 0;}
       } else {
