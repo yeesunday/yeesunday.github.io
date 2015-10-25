@@ -38,12 +38,11 @@ function getDistance(callback) {
     callback(web.getDailyStatsWithData(data));
   } else {
     connectWebViewJavascriptBridge(function (bridge) {
-      alert(5)
       bridge.callHandler('getDailyStatsWithData', data, function(res) {
         if (res + '' != 'null') {
           var re = JSON.parse(res);
           var dailystats = JSON.parse(re.DailyStats[0]);
-          alert('3 ' + JSON.stringify(dailystats));
+          alert('6 ' + dailystats.distance);
           callback(dailystats);
         }
       })
