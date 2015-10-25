@@ -51,7 +51,6 @@
   function main (distanceData) {
     if (claimedFirst) {
       if (distanceData) {
-        alert('你跑了' + distanceData + '米');
         currentLevel = Math.floor(distanceData / 3000);
       } else {
         currentLevel = 0;

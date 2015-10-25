@@ -70,7 +70,7 @@ function calDistanceByDay(start, end) {
           if (dailystats.distance) {
             runningDistance += dailystats.distance;
             if (start.getDate() == (end.getDate()-1)) {
-              alert(runningDistance + ' ' + start.getDate() + ' ' + end.getDate());
+              alert('你跑了' + runningDistance + '米');
               main(runningDistance);
             }
           }
