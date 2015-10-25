@@ -69,6 +69,7 @@ function calDistanceByDay(start, end) {
           var dailystats = JSON.parse(re.DailyStats[0]);
           if (dailystats.distance) {
             runningDistance += dailystats.distance;
+            alert(runningDistance + ' ' + start.getDate() + ' ' + end.getDate());
             if (start.getDate() == end.getDate()) {
               main(runningDistance);
             }
