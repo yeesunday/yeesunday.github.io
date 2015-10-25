@@ -51,7 +51,7 @@ function getDistance(callback) {
     setTimeout(function () {
       alert(runningDistance);
       callback(runningDistance);
-    }, (i+1)*200);
+    }, (i+5)*200);
   } else {
     callback(0);
   }
