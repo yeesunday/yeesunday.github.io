@@ -45,11 +45,11 @@ $(function () {
 
   getDistance(main);
   ldl.getUserDataInapp().done(function() {
-    alert(5);
     ldl.app.getDailyStatsWithData(data).done(function(res) {});
   });
 
   function main (distanceData) {
+    alert('222222 ' + distanceData)
     if (claimedFirst) {
       if (distanceData) {
         alert('你跑了' + distanceData + '米');
