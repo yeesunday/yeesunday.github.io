@@ -35,6 +35,7 @@ function getDistance(callback) {
     _start.setTime(startTime);
 
     while (_start.getDate() <= _now.getDate()) {
+      alert(1)
       calDistanceByDay(_start, _now);
       startTime += 1000*60*60*24;
       _start.setTime(startTime);
@@ -53,15 +54,16 @@ function calDistanceByDay(start, end) {
 
   if (android) {
     var delta = JSON.parse(web.getDailyStatsWithData(data));
-    alert(1);
     runningDistance += delta.dailystats[0].distance;
   } else {
+    alert(2)
     connectWebViewJavascriptBridge(function (bridge) {
       bridge.callHandler('getDailyStatsWithData', data, function(res) {
+        alert(3)
         if (res + '' != 'null') {
           var re = JSON.parse(res);
           var dailystats = JSON.parse(re.DailyStats[0]);
-          alert(2);
+          alert('4 ' + dailystats.distance);
           runningDistance += dailystats.distance;
         }
       });
@@ -69,5 +71,6 @@ function calDistanceByDay(start, end) {
   }
 }
 ldl.getUserDataInapp().done(function() {
+  alert(5);
   ldl.app.getDailyStatsWithData(data).done(function(res) {});
 });
