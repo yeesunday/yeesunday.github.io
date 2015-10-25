@@ -54,7 +54,6 @@ function getDistance() {
 }
 
 function calDistanceByDay(start, end) {
-  console.log(start);
   var data = JSON.stringify({startDate: start.getTime() / 1000, endDate: end.getTime() / 1000});
   if (android) {
     var delta = JSON.parse(web.getDailyStatsWithData(data));
@@ -68,11 +67,12 @@ function calDistanceByDay(start, end) {
         if (res + '' != 'null') {
           var re = JSON.parse(res);
           var dailystats = JSON.parse(re.DailyStats[0]);
-          alert(start.getDate() + ' ' + res);
+          //alert(start.getDate() + ' ' + res);
           if (dailystats.distance) {
             runningDistance += dailystats.distance;
-            alert(runningDistance + ' ' + start.getDate() + ' ' + end.getDate());
+
             if (start.getDate() == (end.getDate()-1)) {
+              alert(runningDistance + ' ' + start.getDate() + ' ' + end.getDate());
               main(runningDistance);
             }
           }
