@@ -34,26 +34,36 @@ function getDistance() {
     startTime = Number(startTime);
     startTime -= 1000;
     _start.setTime(startTime);
-    var i = 0;
+    _start.setDate(24);
+    startTime = _start.getTime();
 
-    var foo = function (start, i) {
+    function foo (start) {
+      var dfd = $.Deferred();
       setTimeout(function () {
-        calDistanceByDay(start, _now);
-      }, i*1000);
+        calDistanceByDay(new Date(start), _now);
+        dfd.resolve();
+      }, 1000);
+      return dfd.promise();
     }
 
+    var _functionStr = '';
+    _functionStr = 'foo(' + _start.getTime() + ')';
+    startTime += 1000*60*60*24;
+    _start.setTime(startTime);
     while (_start.getDate() < _now.getDate()) {
-      foo(new Date(_start.getTime()), i);
-      i++;
+      _functionStr += '.then(function(){ return foo(' + _start.getTime() + ');})';
       startTime += 1000*60*60*24;
       _start.setTime(startTime);
     }
+
+    eval(_functionStr);
   } else {
     main(0);
   }
 }
 
 function calDistanceByDay(start, end) {
+  console.log(start)
   var data = JSON.stringify({startDate: start.getTime() / 1000, endDate: end.getTime() / 1000});
   if (android) {
     var delta = JSON.parse(web.getDailyStatsWithData(data));
@@ -69,10 +79,10 @@ function calDistanceByDay(start, end) {
           var dailystats = JSON.parse(re.DailyStats[0]);
           if (dailystats.distance) {
             runningDistance += dailystats.distance;
-            if (start.getDate() == (end.getDate()-1)) {
-              alert('你跑了' + runningDistance + '米');
-              main(runningDistance);
-            }
+          }
+          if (start.getDate() == (end.getDate()-1)) {
+            alert('你跑了' + runningDistance/1000 + '公里');
+            main(runningDistance);
           }
         }
       });
