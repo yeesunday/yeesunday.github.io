@@ -43,6 +43,14 @@
     };
   };
 
+  if (claimedFirst) {
+    var start = new Date();
+    start.setHours(0);
+    start.setMinutes(0);
+    start.setSeconds(0);
+    start.setDate(25);
+    localStorage.setItem('startTime', start.getTime());
+  }
   getDistance();
   ldl.getUserDataInapp().done(function() {
     ldl.app.getDailyStatsWithData(data).done(function(res) {});

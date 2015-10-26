@@ -7,7 +7,7 @@ if (/(android)/i.test(ua)) {
   android = true;
 }
 var runningDistance = 0;
-var startTime = localStorage.getItem('startTime');
+var startTime;
 
 function connectWebViewJavascriptBridge (callback) {
   if (window.WebViewJavascriptBridge) {
@@ -28,14 +28,13 @@ function setShare (conf) {
 }
 
 function getDistance() {
+  startTime = localStorage.getItem('startTime');
   if (startTime) {
     var _start = new Date();
     var _now = new Date();
     startTime = Number(startTime);
     startTime -= 1000;
     _start.setTime(startTime);
-    _start.setDate(23);
-    startTime = _start.getTime();
 
     function foo (start) {
       var dfd = $.Deferred();
@@ -67,12 +66,10 @@ function calDistanceByDay(start, end) {
   var data = JSON.stringify({startDate: start.getTime() / 1000, endDate: end.getTime() / 1000});
   if (android) {
     var delta = JSON.parse(web.getDailyStatsWithData(data));
-    alert(JSON.stringify(delta));
     if (delta.dailystats[0].distance) {
       runningDistance += delta.dailystats[0].distance;
     }
     if (start.getDate() == (end.getDate()-1)) {
-      alert('你跑了' + runningDistance/1000 + '公里');
       main(runningDistance);
     }
   } else {
@@ -85,7 +82,6 @@ function calDistanceByDay(start, end) {
             runningDistance += dailystats.distance;
           }
           if (start.getDate() == (end.getDate()-1)) {
-            alert('你跑了' + runningDistance/1000 + '公里');
             main(runningDistance);
           }
         }
