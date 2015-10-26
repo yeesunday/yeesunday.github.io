@@ -34,7 +34,7 @@ function getDistance() {
     startTime = Number(startTime);
     startTime -= 1000;
     _start.setTime(startTime);
-    _start.setDate(24);
+    _start.setDate(23);
     startTime = _start.getTime();
 
     function foo (start) {
