@@ -28,7 +28,6 @@ function setShare (conf) {
 }
 
 function getDistance() {
-  startTime = localStorage.getItem('startTime');
   if (startTime) {
     var _start = new Date();
     var _now = new Date();
