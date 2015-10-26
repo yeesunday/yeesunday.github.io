@@ -67,7 +67,9 @@ function calDistanceByDay(start, end) {
   var data = JSON.stringify({startDate: start.getTime() / 1000, endDate: end.getTime() / 1000});
   if (android) {
     var delta = JSON.parse(web.getDailyStatsWithData(data));
-    runningDistance += delta.dailystats[0].distance;
+    if (delta.dailystats[0].distance) {
+      runningDistance += delta.dailystats[0].distance;
+    }
     if (start.getDate() == (end.getDate()-1)) {
       alert('你跑了' + runningDistance/1000 + '公里');
       main(runningDistance);
