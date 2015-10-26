@@ -67,6 +67,7 @@ function calDistanceByDay(start, end) {
   var data = JSON.stringify({startDate: start.getTime() / 1000, endDate: end.getTime() / 1000});
   if (android) {
     var delta = JSON.parse(web.getDailyStatsWithData(data));
+    alert(JSON.stringify(delta));
     if (delta.dailystats[0].distance) {
       runningDistance += delta.dailystats[0].distance;
     }
