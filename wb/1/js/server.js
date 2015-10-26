@@ -69,6 +69,7 @@ function calDistanceByDay(start, end) {
     var delta = JSON.parse(web.getDailyStatsWithData(data));
     runningDistance += delta.dailystats[0].distance;
     if (start.getDate() == (end.getDate()-1)) {
+      alert('你跑了' + runningDistance/1000 + '公里');
       main(runningDistance);
     }
   } else {
